@@ -1,3 +1,9 @@
+/* Gallery hover glow effect */
+.nexora-gallery-glow:hover {
+  box-shadow: 0 0 32px 0 #7b2ff2, 0 2px 16px #0001;
+  filter: brightness(1.15) drop-shadow(0 0 16px #7b2ff2);
+  z-index: 2;
+}
 @import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 
