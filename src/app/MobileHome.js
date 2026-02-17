@@ -1,3 +1,4 @@
+"use client";
 import AnimatedDescription from "./AnimatedDescription";
 import GalleryCarousel from "./GalleryCarousel";
 import RoadmapFlow from "./RoadmapFlow";
