@@ -128,7 +128,6 @@ export default function Home() {
                   <b>Mint date:</b> 20th February
                 </div>
               </div>
-        </div>
       </main>
     </div>
   );
