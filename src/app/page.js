@@ -15,7 +15,7 @@
                     <div style={{flex:'1 1 350px',minWidth:'320px',maxWidth:'480px',display:'flex',flexDirection:'column',alignItems:'flex-start',gap:'2.5rem'}}>
                       {/* Logo - replace with your own logo image if available */}
                       <div style={{width:'100%',display:'flex',justifyContent:'flex-start'}}>
-                        <span className="nexora-title" style={{fontSize:'3.2rem',lineHeight:'1.1',background:'white',color:'#18181b',WebkitTextFillColor:'unset',WebkitBackgroundClip:'unset',backgroundClip:'unset',textShadow:'0 2px 24px #a78bfa33, 2px 2px 0 #000, 4px 4px 0 #fff'}}>NEXORA</span>
+                        <span className="nexora-title" style={{fontSize:'1.2rem',lineHeight:'1.1',background:'white',color:'#18181b',WebkitTextFillColor:'unset',WebkitBackgroundClip:'unset',backgroundClip:'unset',textShadow:'0 2px 24px #a78bfa33, 2px 2px 0 #000, 4px 4px 0 #fff'}}>NEXORA</span>
                       </div>
                       <div style={{
                         fontSize:'1.35rem',
@@ -116,6 +116,13 @@
                   <GalleryCarousel />
                   {/* Roadmap Section */}
                   <RoadmapFlow />
+                  {/* Builder Section */}
+                  <div style={{width:'100%',display:'flex',alignItems:'center',justifyContent:'center',margin:'2.5rem 0 1.5rem 0',gap:'1.2rem'}}>
+                    <img src="/images/rumiilyan.jpeg" alt="Rami Ilyan" style={{width:'48px',height:'48px',borderRadius:'50%',objectFit:'cover',boxShadow:'0 2px 8px #0002'}} />
+                    <div style={{fontWeight:600,fontSize:'1.1rem',color:'#333'}}>Website built by
+                      <a href="https://x.com/RamiIlyan" target="_blank" rel="noopener noreferrer" style={{marginLeft:'0.5rem',color:'#007aff',textDecoration:'none',fontWeight:700}}>Rami Ilyan</a>
+                    </div>
+                  </div>
                 </div>
               );
             }
