@@ -1,19 +1,26 @@
-"use client";
+// No 'use client' here, keep as server component
 
 
             import GalleryCarousel from "./GalleryCarousel";
             import AnimatedDescription from "./AnimatedDescription";
             import RoadmapFlow from "./RoadmapFlow";
             import NexoraMarquee from "./NexoraMarquee";
-            import MobileHome from "./MobileHome";
-            import { useIsMobile } from "./useIsMobile";
+            import dynamic from "next/dynamic";
+            const MobileHome = dynamic(() => import("./MobileHome"), { ssr: false });
+
+            // Only import useIsMobile on the client
+            let useIsMobile = null;
+            if (typeof window !== "undefined") {
+              useIsMobile = require("./useIsMobile").useIsMobile;
+            }
             import "./marquee.css";
 
             export default function Home() {
-  const isMobile = useIsMobile();
-  if (isMobile) {
+  // If on client and mobile, render MobileHome
+  if (typeof window !== "undefined" && useIsMobile && useIsMobile()) {
     return <MobileHome />;
   }
+  // Otherwise, render desktop UI (SSR safe)
   return (
     <div className="nexora-main" style={{minHeight:'100vh',padding:'0'}}>
       {/* ...existing code... */}
