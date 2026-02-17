@@ -29,39 +29,55 @@ const nftImages = [
   };
 
   return (
-    <div className="nexora-gallery-section">
-      <h2 className="nexora-gallery-title">Gallery</h2>
-      <div className="nexora-gallery-carousel">
+    <div className="nexora-gallery-section" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '60vh' }}>
+      <h2 className="nexora-gallery-title" style={{ fontSize: '2.5rem', fontWeight: 700, color: '#2ec4b6', marginBottom: '2rem' }}>Gallery</h2>
+      <div className="nexora-gallery-carousel" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', position: 'relative', minHeight: '320px', marginBottom: '2rem' }}>
         {[ -2, -1, 0, 1, 2 ].map((offset) => {
           const img = getCard(offset);
           const isCenter = offset === 0;
           return (
-            <img
+            <div
               key={img}
-              src={img}
-              alt="NFT"
-              className={`nexora-gallery-card nexora-gallery-glow${isCenter ? " nexora-gallery-card-center" : ""}`}
+              className={`nexora-gallery-card${isCenter ? ' nexora-gallery-card-center' : ''}`}
               style={{
                 zIndex: 10 - Math.abs(offset),
-                opacity: isCenter ? 1 : 0.45,
-                filter: isCenter ? "none" : "blur(0.5px)",
-                transform: `scale(${isCenter ? 1 : 0.85}) rotate(${offset * 8}deg) translateY(${isCenter ? 0 : 18}px)`,
-                width:'180px',
-                height:'180px',
-                borderRadius:'1.2rem',
-                background:'#fff',
-                boxShadow:'0 2px 16px #0001',
-                transition:'box-shadow 0.3s, filter 0.3s',
-                cursor:'pointer',
-                margin:'0',
+                opacity: isCenter ? 1 : 0.35,
+                filter: isCenter ? 'none' : 'blur(1.5px)',
+                transform: `scale(${isCenter ? 1.1 : 0.85}) rotate(${offset * 8}deg) translateY(${isCenter ? 0 : 18}px)`,
+                boxShadow: isCenter ? '0 0 0 4px #ff595e, 0 2px 16px #0002' : '0 2px 16px #0001',
+                border: isCenter ? '4px solid #ff595e' : 'none',
+                transition: 'all 0.3s',
+                width: '240px',
+                height: '240px',
+                borderRadius: '1.2rem',
+                background: '#fff',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                position: 'relative',
+                margin: '0',
               }}
-            />
+            >
+              <img
+                src={img}
+                alt="NFT"
+                style={{
+                  width: '90%',
+                  height: '90%',
+                  borderRadius: '1rem',
+                  objectFit: 'cover',
+                  background: '#fff',
+                  boxShadow: isCenter ? '0 0 0 2px #ff595e' : '0 2px 16px #0001',
+                  transition: 'box-shadow 0.3s',
+                }}
+              />
+            </div>
           );
         })}
       </div>
-      <div className="nexora-gallery-nav">
-        <button onClick={prev} className="nexora-btn nexora-btn-secondary">Prev</button>
-        <button onClick={next} className="nexora-btn nexora-btn-primary">Next</button>
+      <div className="nexora-gallery-nav" style={{ display: 'flex', gap: '2rem', justifyContent: 'center', marginTop: '1rem' }}>
+        <button onClick={prev} className="nexora-btn nexora-btn-secondary" style={{ fontSize: '1.2rem', padding: '0.7rem 2.2rem', borderRadius: '2rem', background: '#fff', color: '#2ec4b6', border: '2px solid #2ec4b6', fontWeight: 600, cursor: 'pointer', boxShadow: '0 2px 8px #0001', transition: 'background 0.2s, color 0.2s' }}>Prev</button>
+        <button onClick={next} className="nexora-btn nexora-btn-primary" style={{ fontSize: '1.2rem', padding: '0.7rem 2.2rem', borderRadius: '2rem', background: '#2ec4b6', color: '#fff', border: '2px solid #2ec4b6', fontWeight: 600, cursor: 'pointer', boxShadow: '0 2px 8px #0001', transition: 'background 0.2s, color 0.2s' }}>Next</button>
       </div>
     </div>
   );
