@@ -1,22 +1,24 @@
 "use client";
 import { useState } from "react";
 
-const nftImages = [
-  "/images/nft_226.png",
-  "/images/nft_16.png",
-  "/images/nft_54.png",
-  "/images/nft_3.png",
-  "/images/nft_8.png",
-  "/images/nft_11.png",
-  "/images/nft_102.png",
-  "/images/nft_4.png",
-  "/images/nft_5.png",
-  "/images/nft_300.png",
-  "/images/nft_63.png",
-  "/images/nft_76.png",
-  "/images/nft_9.png",
-  "/images/nft_98.png"
-];
+
+export default function GalleryCarousel() {
+  const nftImages = [
+    "/images/nft_226.png",
+    "/images/nft_16.png",
+    "/images/nft_54.png",
+    "/images/nft_3.png",
+    "/images/nft_8.png",
+    "/images/nft_11.png",
+    "/images/nft_102.png",
+    "/images/nft_4.png",
+    "/images/nft_5.png",
+    "/images/nft_300.png",
+    "/images/nft_63.png",
+    "/images/nft_76.png",
+    "/images/nft_9.png",
+    "/images/nft_98.png"
+  ];
 
   const [index, setIndex] = useState(0);
   const prev = () => setIndex((i) => (i - 1 + nftImages.length) % nftImages.length);
@@ -81,7 +83,4 @@ const nftImages = [
       </div>
     </div>
   );
-
-export default function GalleryCarousel() {
-  // ...existing code...
 }
