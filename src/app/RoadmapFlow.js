@@ -35,48 +35,6 @@ const ROADMAP = [
     ],
     color: "#22c55e"
   },
-  {
-    flag: "🎁",
-    title: "Utility & Surprises",
-    desc: [
-      "Utility unlocks for holders",
-      "Airdrops & secret rewards",
-      "Nexora digital collectible experiences",
-      "Teasers for next-gen roadmap (Q2 2026)"
-    ],
-    color: "#6366f1"
-  },
-  {
-    flag: "🌟",
-    title: "Future Vision",
-    desc: [
-      "Metaverse integrations",
-      "Physical merch drops",
-      "IRL meetups & global events",
-      "Continuous updates & new partnerships"
-    ],
-    color: "#a855f7"
-  }
-];
-
-
-
-
-
-
-
-export default function RoadmapFlow() {
-  // Responsive horizontal roadmap milestone data
-  const milestones = [
-    {
-      icon: "🚀", color: "#ff3c3c", title: "Reveal & Mint Day!",
-      desc: [
-        "The official mint day is 20th February!",
-        "Collection goes live on Base chain",
-        "Website & Art Reveal",
-        "First 100 minters get exclusive OG role"
-      ]
-    },
     {
       icon: "⚙️", color: "#ff9900", title: "Ecosystem Expansion",
       desc: [
@@ -186,36 +144,16 @@ export default function RoadmapFlow() {
       <div style={{ position: "relative", width: svgWidth, height: svgHeight }}>
         <svg width={svgWidth} height={svgHeight} viewBox={`0 0 ${svgWidth} ${svgHeight}`} style={{ position: "absolute", left: 0, top: 0, zIndex: 2 }}>
           {/* Horizontal S-curve path */}
+          {/* Snake road path, visually connecting all milestones */}
           <path
-            d={path}
+            d={isMobile
+              ? "M 40 120 Q 100 40 160 120 Q 220 200 280 120"
+              : "M 80 120 Q 140 40 200 120 Q 260 200 320 120 Q 380 40 440 120 Q 500 200 560 120"}
             stroke="#fff"
             strokeWidth={isMobile ? 5 : 8}
             fill="none"
             style={{ filter: "drop-shadow(0 4px 16px #0008)" }}
           />
-          {/* Milestone icons */}
-          {milestones.map((m, i) => (
-            <g key={i}>
-              <circle
-                cx={positions[i].x}
-                cy={positions[i].y}
-                r={isMobile ? 24 : 36}
-                fill="#23272e"
-                stroke={m.color}
-                strokeWidth={isMobile ? 4 : 6}
-                style={{ filter: "drop-shadow(0 4px 16px #0006)" }}
-              />
-              <text
-                x={positions[i].x}
-                y={positions[i].y + (isMobile ? 6 : 10)}
-                textAnchor="middle"
-                fontSize={isMobile ? "1.4rem" : "2.2rem"}
-                fontWeight="bold"
-                fill="#fff"
-                style={{ filter: "drop-shadow(0 2px 8px #0008)" }}
-              >{m.icon}</text>
-            </g>
-          ))}
         </svg>
         {/* Milestone details overlay with animation and improved spacing */}
         {milestones.map((m, i) => {
