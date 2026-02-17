@@ -47,10 +47,30 @@
                         <a href="#" className="nexora-btn nexora-btn-secondary">Apply for Allowlist</a>
                       </div>
                       <div style={{display:'flex',gap:'1.2rem',marginTop:'0.5rem'}}>
-                        <a href="#" title="X" style={{color:'#000',fontSize:'2rem'}}><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="14" fill="#000"/><path d="M10.5 10.5l7 7m0-7l-7 7" stroke="#fff" strokeWidth="2" strokeLinecap="round"/></svg></a>
-                        <a href="#" title="Base" style={{color:'#0052ff',fontSize:'2rem'}}><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="14" fill="#0052ff"/><rect x="8" y="13" width="12" height="2" rx="1" fill="#fff"/></svg></a>
-                          <a href="#" title="X" style={{color:'#000',fontSize:'2rem'}}><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="14" fill="#000"/><path d="M10.5 10.5l7 7m0-7l-7 7" stroke="#fff" strokeWidth="2" strokeLinecap="round"/></svg></a>
-                          <a href="#" title="Base" style={{color:'#0052ff',fontSize:'2rem'}}><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="14" fill="#0052ff"/><rect x="8" y="13" width="12" height="2" rx="1" fill="#fff"/></svg></a>
+                        {/* OpenSea */}
+                        <a href="https://opensea.io/collection/nexora-base" title="OpenSea" target="_blank" rel="noopener noreferrer" style={{fontSize:'2rem'}}>
+                          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                            <circle cx="14" cy="14" r="14" fill="#2081e2"/>
+                            <g>
+                              <path d="M14 7a7 7 0 1 0 0 14a7 7 0 0 0 0-14zm0 12.6A5.6 5.6 0 1 1 14 8.4a5.6 5.6 0 0 1 0 11.2z" fill="#fff"/>
+                              <path d="M17.2 15.2c-.2-.2-.5-.2-.7 0l-1.2 1.2V13c0-.3-.2-.5-.5-.5s-.5.2-.5.5v3.4l-1.2-1.2c-.2-.2-.5-.2-.7 0s-.2.5 0 .7l2 2c.2.2.5.2.7 0l2-2c.2-.2.2-.5 0-.7z" fill="#fff"/>
+                            </g>
+                          </svg>
+                        </a>
+                        {/* Base */}
+                        <a href="https://basescan.org/address/0xb397683698289285a847Fa394c7A7c65599bCC55" title="Base Contract" target="_blank" rel="noopener noreferrer" style={{fontSize:'2rem'}}>
+                          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                            <circle cx="14" cy="14" r="14" fill="#0052ff"/>
+                            <rect x="8" y="13" width="12" height="2" rx="1" fill="#fff"/>
+                          </svg>
+                        </a>
+                        {/* X (Twitter) */}
+                        <a href="https://x.com/Nexora_base" title="X (Twitter)" target="_blank" rel="noopener noreferrer" style={{fontSize:'2rem'}}>
+                          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                            <circle cx="14" cy="14" r="14" fill="#000"/>
+                            <path d="M19.5 9.1h-1.3l-2.2 2.7-2.2-2.7h-1.3l2.8 3.4-2.8 3.5h1.3l2.2-2.7 2.2 2.7h1.3l-2.8-3.5z" fill="#fff"/>
+                          </svg>
+                        </a>
                       </div>
                     </div>
                     {/* Right: NFT grid */}
