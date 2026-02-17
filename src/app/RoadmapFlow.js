@@ -194,6 +194,7 @@ const ROADMAP = [
           );
         })}
       </div>
+
     </section>
   );
-}
+
