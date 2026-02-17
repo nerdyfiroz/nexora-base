@@ -1,0 +1,26 @@
+/* Custom styles for NEXORA landing page */
+
+@keyframes fadeInOut {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.animated-sentence {
+  animation: fadeInOut 2.6s linear infinite;
+}
+
+/* Glassmorphism effect for card */
+.nexora-glass {
+  background: rgba(255,255,255,0.8);
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.18);
+}
+
+.dark .nexora-glass {
+  background: rgba(24,24,27,0.8);
+  border: 1px solid rgba(39,39,42,0.5);
+}
