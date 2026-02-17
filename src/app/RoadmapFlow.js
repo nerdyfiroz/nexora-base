@@ -1,7 +1,7 @@
 "use client";
 import React, { useRef, useEffect, useState } from "react";
 
-const ROADMAP = [
+const milestones = [
   {
     icon: "🚀",
     title: "Reveal & Mint Day!",
