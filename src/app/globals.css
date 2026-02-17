@@ -43,8 +43,8 @@ body:before {
 /* --- Featured NFT Section Enhancements --- */
 .nexora-feature-imgbox {
   position: relative;
-  width: 260px;
-  height: 260px;
+  width: 224px;
+  height: 224px;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -53,10 +53,10 @@ body:before {
 .nexora-feature-imgbox::before {
   content: "";
   position: absolute;
-  top: 18px;
-  left: 18px;
-  width: 224px;
-  height: 224px;
+  top: -32px;
+  left: -32px;
+  width: 288px;
+  height: 288px;
   background: #f7e6ff;
   border-radius: 2.5rem;
   filter: blur(2px) opacity(0.45);
@@ -85,13 +85,10 @@ body:before {
   min-width: 80px;
   text-align: center;
   transition: box-shadow 0.2s;
-  animation: badge-orbit 6s linear infinite;
+  animation: badge-rect-orbit 6s linear infinite;
 }
 .nexora-feature-badge {
   color: #6c63ff;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
   animation-delay: 0s;
 }
 .nexora-feature-badge span {
@@ -101,9 +98,6 @@ body:before {
 }
 .nexora-feature-network {
   color: #ff9900;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
   animation-delay: 3s;
 }
 .nexora-feature-network span {
@@ -111,10 +105,14 @@ body:before {
   font-weight: 400;
   font-size: 0.95rem;
 }
-@keyframes badge-orbit {
-  0%   { top: 0; left: 50%; transform: translateX(-50%); }
-  25%  { top: 50%; left: 100%; transform: translateY(-50%); }
-  50%  { top: 100%; left: 50%; transform: translateX(-50%) translateY(-100%); }
-  75%  { top: 50%; left: 0; transform: translateY(-50%); }
-  100% { top: 0; left: 50%; transform: translateX(-50%); }
+@keyframes badge-rect-orbit {
+  0%   { top: -40px; left: 50%; transform: translateX(-50%); }
+  24%  { top: -40px; left: 50%; transform: translateX(-50%); }
+  25%  { top: 50%; left: 224px; transform: translateY(-50%); }
+  49%  { top: 50%; left: 224px; transform: translateY(-50%); }
+  50%  { top: 224px; left: 50%; transform: translateX(-50%); }
+  74%  { top: 224px; left: 50%; transform: translateX(-50%); }
+  75%  { top: 50%; left: -40px; transform: translateY(-50%); }
+  99%  { top: 50%; left: -40px; transform: translateY(-50%); }
+  100% { top: -40px; left: 50%; transform: translateX(-50%); }
 }
