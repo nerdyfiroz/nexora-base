@@ -161,7 +161,7 @@ const ROADMAP = [
           const isAbove = i % 2 === 0;
           const verticalOffset = isMobile ? 70 : 90;
             return (
-              <React.Fragment key={i}>
+              <div key={i}>
                 {/* Icon marker */}
                 <div
                   id={`roadmap-milestone-${i}`}
@@ -210,7 +210,7 @@ const ROADMAP = [
                     ))}
                   </ul>
                 </div>
-              </React.Fragment>
+              </div>
             );
         })}
       </div>
