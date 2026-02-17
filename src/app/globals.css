@@ -19,7 +19,6 @@
     --foreground: #ededed;
   }
 }
-
 body {
   background: #f0f0f0;
   color: #000;
@@ -39,4 +38,83 @@ body:before {
   position: fixed;
   top: 0;
   left: 0;
+}
+
+/* --- Featured NFT Section Enhancements --- */
+.nexora-feature-imgbox {
+  position: relative;
+  width: 260px;
+  height: 260px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.nexora-feature-imgbox::before {
+  content: "";
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  width: 224px;
+  height: 224px;
+  background: #f7e6ff;
+  border-radius: 2.5rem;
+  filter: blur(2px) opacity(0.45);
+  z-index: 1;
+  pointer-events: none;
+}
+.nexora-feature-img {
+  background: #fff;
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 32px #0001, 0 1.5px 8px #0001;
+  position: relative;
+  z-index: 2;
+  width: 224px;
+  height: 224px;
+  object-fit: cover;
+}
+.nexora-feature-badge,
+.nexora-feature-network {
+  position: absolute;
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px #0001;
+  font-weight: 700;
+  z-index: 3;
+  padding: 0.5rem 1.2rem;
+  min-width: 80px;
+  text-align: center;
+  transition: box-shadow 0.2s;
+  animation: badge-orbit 6s linear infinite;
+}
+.nexora-feature-badge {
+  color: #6c63ff;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  animation-delay: 0s;
+}
+.nexora-feature-badge span {
+  font-weight: 400;
+  font-size: 1rem;
+  color: #aaa;
+}
+.nexora-feature-network {
+  color: #ff9900;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  animation-delay: 3s;
+}
+.nexora-feature-network span {
+  color: #aaa;
+  font-weight: 400;
+  font-size: 0.95rem;
+}
+@keyframes badge-orbit {
+  0%   { top: 0; left: 50%; transform: translateX(-50%); }
+  25%  { top: 50%; left: 100%; transform: translateY(-50%); }
+  50%  { top: 100%; left: 50%; transform: translateX(-50%) translateY(-100%); }
+  75%  { top: 50%; left: 0; transform: translateY(-50%); }
+  100% { top: 0; left: 50%; transform: translateX(-50%); }
 }
