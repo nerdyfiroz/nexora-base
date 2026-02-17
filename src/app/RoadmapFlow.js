@@ -35,15 +35,16 @@ const milestones = [
   ];
 
 
-  const svgWidth = 900;
-  const svgHeight = 180;
-  const leftPad = 60;
-  const rightPad = 60;
-  const lineY = svgHeight / 2;
-  const step = (svgWidth - leftPad - rightPad) / (milestones.length - 1);
+  // Vertical roadmap config
+  const svgWidth = 180;
+  const svgHeight = 700;
+  const topPad = 60;
+  const bottomPad = 60;
+  const lineX = svgWidth / 2;
+  const step = (svgHeight - topPad - bottomPad) / (milestones.length - 1);
   const pinPositions = Array.from({ length: milestones.length }, (_, i) => ({
-    x: leftPad + i * step,
-    y: lineY
+    x: lineX,
+    y: topPad + i * step
   }));
 
 
@@ -78,12 +79,12 @@ function RoadmapFlow() {
           letterSpacing: "0.04em"
         }}>Roadmap</h2>
         <div style={{ position: "relative", width: svgWidth, height: svgHeight, margin: "0 auto" }}>
-          {/* Straight line path */}
+          {/* Vertical line path */}
           <svg width={svgWidth} height={svgHeight} style={{ position: "absolute", left: 0, top: 0, zIndex: 1 }}>
-            <line x1={leftPad} y1={lineY} x2={svgWidth - rightPad} y2={lineY} stroke="#444" strokeWidth={18} strokeLinecap="round" />
-            <line x1={leftPad} y1={lineY} x2={svgWidth - rightPad} y2={lineY} stroke="#fff" strokeWidth={6} strokeDasharray="18 18" strokeLinecap="round" />
+            <line x1={lineX} y1={topPad} x2={lineX} y2={svgHeight - bottomPad} stroke="#444" strokeWidth={18} strokeLinecap="round" />
+            <line x1={lineX} y1={topPad} x2={lineX} y2={svgHeight - bottomPad} stroke="#fff" strokeWidth={6} strokeDasharray="18 18" strokeLinecap="round" />
             {/* Arrowhead */}
-            <polygon points={`${svgWidth - rightPad - 10},${lineY - 18} ${svgWidth - rightPad + 30},${lineY} ${svgWidth - rightPad - 10},${lineY + 18}`} fill="#444" />
+            <polygon points={`${lineX - 18},${svgHeight - bottomPad - 10} ${lineX},${svgHeight - bottomPad + 30} ${lineX + 18},${svgHeight - bottomPad - 10}`} fill="#444" />
           </svg>
           {/* Milestone pins */}
           {milestones.map((m, i) => {

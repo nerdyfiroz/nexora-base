@@ -1,3 +1,33 @@
+  .nexora-gallery-section {
+    padding: 0.5rem 0.1rem 1.2rem 0.1rem !important;
+    min-height: 40vh !important;
+  }
+  .nexora-gallery-title {
+    font-size: 1.3rem !important;
+    margin-bottom: 1.2rem !important;
+    text-align: center !important;
+  }
+  .nexora-gallery-carousel {
+    min-height: 180px !important;
+    gap: 0.2rem !important;
+    margin-bottom: 1.2rem !important;
+  }
+  .nexora-gallery-card {
+    width: 120px !important;
+    height: 120px !important;
+    border-radius: 0.7rem !important;
+    margin: 0 0.1rem !important;
+  }
+  .nexora-gallery-card-center {
+    width: 140px !important;
+    height: 140px !important;
+    border-radius: 1rem !important;
+  }
+  .nexora-gallery-card img {
+    width: 95% !important;
+    height: 95% !important;
+    border-radius: 0.6rem !important;
+  }
 /* Gallery hover glow effect */
 .nexora-gallery-glow:hover {
   box-shadow: 0 0 32px 0 #7b2ff2, 0 2px 16px #0001;
@@ -46,22 +76,36 @@
     padding: 0 0.2em !important;
   }
   .nexora-title {
-    font-size: 1.5rem !important;
+    font-size: 2.1rem !important;
     word-break: break-word !important;
     padding: 0.1em 0.2em !important;
-    text-align: left !important;
-    max-width: 95vw !important;
+    text-align: center !important;
+    max-width: 98vw !important;
     display: block;
+    font-weight: 900 !important;
+    letter-spacing: 0.03em !important;
+    margin-bottom: 0.2em !important;
   }
   .nexora-main {
-    padding: 0 0.5rem !important;
+    padding: 0 0.2rem !important;
   }
   main {
     flex-direction: column !important;
-    gap: 1.2rem !important;
-    padding: 1.2rem 0 !important;
+    gap: 0.7rem !important;
+    padding: 0.7rem 0 2.5rem 0 !important;
     max-width: 100vw !important;
   }
+    /* Hero logo image on mobile */
+    .nexora-hero-logo {
+      width: 72px !important;
+      height: 72px !important;
+      margin-bottom: 0.7em !important;
+      border-radius: 1.2rem !important;
+      box-shadow: 0 2px 12px #7b2ff2 !important;
+      display: block !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
   .nexora-feature-section {
     flex-direction: column !important;
     gap: 1.2rem !important;
@@ -109,10 +153,20 @@
     font-size: 1rem !important;
   }
   .nexora-btn {
-    font-size: 1rem !important;
-    padding: 0.7rem 1.2rem !important;
-    min-width: 120px !important;
+    font-size: 1.1rem !important;
+    padding: 1rem 1.5rem !important;
+    min-width: 140px !important;
+    border-radius: 1.2rem !important;
+    margin: 0.3rem 0 !important;
   }
+    .nexora-gallery-nav button,
+    .nexora-gallery-nav .nexora-btn {
+      font-size: 1.1rem !important;
+      padding: 1rem 1.5rem !important;
+      min-width: 120px !important;
+      border-radius: 1.2rem !important;
+      margin: 0.3rem 0.2rem !important;
+    }
   .nft-float-center, .nft-float-corner {
     width: 60vw !important;
     height: 60vw !important;
@@ -123,14 +177,16 @@
   }
   .nexora-builder-credit {
     flex-direction: column !important;
-    gap: 0.5rem !important;
-    margin: 1.2rem 0 0.5rem 0 !important;
-    font-size: 1rem !important;
-    align-items: flex-start !important;
+    gap: 0.7rem !important;
+    margin: 1.5rem 0 0.7rem 0 !important;
+    font-size: 1.05rem !important;
+    align-items: center !important;
+    text-align: center !important;
   }
   .nexora-builder-credit img {
-    width: 36px !important;
-    height: 36px !important;
+    width: 32px !important;
+    height: 32px !important;
+    margin: 0.2rem 0 !important;
   }
 }
 
