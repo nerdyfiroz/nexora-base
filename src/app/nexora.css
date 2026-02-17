@@ -1,3 +1,334 @@
+/* Gallery section styles */
+.nexora-gallery-section {
+  margin: 4.5rem auto 0 auto;
+  max-width: 900px;
+  text-align: center;
+}
+.nexora-gallery-title {
+  font-size: 2.5rem;
+  font-weight: 900;
+  margin-bottom: 2.2rem;
+  background: linear-gradient(90deg,#22d3ee 0%,#22c55e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  letter-spacing: 0.01em;
+}
+.nexora-gallery-carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 2.2rem;
+  min-height: 320px;
+}
+.nexora-gallery-card {
+  width: 220px;
+  height: 220px;
+  border-radius: 1.3rem;
+  background: #fff;
+  box-shadow: 0 4px 32px #a78bfa22;
+  border: 3px solid #fff;
+  object-fit: cover;
+  transition: all 0.28s cubic-bezier(.4,0,.2,1);
+  position: relative;
+  filter: blur(0.5px);
+}
+.nexora-gallery-card-center {
+  border: 4px solid #f87171;
+  box-shadow: 0 8px 32px #f8717133;
+  filter: none;
+  z-index: 20;
+}
+.nexora-gallery-nav {
+  display: flex;
+  gap: 1.2rem;
+  justify-content: center;
+}
+/* More Than Just Another JPEG section */
+.nexora-feature-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 3.5rem;
+  margin: 4rem auto 0 auto;
+  max-width: 1200px;
+  flex-wrap: wrap;
+}
+.nexora-feature-imgbox {
+  position: relative;
+  min-width: 320px;
+  max-width: 380px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.nexora-feature-img {
+  width: 100%;
+  max-width: 340px;
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 32px #a78bfa22;
+  border: 4px solid #fff;
+  background: #fff;
+  z-index: 2;
+}
+.nexora-feature-badge {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  background: #fff;
+  color: #7c3aed;
+  font-weight: 700;
+  font-size: 1.15rem;
+  border-radius: 1rem;
+  box-shadow: 0 2px 12px #a78bfa22;
+  padding: 0.5rem 1.2rem 0.3rem 1.2rem;
+  letter-spacing: 0.01em;
+  z-index: 3;
+  text-align: center;
+}
+.nexora-feature-badge span {
+  display: block;
+  font-size: 0.95rem;
+  color: #a1a1aa;
+  font-weight: 500;
+}
+.nexora-feature-network {
+  position: absolute;
+  left: 1.2rem;
+  bottom: 1.2rem;
+  background: #fff;
+  color: #f47216;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border-radius: 0.9rem;
+  box-shadow: 0 2px 12px #a78bfa22;
+  padding: 0.4rem 1.1rem 0.2rem 1.1rem;
+  letter-spacing: 0.01em;
+  z-index: 3;
+  text-align: center;
+}
+.nexora-feature-network span {
+  display: block;
+  font-size: 0.92rem;
+  color: #a1a1aa;
+  font-weight: 500;
+}
+.nexora-feature-content {
+  flex: 1 1 350px;
+  min-width: 320px;
+  max-width: 600px;
+}
+.nexora-feature-title {
+  font-size: 2.7rem;
+  font-weight: 900;
+  margin-bottom: 1.2rem;
+  line-height: 1.1;
+}
+.nexora-feature-title .nexora-feature-accent {
+  color: #f47216;
+  background: linear-gradient(90deg,#f47216 0%,#facc15 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+.nexora-feature-desc {
+  font-size: 1.18rem;
+  color: #23272f;
+  margin-bottom: 1.2rem;
+  font-weight: 500;
+}
+.nexora-feature-desc b {
+  color: #a78bfa;
+  font-weight: 700;
+}
+.nexora-feature-desc strong {
+  color: #23272f;
+  font-weight: 800;
+}
+.dark .nexora-feature-desc {
+  color: #ededed;
+}
+.nexora-feature-avatars {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  margin-top: 1.2rem;
+}
+.nexora-feature-avatars img {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 8px #a78bfa22;
+  object-fit: cover;
+}
+.nexora-feature-join {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-left: 0.7rem;
+  color: #23272f;
+}
+.dark .nexora-feature-join {
+  color: #ededed;
+}
+/* Roadmap section styles */
+.nexora-roadmap {
+  margin: 3rem auto 0 auto;
+  max-width: 700px;
+  background: rgba(255,255,255,0.82);
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 24px #a78bfa22;
+  padding: 2.2rem 1.5rem 2.5rem 1.5rem;
+  border: 1.5px solid #e0e7ef;
+  position: relative;
+}
+.dark .nexora-roadmap {
+  background: rgba(24,24,27,0.85);
+  border: 1.5px solid #23272f;
+}
+.nexora-roadmap h3 {
+  font-size: 1.7rem;
+  font-weight: 800;
+  margin-bottom: 1.2rem;
+  text-align: center;
+  background: linear-gradient(90deg,#60a5fa 0%,#a78bfa 50%,#f472b6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+.nexora-roadmap-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+.nexora-roadmap-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.1rem;
+  font-size: 1.13rem;
+  color: #23272f;
+  background: rgba(255,255,255,0.7);
+  border-radius: 0.7rem;
+  padding: 0.7rem 1rem;
+  box-shadow: 0 2px 8px #a78bfa11;
+}
+.dark .nexora-roadmap-item {
+  color: #ededed;
+  background: rgba(24,24,27,0.7);
+}
+.nexora-roadmap-dot {
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg,#a78bfa 0%,#f472b6 100%);
+  margin-top: 0.2rem;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px #a78bfa33;
+}
+.nexora-roadmap-date {
+  display: block;
+  font-size: 1.05rem;
+  color: #a78bfa;
+  font-weight: 700;
+  margin-top: 0.2rem;
+}
+/* Glassmorphism card for collection details */
+.nexora-glass-card {
+  background: rgba(255,255,255,0.85);
+  border-radius: 2rem;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+  backdrop-filter: blur(12px);
+  border: 1.5px solid rgba(255,255,255,0.18);
+  padding: 2.5rem 2rem;
+  max-width: 420px;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+  transition: box-shadow 0.2s;
+}
+.dark .nexora-glass-card {
+  background: rgba(24,24,27,0.85);
+  border: 1.5px solid rgba(39,39,42,0.5);
+}
+
+.nexora-glass-card h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.nexora-glass-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem 0;
+}
+.nexora-glass-card li {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+.nexora-glass-mint {
+  margin-top: 1.5rem;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+/* Modern button styles */
+.nexora-btn {
+  padding: 0.9rem 1.7rem;
+  border-radius: 1.5rem;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border: none;
+  outline: none;
+  transition: all 0.18s cubic-bezier(.4,0,.2,1);
+  text-decoration: none;
+  box-shadow: 0 2px 12px #0001;
+  cursor: pointer;
+  display: inline-block;
+}
+.nexora-btn-primary {
+  background: linear-gradient(90deg,#f472b6 0%,#a78bfa 100%);
+  color: #fff;
+  border-bottom: 2px solid #a78bfa;
+}
+.nexora-btn-primary:hover {
+  filter: brightness(1.08) saturate(1.2);
+  box-shadow: 0 4px 24px #a78bfa44;
+}
+.nexora-btn-secondary {
+  background: #18181b;
+  color: #fff;
+}
+.nexora-btn-secondary:hover {
+  background: #23272f;
+}
+@keyframes float-nft-center {
+  0% { transform: translateX(-50%) translateY(0) scale(1); }
+  50% { transform: translateX(-50%) translateY(-18px) scale(1.04); }
+  100% { transform: translateX(-50%) translateY(0) scale(1); }
+}
+
+@keyframes float-nft-corner {
+  0% { transform: translateY(0) scale(1) rotate(var(--angle,0deg)); }
+  50% { transform: translateY(-12px) scale(1.03) rotate(var(--angle,0deg)); }
+  100% { transform: translateY(0) scale(1) rotate(var(--angle,0deg)); }
+}
+
+.nft-float-center {
+  animation: float-nft-center 3.2s ease-in-out infinite;
+}
+.nft-float-corner {
+  animation: float-nft-corner 2.7s ease-in-out infinite;
+}
 /* NEXORA - Inspired by getbullshit.wtf full styles */
 
 body {
