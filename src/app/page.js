@@ -1,8 +1,7 @@
 
-
-
 import AnimatedDescription from "./AnimatedDescription";
 
+export default function Home() {
   return (
     <div className="nexora-main" style={{minHeight:'100vh',display:'flex',alignItems:'center',justifyContent:'center',padding:'0'}}>
       <main style={{width:'100%',maxWidth:'1200px',display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'center',gap:'3rem',flexWrap:'wrap',padding:'2rem 0'}}>
