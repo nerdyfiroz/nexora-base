@@ -2,6 +2,7 @@
             import GalleryCarousel from "./GalleryCarousel";
             import AnimatedDescription from "./AnimatedDescription";
             import RoadmapFlow from "./RoadmapFlow";
+            import NexoraMarquee from "./NexoraMarquee";
             import "./marquee.css";
 
             export default function Home() {
@@ -63,17 +64,10 @@
                     </div>
                   </main>
                   {/* Animated Marquee Lines (above gallery) */}
-                  <div style={{position:'relative',width:'100%',overflow:'hidden',height:'70px',margin:'2.5rem 0 1.5rem 0'}}>
-                    <div className="nexora-marquee nexora-marquee-left">
-                      <span>
-                        A 8BIT REVOLUTION • NEXORA • MAGIC MEETS METADATA⚡️ • APPLY • BASE • JOIN US • 3333 SUPPLY •
-                      </span>
-                    </div>
-                    <div className="nexora-marquee nexora-marquee-right">
-                      <span>
-                        3333 SUPPLY • JOIN US • BASE • APPLY •  MAGIC MEETS METADATA⚡️ • NEXORA •  A 8BIT REVOLUTION •
-                      </span>
-                    </div>
+                  <NexoraMarquee />
+                  {/* 8-Bit Revolution Title */}
+                  <div style={{width:'100%',display:'flex',justifyContent:'center',margin:'0 0 1.5rem 0'}}>
+                    <h2 className="nexora-marquee-gradient-text" style={{fontSize:'4.2rem',fontWeight:900,letterSpacing:'0.04em',margin:0,padding:0,textTransform:'uppercase',textAlign:'center',background:'linear-gradient(90deg, #38ef7d 0%, #1194f6 40%, #7b2ff2 100%)',WebkitBackgroundClip:'text',WebkitTextFillColor:'transparent',backgroundClip:'text',color:'transparent',animation:'gradient-move 4s linear infinite alternate'}}>The 8-Bit Revolution</h2>
                   </div>
                   {/* Gallery Section */}
                   <GalleryCarousel />
@@ -85,9 +79,7 @@
                       <div className="nexora-feature-network">Base<span>NETWORK</span></div>
                     </div>
                     <div className="nexora-feature-content">
-                      <div className="nexora-feature-title">
-                        More Than Just <span className="nexora-feature-accent">Another JPEG</span>
-                      </div>
+                      {/* Removed old title */}
                       <div className="nexora-feature-desc">
                         Welcome to the <b>NEXORA revolution</b>. We’re building a brand that blends pixel art, web3, and the magic of digital collectibles.<br /><br />
                         Each of the <strong>3,333 NEXORAs</strong> is algorithmically generated from over <b>100+ hand-drawn traits</b>. From wizards to pixel gems, no two are alike.<br /><br />

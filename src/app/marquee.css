@@ -4,13 +4,26 @@
   will-change: transform;
   display: flex;
   align-items: center;
-  font-size: 2.1rem;
   font-weight: 800;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: #18181b;
-  opacity: 0.92;
   pointer-events: none;
+  user-select: none;
+}
+
+.nexora-marquee-gradient-text {
+  background: linear-gradient(90deg, #38ef7d 0%, #1194f6 40%, #7b2ff2 100%);
+  background-size: 200% 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-move 4s linear infinite alternate;
+}
+
+@keyframes gradient-move {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
 }
 
 .nexora-marquee-left {
