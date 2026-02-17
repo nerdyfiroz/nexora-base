@@ -28,6 +28,32 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 
 :root {
+  @media (max-width: 700px) {
+    .nexora-marquee-gradient-text {
+      font-size: 2.1rem !important;
+      line-height: 1.15 !important;
+      word-break: break-word !important;
+      padding: 0 0.2em !important;
+      text-align: left !important;
+    }
+    .nexora-feature-desc {
+      font-size: 1rem !important;
+      padding: 0 0.2em !important;
+    }
+    .nexora-title {
+      font-size: 1.5rem !important;
+      word-break: break-word !important;
+      padding: 0.1em 0.2em !important;
+      text-align: left !important;
+      max-width: 95vw !important;
+    }
+    .nexora-main {
+      padding: 0 0.2em !important;
+    }
+    main {
+      padding: 0.5em 0 !important;
+    }
+  }
   /* Responsive adjustments for mobile usability */
   @media (max-width: 700px) {
     .nexora-main {
