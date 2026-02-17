@@ -58,7 +58,7 @@
                           </svg>
                         </a>
                         {/* Base */}
-                        <a href="https://basescan.org/address/0xb397683698289285a847Fa394c7A7c65599bCC55" title="Base Contract" target="_blank" rel="noopener noreferrer" style={{fontSize:'2rem'}}>
+                        <a href="https://basescan.org/address/0x91afb23f7e3567baac193e342be9668ea7feaf9e" title="Base Contract" target="_blank" rel="noopener noreferrer" style={{fontSize:'2rem'}}>
                           <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
                             <circle cx="14" cy="14" r="14" fill="#0052ff"/>
                             <rect x="8" y="13" width="12" height="2" rx="1" fill="#fff"/>
