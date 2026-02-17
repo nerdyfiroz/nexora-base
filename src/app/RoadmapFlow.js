@@ -3,7 +3,7 @@ import React, { useRef, useEffect, useState } from "react";
 
 const ROADMAP = [
   {
-    flag: "🚀",
+    icon: "🚀",
     title: "Reveal & Mint Day!",
     desc: [
       "🚨 The official mint day is 20th February! 🚨",
@@ -14,7 +14,7 @@ const ROADMAP = [
     color: "#ff3c3c"
   },
   {
-    flag: "🌱",
+    icon: "🌱",
     title: "Ecosystem Expansion",
     desc: [
       "Launch of Nexora marketplace",
@@ -25,7 +25,7 @@ const ROADMAP = [
     color: "#ff9900"
   },
   {
-    flag: "🌐",
+    icon: "🌐",
     title: "Community & Growth",
     desc: [
       "Grow the NEXORA community worldwide",
