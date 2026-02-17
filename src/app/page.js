@@ -2,23 +2,12 @@
             import GalleryCarousel from "./GalleryCarousel";
             import AnimatedDescription from "./AnimatedDescription";
             import RoadmapFlow from "./RoadmapFlow";
+            import "./marquee.css";
 
             export default function Home() {
               return (
                 <div className="nexora-main" style={{minHeight:'100vh',padding:'0'}}>
-                  {/* Animated Marquee Lines */}
-                  <div style={{position:'relative',width:'100%',overflow:'hidden',height:'70px',marginBottom:'1.5rem'}}>
-                    <div className="nexora-marquee nexora-marquee-left">
-                      <span>
-                       A 8BIT REVOLUTION • NEXORA • MAGIC MEETS METADATA⚡️ • APPLY • BASE • JOIN US • 3333 SUPPLY •
-                      </span>
-                    </div>
-                    <div className="nexora-marquee nexora-marquee-right">
-                      <span>
-                        3333 SUPPLY • JOIN US • BASE • APPLY •  MAGIC MEETS METADATA⚡️ • NEXORA •  A 8BIT REVOLUTION •
-                      </span>
-                    </div>
-                  </div>
+                  {/* ...existing code... */}
                   {/* Hero and NFT grid */}
                   <main style={{width:'100%',maxWidth:'1200px',display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'center',gap:'3rem',flexWrap:'wrap',padding:'2rem 0'}}>
                     {/* Left: Logo and text */}
@@ -73,6 +62,19 @@
                       <img src="/images/nft_8.png" alt="NFT Bottom Left" className="nft-float-corner" style={{width:'90px',height:'90px',borderRadius:'1.2rem',boxShadow:'0 2px 16px #0001',position:'absolute',bottom:'20px',left:'50px',zIndex:3,background:'#fff',transform:'rotate(-8deg)','--angle':'-8deg'}} />
                     </div>
                   </main>
+                  {/* Animated Marquee Lines (above gallery) */}
+                  <div style={{position:'relative',width:'100%',overflow:'hidden',height:'70px',margin:'2.5rem 0 1.5rem 0'}}>
+                    <div className="nexora-marquee nexora-marquee-left">
+                      <span>
+                        A 8BIT REVOLUTION • NEXORA • MAGIC MEETS METADATA⚡️ • APPLY • BASE • JOIN US • 3333 SUPPLY •
+                      </span>
+                    </div>
+                    <div className="nexora-marquee nexora-marquee-right">
+                      <span>
+                        3333 SUPPLY • JOIN US • BASE • APPLY •  MAGIC MEETS METADATA⚡️ • NEXORA •  A 8BIT REVOLUTION •
+                      </span>
+                    </div>
+                  </div>
                   {/* Gallery Section */}
                   <GalleryCarousel />
                   {/* Collection About Section */}

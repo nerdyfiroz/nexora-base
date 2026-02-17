@@ -3,43 +3,59 @@ import React, { useRef, useEffect, useState } from "react";
 
 const ROADMAP = [
   {
-    flag: "🚩",
-    title: "Reveal & Launch",
+    flag: "🚀",
+    title: "Reveal & Mint Day!",
     desc: [
-      "Collection goes live on 20th February",
-      "Base chain",
-      "Website Launch",
-      "Art Reveal"
+      "🚨 The official mint day is 20th February! 🚨",
+      "Collection goes live on Base chain",
+      "Website & Art Reveal",
+      "First 100 minters get exclusive OG role"
     ],
     color: "#ff3c3c"
   },
   {
-    flag: "🚩",
-    title: "Mint Phases",
+    flag: "🌱",
+    title: "Ecosystem Expansion",
     desc: [
-      "GDT (Freemint)",
-      "Whitelist (0.1$)",
-      "Public (0.3$) on OpenSea"
+      "Launch of Nexora marketplace",
+      "Integration with partner dApps",
+      "Onboarding new artists & creators",
+      "Expanding utility for holders"
     ],
     color: "#ff9900"
   },
   {
-    flag: "🚩",
-    title: "Community",
+    flag: "🌐",
+    title: "Community & Growth",
     desc: [
-      "Grow the NEXORA community",
-      "Events & Collaborations"
+      "Grow the NEXORA community worldwide",
+      "Epic events, AMAs & collaborations",
+      "Holder-only Discord channels",
+      "Community voting on future features"
     ],
     color: "#22c55e"
   },
   {
-    flag: "🚩",
-    title: "Next Steps",
+    flag: "🎁",
+    title: "Utility & Surprises",
     desc: [
-      "Utility, airdrops",
-      "More digital collectible experiences"
+      "Utility unlocks for holders",
+      "Airdrops & secret rewards",
+      "Nexora digital collectible experiences",
+      "Teasers for next-gen roadmap (Q2 2026)"
     ],
     color: "#6366f1"
+  },
+  {
+    flag: "🌟",
+    title: "Future Vision",
+    desc: [
+      "Metaverse integrations",
+      "Physical merch drops",
+      "IRL meetups & global events",
+      "Continuous updates & new partnerships"
+    ],
+    color: "#a855f7"
   }
 ];
 
