@@ -15,7 +15,7 @@
                     <div style={{flex:'1 1 350px',minWidth:'320px',maxWidth:'480px',display:'flex',flexDirection:'column',alignItems:'flex-start',gap:'2.5rem'}}>
                       {/* Logo - replace with your own logo image if available */}
                       <div style={{width:'100%',display:'flex',justifyContent:'flex-start'}}>
-                        <span className="nexora-title" style={{fontSize:'1.2rem',lineHeight:'1.1',background:'white',color:'#18181b',WebkitTextFillColor:'unset',WebkitBackgroundClip:'unset',backgroundClip:'unset',textShadow:'0 2px 24px #a78bfa33, 2px 2px 0 #000, 4px 4px 0 #fff'}}>NEXORA</span>
+                        <span className="nexora-title" style={{fontSize:'3.2rem',lineHeight:'1.1',background:'white',color:'#18181b',WebkitTextFillColor:'unset',WebkitBackgroundClip:'unset',backgroundClip:'unset',textShadow:'0 2px 24px #a78bfa33, 2px 2px 0 #000, 4px 4px 0 #fff'}}>NEXORA</span>
                       </div>
                       <div style={{
                         fontSize:'1.35rem',
