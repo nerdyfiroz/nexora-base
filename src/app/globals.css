@@ -27,122 +27,111 @@
 @import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 
+
 :root {
-  @media (max-width: 700px) {
-    .nexora-marquee-gradient-text {
-      font-size: 2.1rem !important;
-      line-height: 1.15 !important;
-      word-break: break-word !important;
-      padding: 0 0.2em !important;
-      text-align: left !important;
-    }
-    .nexora-feature-desc {
-      font-size: 1rem !important;
-      padding: 0 0.2em !important;
-    }
-    .nexora-title {
-      font-size: 1.5rem !important;
-      word-break: break-word !important;
-      padding: 0.1em 0.2em !important;
-      text-align: left !important;
-      max-width: 95vw !important;
-    }
-    .nexora-main {
-      padding: 0 0.2em !important;
-    }
-    main {
-      padding: 0.5em 0 !important;
-    }
-  }
-  /* Responsive adjustments for mobile usability */
-  @media (max-width: 700px) {
-    .nexora-main {
-      padding: 0 0.5rem;
-    }
-    .nexora-title {
-      font-size: 2rem !important;
-      text-align: left;
-      display: block;
-    }
-    main {
-      flex-direction: column !important;
-      gap: 1.2rem !important;
-      padding: 1.2rem 0 !important;
-      max-width: 100vw !important;
-    }
-    .nexora-feature-section {
-      flex-direction: column !important;
-      gap: 1.2rem !important;
-      padding: 1.2rem 0.5rem !important;
-      max-width: 100vw !important;
-    }
-    .nexora-feature-imgbox {
-      width: 90vw !important;
-      height: 90vw !important;
-      min-width: 0 !important;
-      max-width: 340px !important;
-      min-height: 0 !important;
-      max-height: 340px !important;
-    }
-    .nexora-feature-imgbox::before {
-      width: 100% !important;
-      height: 100% !important;
-      border-radius: 2rem !important;
-    }
-    .nexora-feature-img {
-      width: 80vw !important;
-      height: 80vw !important;
-      max-width: 300px !important;
-      max-height: 300px !important;
-      border-radius: 1.2rem !important;
-    }
-    .nexora-feature-badge, .nexora-feature-network {
-      font-size: 1rem !important;
-      padding: 0.4rem 0.8rem !important;
-      min-width: 60px !important;
-    }
-    .nexora-feature-badge {
-      top: 8px !important;
-      right: 8px !important;
-    }
-    .nexora-feature-network {
-      bottom: 8px !important;
-      left: 8px !important;
-    }
-    .nexora-feature-avatars img {
-      width: 32px !important;
-      height: 32px !important;
-    }
-    .nexora-feature-join {
-      font-size: 1rem !important;
-    }
-    .nexora-btn {
-      font-size: 1rem !important;
-      padding: 0.7rem 1.2rem !important;
-      min-width: 120px !important;
-    }
-    .nft-float-center, .nft-float-corner {
-      width: 60vw !important;
-      height: 60vw !important;
-      max-width: 160px !important;
-      max-height: 160px !important;
-      min-width: 60px !important;
-      min-height: 60px !important;
-    }
-    .nexora-builder-credit {
-      flex-direction: column !important;
-      gap: 0.5rem !important;
-      margin: 1.2rem 0 0.5rem 0 !important;
-      font-size: 1rem !important;
-      align-items: flex-start !important;
-    }
-    .nexora-builder-credit img {
-      width: 36px !important;
-      height: 36px !important;
-    }
-  }
   --background: #ffffff;
   --foreground: #171717;
+}
+
+@media (max-width: 700px) {
+  .nexora-marquee-gradient-text {
+    font-size: 2.1rem !important;
+    line-height: 1.15 !important;
+    word-break: break-word !important;
+    padding: 0 0.2em !important;
+    text-align: left !important;
+  }
+  .nexora-feature-desc {
+    font-size: 1rem !important;
+    padding: 0 0.2em !important;
+  }
+  .nexora-title {
+    font-size: 1.5rem !important;
+    word-break: break-word !important;
+    padding: 0.1em 0.2em !important;
+    text-align: left !important;
+    max-width: 95vw !important;
+    display: block;
+  }
+  .nexora-main {
+    padding: 0 0.5rem !important;
+  }
+  main {
+    flex-direction: column !important;
+    gap: 1.2rem !important;
+    padding: 1.2rem 0 !important;
+    max-width: 100vw !important;
+  }
+  .nexora-feature-section {
+    flex-direction: column !important;
+    gap: 1.2rem !important;
+    padding: 1.2rem 0.5rem !important;
+    max-width: 100vw !important;
+  }
+  .nexora-feature-imgbox {
+    width: 90vw !important;
+    height: 90vw !important;
+    min-width: 0 !important;
+    max-width: 340px !important;
+    min-height: 0 !important;
+    max-height: 340px !important;
+  }
+  .nexora-feature-imgbox::before {
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 2rem !important;
+  }
+  .nexora-feature-img {
+    width: 80vw !important;
+    height: 80vw !important;
+    max-width: 300px !important;
+    max-height: 300px !important;
+    border-radius: 1.2rem !important;
+  }
+  .nexora-feature-badge, .nexora-feature-network {
+    font-size: 1rem !important;
+    padding: 0.4rem 0.8rem !important;
+    min-width: 60px !important;
+  }
+  .nexora-feature-badge {
+    top: 8px !important;
+    right: 8px !important;
+  }
+  .nexora-feature-network {
+    bottom: 8px !important;
+    left: 8px !important;
+  }
+  .nexora-feature-avatars img {
+    width: 32px !important;
+    height: 32px !important;
+  }
+  .nexora-feature-join {
+    font-size: 1rem !important;
+  }
+  .nexora-btn {
+    font-size: 1rem !important;
+    padding: 0.7rem 1.2rem !important;
+    min-width: 120px !important;
+  }
+  .nft-float-center, .nft-float-corner {
+    width: 60vw !important;
+    height: 60vw !important;
+    max-width: 160px !important;
+    max-height: 160px !important;
+    min-width: 60px !important;
+    min-height: 60px !important;
+  }
+  .nexora-builder-credit {
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+    margin: 1.2rem 0 0.5rem 0 !important;
+    font-size: 1rem !important;
+    align-items: flex-start !important;
+  }
+  .nexora-builder-credit img {
+    width: 36px !important;
+    height: 36px !important;
+  }
 }
 
 
