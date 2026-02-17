@@ -118,9 +118,11 @@
                   <RoadmapFlow />
                   {/* Builder Section */}
                   <div style={{width:'100%',display:'flex',alignItems:'center',justifyContent:'center',margin:'2.5rem 0 1.5rem 0',gap:'1.2rem'}}>
-                    <img src="/images/rumiilyan.jpeg" alt="Rumi Ilyan" style={{width:'48px',height:'48px',borderRadius:'50%',objectFit:'cover',boxShadow:'0 2px 8px #0002'}} />
-                    <div style={{fontWeight:600,fontSize:'1.1rem',color:'#333'}}>Website built by
-                      <a href="https://x.com/RamiIlyan" target="_blank" rel="noopener noreferrer" style={{marginLeft:'0.5rem',color:'#007aff',textDecoration:'none',fontWeight:700}}>Rumi Ilyan</a>
+                    <div className="nexora-builder-credit" style={{display:'flex',alignItems:'center',gap:'1.2rem',margin:'2.5rem 0 1.5rem 0'}}>
+                      <img src="/images/rumiilyan.jpeg" alt="Rumi Ilyan" style={{width:'48px',height:'48px',borderRadius:'50%',objectFit:'cover',boxShadow:'0 2px 8px #0002'}} />
+                      <div style={{fontWeight:600,fontSize:'1.1rem',color:'#333'}}>Website built by
+                        <a href="https://x.com/RamiIlyan" target="_blank" rel="noopener noreferrer" style={{marginLeft:'0.5rem',color:'#007aff',textDecoration:'none',fontWeight:700}}>Rumi Ilyan</a>
+                      </div>
                     </div>
                   </div>
                 </div>
