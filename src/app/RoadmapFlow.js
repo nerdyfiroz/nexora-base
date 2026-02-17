@@ -160,38 +160,58 @@ const ROADMAP = [
           // Alternate above (even) and below (odd)
           const isAbove = i % 2 === 0;
           const verticalOffset = isMobile ? 70 : 90;
-          return (
-            <div
-              key={i}
-              id={`roadmap-milestone-${i}`}
-              style={{
-                position: "absolute",
-                left: positions[i].x - (isMobile ? 70 : 110),
-                top: isAbove
-                  ? positions[i].y - verticalOffset - (isMobile ? 80 : 120)
-                  : positions[i].y + verticalOffset,
-                width: isMobile ? 140 : 220,
-                background: "none",
-                borderRadius: "1.2rem",
-                boxShadow: "0 2px 16px #0001",
-                padding: isMobile ? "0.7rem 0.8rem" : "1rem 1.2rem",
-                zIndex: 3,
-                color: m.color,
-                fontWeight: 600,
-                textAlign: "left",
-                opacity: visible[i] ? 1 : 0,
-                transform: visible[i] ? "translateY(0)" : "translateY(40px)",
-                transition: "opacity 0.7s cubic-bezier(.68,-0.55,.27,1.55), transform 0.7s cubic-bezier(.68,-0.55,.27,1.55)"
-              }}
-            >
-              <div style={{ fontSize: isMobile ? "1rem" : "1.1rem", marginBottom: "0.5rem", color: m.color }}>{m.title}</div>
-              <ul style={{ color: "#fff", fontSize: isMobile ? "0.92rem" : "0.98rem", margin: 0, paddingLeft: isMobile ? "0.7rem" : "1.2rem", background: "none" }}>
-                {m.desc.map((d, j) => (
-                  <li key={j} style={{ marginBottom: "0.3rem", lineHeight: 1.4 }}>{d}</li>
-                ))}
-              </ul>
-            </div>
-          );
+            return (
+              <React.Fragment key={i}>
+                {/* Icon marker */}
+                <div
+                  id={`roadmap-milestone-${i}`}
+                  style={{
+                    position: "absolute",
+                    left: positions[i].x - (isMobile ? 24 : 36),
+                    top: positions[i].y - (isMobile ? 24 : 36),
+                    width: isMobile ? 48 : 72,
+                    height: isMobile ? 48 : 72,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    zIndex: 4,
+                    background: "#fff",
+                    borderRadius: "50%",
+                    boxShadow: `0 2px 16px ${m.color}33`,
+                    border: `4px solid ${m.color}`,
+                    fontSize: isMobile ? "1.4rem" : "2.2rem",
+                    fontWeight: "bold"
+                  }}
+                >{m.icon}</div>
+                {/* Title and details, alternating above/below */}
+                <div
+                  style={{
+                    position: "absolute",
+                    left: positions[i].x - (isMobile ? 70 : 110),
+                    top: isAbove
+                      ? positions[i].y - verticalOffset - (isMobile ? 80 : 120)
+                      : positions[i].y + verticalOffset + (isMobile ? 48 : 72),
+                    width: isMobile ? 140 : 220,
+                    background: "none",
+                    padding: 0,
+                    zIndex: 3,
+                    color: m.color,
+                    fontWeight: 700,
+                    textAlign: isAbove ? "right" : "left",
+                    opacity: visible[i] ? 1 : 0,
+                    transform: visible[i] ? "translateY(0)" : "translateY(40px)",
+                    transition: "opacity 0.7s cubic-bezier(.68,-0.55,.27,1.55), transform 0.7s cubic-bezier(.68,-0.55,.27,1.55)"
+                  }}
+                >
+                  <div style={{ fontSize: isMobile ? "1rem" : "1.1rem", marginBottom: "0.5rem", color: m.color }}>{m.title}</div>
+                  <ul style={{ color: "#fff", fontSize: isMobile ? "0.92rem" : "0.98rem", margin: 0, paddingLeft: 0, background: "none", listStyle: "none" }}>
+                    {m.desc.map((d, j) => (
+                      <li key={j} style={{ marginBottom: "0.3rem", lineHeight: 1.4, textAlign: isAbove ? "right" : "left" }}>{d}</li>
+                    ))}
+                  </ul>
+                </div>
+              </React.Fragment>
+            );
         })}
       </div>
 
