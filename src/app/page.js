@@ -70,26 +70,25 @@
                     <h2 className="nexora-marquee-gradient-text" style={{fontSize:'4.2rem',fontWeight:900,letterSpacing:'0.04em',margin:0,padding:0,textTransform:'uppercase',textAlign:'center',background:'linear-gradient(90deg, #38ef7d 0%, #1194f6 40%, #7b2ff2 100%)',WebkitBackgroundClip:'text',WebkitTextFillColor:'transparent',backgroundClip:'text',color:'transparent',animation:'gradient-move 4s linear infinite alternate'}}>The 8-Bit Revolution</h2>
                   </div>
                   {/* Collection About Section */}
-                  <section className="nexora-feature-section">
-                    <div className="nexora-feature-imgbox">
-                      <img src="/images/nft_102.png" alt="NEXORA NFT" className="nexora-feature-img" />
-                      <div className="nexora-feature-badge">3,333<span>UNIQUE ITEMS</span></div>
-                      <div className="nexora-feature-network">Base<span>NETWORK</span></div>
+                  <section className="nexora-feature-section" style={{display:'flex',alignItems:'center',gap:'2.5rem',background:'#f7f8fa',borderRadius:'1.5rem',boxShadow:'0 4px 32px #0001',padding:'2.5rem 2rem',margin:'0 auto 2.5rem auto',maxWidth:'1100px'}}>
+                    <div className="nexora-feature-imgbox" style={{flex:'0 0 320px',background:'#f3e9f7',borderRadius:'1.2rem',padding:'1.2rem',boxShadow:'0 2px 16px #0001',display:'flex',flexDirection:'column',alignItems:'center',position:'relative'}}>
+                      <img src="/images/nft_102.png" alt="NEXORA NFT" className="nexora-feature-img" style={{width:'220px',height:'220px',borderRadius:'1.2rem',marginBottom:'1.2rem',background:'#fff'}} />
+                      <div className="nexora-feature-badge" style={{position:'absolute',top:'1.2rem',right:'1.2rem',background:'#fff',borderRadius:'1rem',padding:'0.5rem 1.2rem',boxShadow:'0 2px 8px #0001',fontWeight:700,fontSize:'1.3rem',color:'#7b2ff2',textAlign:'center'}}>3,333<br /><span style={{fontWeight:400,fontSize:'1rem',color:'#aaa'}}>UNIQUE ITEMS</span></div>
+                      <div className="nexora-feature-network" style={{position:'absolute',bottom:'1.2rem',left:'1.2rem',background:'#fff',borderRadius:'0.8rem',padding:'0.4rem 1.1rem',boxShadow:'0 2px 8px #0001',fontWeight:700,fontSize:'1.1rem',color:'#ff9900',textAlign:'center'}}>Base<br /><span style={{fontWeight:400,fontSize:'0.95rem',color:'#aaa'}}>NETWORK</span></div>
                     </div>
-                    <div className="nexora-feature-content">
-                      {/* Removed old title */}
-                      <div className="nexora-feature-desc">
-                        Welcome to the <b>NEXORA revolution</b>. We’re building a brand that blends pixel art, web3, and the magic of digital collectibles.<br /><br />
-                        Each of the <strong>3,333 NEXORAs</strong> is algorithmically generated from over <b>100+ hand-drawn traits</b>. From wizards to pixel gems, no two are alike.<br /><br />
+                    <div className="nexora-feature-content" style={{flex:1,minWidth:'320px'}}>
+                      <div className="nexora-feature-desc" style={{fontSize:'1.25rem',fontWeight:400,lineHeight:1.6,color:'#222',marginBottom:'1.5rem'}}>
+                        Welcome to the <b style={{color:'#7b2ff2',fontWeight:700}}>NEXORA revolution</b>. We’re building a brand that blends pixel art, web3, and the magic of digital collectibles.<br /><br />
+                        Each of the <b style={{color:'#222',fontWeight:700}}>3,333 NEXORAs</b> is algorithmically generated from over <a href="#" style={{color:'#7b2ff2',fontWeight:700,textDecoration:'underline'}}>100+ hand-drawn traits</a>. From wizards to pixel gems, no two are alike.<br /><br />
                         Living on the Base blockchain, your NEXORA is your membership card to an exclusive community of creators, collectors, and digital pioneers.
                       </div>
-                      <div className="nexora-feature-avatars">
-                        <img src="/images/nft_11.png" alt="NEXORA Avatar 1" />
-                        <img src="/images/nft_16.png" alt="NEXORA Avatar 2" />
-                        <img src="/images/nft_54.png" alt="NEXORA Avatar 3" />
-                        <img src="/images/nft_3.png" alt="NEXORA Avatar 4" />
-                        <img src="/images/nft_8.png" alt="NEXORA Avatar 5" />
-                        <span className="nexora-feature-join">Join Us</span>
+                      <div className="nexora-feature-avatars" style={{display:'flex',alignItems:'center',gap:'0.5rem',marginTop:'1.2rem'}}>
+                        <img src="/images/nft_11.png" alt="NEXORA Avatar 1" style={{width:'44px',height:'44px',borderRadius:'50%',border:'2px solid #fff',boxShadow:'0 2px 8px #0001'}} />
+                        <img src="/images/nft_16.png" alt="NEXORA Avatar 2" style={{width:'44px',height:'44px',borderRadius:'50%',border:'2px solid #fff',boxShadow:'0 2px 8px #0001'}} />
+                        <img src="/images/nft_54.png" alt="NEXORA Avatar 3" style={{width:'44px',height:'44px',borderRadius:'50%',border:'2px solid #fff',boxShadow:'0 2px 8px #0001'}} />
+                        <img src="/images/nft_3.png" alt="NEXORA Avatar 4" style={{width:'44px',height:'44px',borderRadius:'50%',border:'2px solid #fff',boxShadow:'0 2px 8px #0001'}} />
+                        <img src="/images/nft_8.png" alt="NEXORA Avatar 5" style={{width:'44px',height:'44px',borderRadius:'50%',border:'2px solid #fff',boxShadow:'0 2px 8px #0001'}} />
+                        <span className="nexora-feature-join" style={{marginLeft:'1rem',fontWeight:700,fontSize:'1.1rem',color:'#222'}}>Join Us</span>
                       </div>
                     </div>
                   </section>
