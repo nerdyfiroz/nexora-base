@@ -217,37 +217,44 @@ export default function RoadmapFlow() {
             </g>
           ))}
         </svg>
-        {/* Milestone details overlay with animation */}
-        {milestones.map((m, i) => (
-          <div
-            key={i}
-            id={`roadmap-milestone-${i}`}
-            style={{
-              position: "absolute",
-              left: positions[i].x - (isMobile ? 70 : 110),
-              top: positions[i].y + (isMobile ? 30 : 50),
-              width: isMobile ? 140 : 220,
-              background: "rgba(24,26,27,0.95)",
-              borderRadius: "1.2rem",
-              boxShadow: "0 2px 16px #0003",
-              padding: isMobile ? "0.7rem 0.8rem" : "1rem 1.2rem",
-              zIndex: 3,
-              color: m.color,
-              fontWeight: 600,
-              textAlign: "left",
-              opacity: visible[i] ? 1 : 0,
-              transform: visible[i] ? "translateY(0)" : "translateY(40px)",
-              transition: "opacity 0.7s cubic-bezier(.68,-0.55,.27,1.55), transform 0.7s cubic-bezier(.68,-0.55,.27,1.55)"
-            }}
-          >
-            <div style={{ fontSize: isMobile ? "1rem" : "1.1rem", marginBottom: "0.5rem", color: m.color }}>{m.title}</div>
-            <ul style={{ color: "#fff", fontSize: isMobile ? "0.92rem" : "0.98rem", margin: 0, paddingLeft: isMobile ? "0.7rem" : "1.2rem" }}>
-              {m.desc.map((d, j) => (
-                <li key={j} style={{ marginBottom: "0.3rem", lineHeight: 1.4 }}>{d}</li>
-              ))}
-            </ul>
-          </div>
-        ))}
+        {/* Milestone details overlay with animation and improved spacing */}
+        {milestones.map((m, i) => {
+          // Alternate above (even) and below (odd)
+          const isAbove = i % 2 === 0;
+          const verticalOffset = isMobile ? 70 : 90;
+          return (
+            <div
+              key={i}
+              id={`roadmap-milestone-${i}`}
+              style={{
+                position: "absolute",
+                left: positions[i].x - (isMobile ? 70 : 110),
+                top: isAbove
+                  ? positions[i].y - verticalOffset - (isMobile ? 80 : 120)
+                  : positions[i].y + verticalOffset,
+                width: isMobile ? 140 : 220,
+                background: "none",
+                borderRadius: "1.2rem",
+                boxShadow: "0 2px 16px #0001",
+                padding: isMobile ? "0.7rem 0.8rem" : "1rem 1.2rem",
+                zIndex: 3,
+                color: m.color,
+                fontWeight: 600,
+                textAlign: "left",
+                opacity: visible[i] ? 1 : 0,
+                transform: visible[i] ? "translateY(0)" : "translateY(40px)",
+                transition: "opacity 0.7s cubic-bezier(.68,-0.55,.27,1.55), transform 0.7s cubic-bezier(.68,-0.55,.27,1.55)"
+              }}
+            >
+              <div style={{ fontSize: isMobile ? "1rem" : "1.1rem", marginBottom: "0.5rem", color: m.color }}>{m.title}</div>
+              <ul style={{ color: "#fff", fontSize: isMobile ? "0.92rem" : "0.98rem", margin: 0, paddingLeft: isMobile ? "0.7rem" : "1.2rem", background: "none" }}>
+                {m.desc.map((d, j) => (
+                  <li key={j} style={{ marginBottom: "0.3rem", lineHeight: 1.4 }}>{d}</li>
+                ))}
+              </ul>
+            </div>
+          );
+        })}
       </div>
     </section>
   );
