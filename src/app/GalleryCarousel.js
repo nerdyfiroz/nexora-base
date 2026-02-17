@@ -81,4 +81,7 @@ const nftImages = [
       </div>
     </div>
   );
+
+export default function GalleryCarousel() {
+  // ...existing code...
 }
