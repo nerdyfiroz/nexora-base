@@ -1,9 +1,24 @@
+
             import GalleryCarousel from "./GalleryCarousel";
             import AnimatedDescription from "./AnimatedDescription";
+            import RoadmapFlow from "./RoadmapFlow";
 
             export default function Home() {
               return (
                 <div className="nexora-main" style={{minHeight:'100vh',padding:'0'}}>
+                  {/* Animated Marquee Lines */}
+                  <div style={{position:'relative',width:'100%',overflow:'hidden',height:'70px',marginBottom:'1.5rem'}}>
+                    <div className="nexora-marquee nexora-marquee-left">
+                      <span>
+                       A 8BIT REVOLUTION • NEXORA • MAGIC MEETS METADATA⚡️ • APPLY • BASE • JOIN US • 3333 SUPPLY •
+                      </span>
+                    </div>
+                    <div className="nexora-marquee nexora-marquee-right">
+                      <span>
+                        3333 SUPPLY • JOIN US • BASE • APPLY •  MAGIC MEETS METADATA⚡️ • NEXORA •  A 8BIT REVOLUTION •
+                      </span>
+                    </div>
+                  </div>
                   {/* Hero and NFT grid */}
                   <main style={{width:'100%',maxWidth:'1200px',display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'center',gap:'3rem',flexWrap:'wrap',padding:'2rem 0'}}>
                     {/* Left: Logo and text */}
@@ -87,35 +102,7 @@
                     </div>
                   </section>
                   {/* Roadmap Section */}
-                  <section className="nexora-roadmap">
-                    <h3>Roadmap</h3>
-                    <ul className="nexora-roadmap-list">
-                      <li className="nexora-roadmap-item">
-                        <span className="nexora-roadmap-dot"></span>
-                        <span>
-                          <b>Reveal & Launch:</b> NEXORA collection goes live on <span className="nexora-roadmap-date">20th February</span> on Base chain.
-                        </span>
-                      </li>
-                      <li className="nexora-roadmap-item">
-                        <span className="nexora-roadmap-dot"></span>
-                        <span>
-                          <b>Mint Phases:</b> GDT (Freemint), Whitelist (0.1$), Public (0.3$) on OpenSea.
-                        </span>
-                      </li>
-                      <li className="nexora-roadmap-item">
-                        <span className="nexora-roadmap-dot"></span>
-                        <span>
-                          <b>Community:</b> Grow the NEXORA community, events, and collaborations.
-                        </span>
-                      </li>
-                      <li className="nexora-roadmap-item">
-                        <span className="nexora-roadmap-dot"></span>
-                        <span>
-                          <b>Next Steps:</b> Utility, airdrops, and more digital collectible experiences.
-                        </span>
-                      </li>
-                    </ul>
-                  </section>
+                  <RoadmapFlow />
                 </div>
               );
             }
