@@ -1,7 +1,8 @@
 "use client";
 import React, { useRef, useEffect, useState } from "react";
 
-const milestones = [
+function RoadmapFlow() {
+  const milestones = [
   {
     icon: "🚀",
     title: "Reveal & Mint Day!",
@@ -151,8 +152,8 @@ const milestones = [
           {/* Snake road path, visually connecting all milestones */}
           <path
             d={isMobile
-              ? "M 40 120 Q 100 40 160 120 Q 220 200 280 120"
-              : "M 80 120 Q 140 40 200 120 Q 260 200 320 120 Q 380 40 440 120 Q 500 200 560 120"}
+              ? "M 40 120 Q 70 40 100 120 Q 130 200 160 120 Q 190 40 220 120 Q 250 200 280 120 Q 310 40 340 120"
+              : "M 80 120 Q 120 40 160 120 Q 200 200 240 120 Q 280 40 320 120 Q 360 200 400 120 Q 440 40 480 120 Q 520 200 560 120"}
             stroke="#fff"
             strokeWidth={isMobile ? 5 : 8}
             fill="none"
@@ -221,4 +222,7 @@ const milestones = [
 
     </section>
   );
+}
+
+export default RoadmapFlow;
 
