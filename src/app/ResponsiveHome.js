@@ -1,6 +1,8 @@
 "use client";
 import dynamic from "next/dynamic";
 import { useIsMobile } from "./useIsMobile";
+import NexoraMarquee from "./NexoraMarquee";
+const MobileHome = dynamic(() => import("./MobileHome"), { ssr: false });
 export default function ResponsiveHome() {
   const isMobile = useIsMobile();
   if (isMobile) {
@@ -14,7 +16,7 @@ export default function ResponsiveHome() {
         {/* Header Images */}
         <div style={{display:'flex',justifyContent:'center',alignItems:'center',gap:'2.5rem',marginBottom:'1.2rem'}}>
           <img src="/images/nft_226.png" alt="Header NFT 1" style={{width:'80px',height:'80px',borderRadius:'1.2rem',boxShadow:'0 2px 12px #7b2ff2',background:'#fff'}} />
-          <img src="/images/nexora_logo.png" alt="Nexora Logo" style={{ width: 120, height: 120, borderRadius: '2rem', boxShadow: '0 2px 16px #7b2ff2',background:'#fff' }} />
+          <img src="/images/nft_11.png" alt="Nexora Logo" style={{ width: 120, height: 120, borderRadius: '2rem', boxShadow: '0 2px 16px #7b2ff2',background:'#fff' }} />
           <img src="/images/nft_16.png" alt="Header NFT 2" style={{width:'80px',height:'80px',borderRadius:'1.2rem',boxShadow:'0 2px 12px #7b2ff2',background:'#fff'}} />
         </div>
         <h1 className="nexora-title" style={{ fontSize: '3.2rem', fontWeight: 900, marginBottom: 12, letterSpacing: '0.04em', textAlign: 'center', background: 'linear-gradient(90deg,#6366f1 0%,#a78bfa 50%,#f472b6 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', color: 'transparent' }}>NEXORA</h1>
@@ -131,7 +133,7 @@ export default function ResponsiveHome() {
         <span>Built by</span>
         <a href="https://twitter.com/0xNexora" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: 8, textDecoration: 'none', color: '#7b2ff2', fontWeight: 700 }}>
 // ...existing code...
-          <img src="/images/nexora_logo.png" alt="Nexora Logo" style={{ width: 40, height: 40, borderRadius: '1rem', marginRight: 8 }} />
+          <img src="/images/nft_11.png" alt="Nexora Logo" style={{ width: 40, height: 40, borderRadius: '1rem', marginRight: 8 }} />
           @0xNexora
         </a>
         <span style={{ color: '#bbb', fontWeight: 400, marginLeft: 8 }}>| &copy; 2026</span>
