@@ -14,7 +14,7 @@ export default function ResponsiveHome() {
   // Desktop UI (fully polished)
   return (
     <>
-      <main className="nexora-main" style={{ minHeight: '100vh', padding: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', background: 'var(--background)' }}>
+      <main className="nexora-main" style={{ padding: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', background: 'var(--background)' }}>
         {/* Hero Section */}
         <section style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '3.5rem 0 2.5rem 0', background: 'linear-gradient(90deg,#f7e6ff 0%,#e0f7fa 100%)', borderRadius: '0 0 2.5rem 2.5rem', boxShadow: '0 8px 32px #0001', position: 'relative' }}>
         {/* Header Images */}
