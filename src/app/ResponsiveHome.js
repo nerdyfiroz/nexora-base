@@ -109,13 +109,13 @@ export default function ResponsiveHome() {
           </div>
           <div style={{display:'flex',gap:'2.2rem',marginTop:'0.7rem'}}>
             <a href="https://x.com/Nexora_base" target="_blank" rel="noopener noreferrer" style={{display:'inline-flex',alignItems:'center',justifyContent:'center'}}>
-              <img src="/images/social_x.svg" alt="X" style={{width:'38px',height:'38px',opacity:0.7}} />
+              <img src="/images/social_x.png" alt="X" style={{width:'38px',height:'38px',opacity:0.7}} />
             </a>
             <a href="https://opensea.io/collection/nexora-base/overview" target="_blank" rel="noopener noreferrer" style={{display:'inline-flex',alignItems:'center',justifyContent:'center'}}>
-              <img src="/images/social_opensea.svg" alt="OpenSea" style={{width:'38px',height:'38px',opacity:0.7}} />
+              <img src="/images/social_opensea.png" alt="OpenSea" style={{width:'38px',height:'38px',opacity:0.7}} />
             </a>
             <a href="https://basescan.org/address/0x91afb23f7e3567baac193e342be9668ea7feaf9e" target="_blank" rel="noopener noreferrer" style={{display:'inline-flex',alignItems:'center',justifyContent:'center'}}>
-              <img src="/images/social_base.svg" alt="Base" style={{width:'38px',height:'38px',opacity:0.7}} />
+              <img src="/images/social_base.png" alt="Base" style={{width:'38px',height:'38px',opacity:0.7}} />
             </a>
           </div>
         </div>
