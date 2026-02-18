@@ -2,6 +2,7 @@
 import dynamic from "next/dynamic";
 import { useIsMobile } from "./useIsMobile";
 import NexoraMarquee from "./NexoraMarquee";
+import AnimatedDescription from "./AnimatedDescription";
 import GalleryCarousel from "./GalleryCarousel";
 import RoadmapFlow from "./RoadmapFlow";
 const MobileHome = dynamic(() => import("./MobileHome"), { ssr: false });
@@ -22,8 +23,11 @@ export default function ResponsiveHome() {
           <img src="/images/nft_16.png" alt="Header NFT 2" style={{width:'80px',height:'80px',borderRadius:'1.2rem',boxShadow:'0 2px 12px #7b2ff2',background:'#fff'}} />
         </div>
         <h1 className="nexora-title" style={{ fontSize: '3.2rem', fontWeight: 900, marginBottom: 12, letterSpacing: '0.04em', textAlign: 'center', background: 'linear-gradient(90deg,#6366f1 0%,#a78bfa 50%,#f472b6 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', color: 'transparent' }}>NEXORA</h1>
-        <div style={{marginBottom:'0.5rem',marginTop:'0.5rem'}}>
-          <span style={{fontSize:'2.1rem',fontWeight:600,letterSpacing:'0.01em',background:'linear-gradient(90deg,#38ef7d 0%,#1194f6 40%,#7b2ff2 100%)',WebkitBackgroundClip:'text',WebkitTextFillColor:'transparent',backgroundClip:'text',color:'transparent',textShadow:'0 2px 12px #fff8'}}>Magic Meets Metadata ⚡️</span>
+        <div style={{marginBottom:'0.5rem',marginTop:'0.5rem',width:'100%',display:'flex',flexDirection:'column',alignItems:'center'}}>
+          <span style={{fontSize:'2.1rem',fontWeight:600,letterSpacing:'0.01em',background:'linear-gradient(90deg,#38ef7d 0%,#1194f6 40%,#7b2ff2 100%)',WebkitBackgroundClip:'text',WebkitTextFillColor:'transparent',backgroundClip:'text',color:'transparent',textShadow:'0 2px 12px #fff8',marginBottom:'0.2rem'}}>Magic Meets Metadata ⚡️</span>
+          <div style={{marginTop:'0.2rem',marginBottom:'0.2rem',width:'100%',maxWidth:'520px'}}>
+            <AnimatedDescription />
+          </div>
         </div>
         <div style={{margin:'0 auto',maxWidth:'520px',textAlign:'center',fontSize:'1.25rem',fontWeight:500,color:'#333',lineHeight:1.6,background:'#fff',borderRadius:'1.2rem',padding:'0.7rem 1.5rem',boxShadow:'0 2px 12px #0001',marginBottom:'1.2rem'}}>Discover the next generation of pixel art collectibles, powered by Base and web3. Join the revolution!</div>
         <div style={{ marginTop: 24, width: '100%' }}>
@@ -91,14 +95,14 @@ export default function ResponsiveHome() {
             </a>
           </div>
           <div style={{display:'flex',gap:'2.2rem',marginTop:'0.7rem'}}>
-            <a href="https://discord.gg/" target="_blank" rel="noopener noreferrer" style={{display:'inline-flex',alignItems:'center',justifyContent:'center'}}>
-              <img src="/images/social_discord.png" alt="Discord" style={{width:'38px',height:'38px',opacity:0.7}} />
+            <a href="https://x.com/Nexora_base" target="_blank" rel="noopener noreferrer" style={{display:'inline-flex',alignItems:'center',justifyContent:'center'}}>
+              <img src="/images/social_x.svg" alt="X" style={{width:'38px',height:'38px',opacity:0.7}} />
             </a>
-            <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" style={{display:'inline-flex',alignItems:'center',justifyContent:'center'}}>
-              <img src="/images/social_x.png" alt="X" style={{width:'38px',height:'38px',opacity:0.7}} />
+            <a href="https://opensea.io/collection/nexora-base/overview" target="_blank" rel="noopener noreferrer" style={{display:'inline-flex',alignItems:'center',justifyContent:'center'}}>
+              <img src="/images/social_opensea.svg" alt="OpenSea" style={{width:'38px',height:'38px',opacity:0.7}} />
             </a>
-            <a href="https://opensea.io/" target="_blank" rel="noopener noreferrer" style={{display:'inline-flex',alignItems:'center',justifyContent:'center'}}>
-              <img src="/images/social_opensea.png" alt="OpenSea" style={{width:'38px',height:'38px',opacity:0.7}} />
+            <a href="https://basescan.org/address/0x91afb23f7e3567baac193e342be9668ea7feaf9e" target="_blank" rel="noopener noreferrer" style={{display:'inline-flex',alignItems:'center',justifyContent:'center'}}>
+              <img src="/images/social_base.svg" alt="Base" style={{width:'38px',height:'38px',opacity:0.7}} />
             </a>
           </div>
         </div>
@@ -133,10 +137,9 @@ export default function ResponsiveHome() {
       {/* Footer / Builder Credit */}
       <footer className="nexora-builder-credit" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1.2rem', margin: '2.5rem 0 1.5rem 0', fontSize: '1.1rem', color: '#888' }}>
         <span>Built by</span>
-        <a href="https://twitter.com/0xNexora" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: 8, textDecoration: 'none', color: '#7b2ff2', fontWeight: 700 }}>
-// ...existing code...
-          <img src="/images/nft_11.png" alt="Nexora Logo" style={{ width: 40, height: 40, borderRadius: '1rem', marginRight: 8 }} />
-          @0xNexora
+        <a href="https://x.com/RamiIlyan" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: 8, textDecoration: 'none', color: '#7b2ff2', fontWeight: 700 }}>
+          <img src="/images/rumiilyan.jpeg" alt="Rumi Ilyan" style={{ width: 40, height: 40, borderRadius: '1rem', marginRight: 8, objectFit: 'cover' }} />
+          Rumi Ilyan
         </a>
         <span style={{ color: '#bbb', fontWeight: 400, marginLeft: 8 }}>| &copy; 2026</span>
       </footer>
