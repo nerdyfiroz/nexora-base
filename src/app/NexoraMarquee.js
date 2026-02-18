@@ -6,10 +6,17 @@ export default function NexoraMarquee() {
   const [speed, setSpeed] = useState(1);
   useEffect(() => {
     let lastScroll = window.scrollY;
+    let ticking = false;
     const onScroll = () => {
-      const curr = window.scrollY;
-      setSpeed(Math.min(6, Math.max(1, 1 + Math.abs(curr - lastScroll) / 10)));
-      lastScroll = curr;
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const curr = window.scrollY;
+          setSpeed(Math.min(6, Math.max(1, 1 + Math.abs(curr - lastScroll) / 10)));
+          lastScroll = curr;
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);

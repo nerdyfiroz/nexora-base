@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { FixedSizeList as List } from "react-window";
 
 const nftImages = [
   "/images/nft_226.png",
@@ -19,10 +20,7 @@ const nftImages = [
   "/images/nft_98.png",
 ];
 
-export default function GalleryCarousel() {
-  const [index, setIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
-
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth <= 700);
     checkMobile();
@@ -30,46 +28,27 @@ export default function GalleryCarousel() {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  const prev = () =>
-    setIndex((i) => (i - 1 + nftImages.length) % nftImages.length);
-  const next = () =>
-    setIndex((i) => (i + 1) % nftImages.length);
-  const getCard = (offset) =>
-    nftImages[(index + offset + nftImages.length) % nftImages.length];
+  // Virtualized item renderer
+  const renderItem = ({ index, style }) => (
+    <div style={{ ...cardStyle, ...style }} key={index}>
+      <img src={nftImages[index]} alt="NFT" loading="lazy" style={imgStyle} />
+    </div>
+  );
 
   return (
     <section style={{ ...sectionStyle, background: 'rgba(255,255,255,0.06)', zIndex: 1 }}>
       <div style={containerStyle}>
         <h2 style={titleStyle}>Gallery</h2>
-
-        <div style={carouselStyle}>
-          {(isMobile ? [0] : [-2, -1, 0, 1, 2]).map((offset, i) => {
-            const img = getCard(offset);
-            const center = offset === 0;
-
-            return (
-              <div
-                key={`${index}-${i}`}
-                style={{
-                  ...cardStyle,
-                  transform: !isMobile
-                    ? `scale(${center ? 1.08 : 0.9}) rotate(${offset * 5}deg)`
-                    : "none",
-                  opacity: isMobile ? 1 : center ? 1 : 0.35,
-                  filter: isMobile ? "none" : center ? "none" : "blur(1px)",
-                  zIndex: isMobile ? 1 : 10 - Math.abs(offset),
-                  border: center ? "5px solid #ff595e" : "none",
-                }}
-              >
-                <img src={img} alt="NFT" loading="lazy" style={imgStyle} />
-              </div>
-            );
-          })}
-        </div>
-
-        <div style={navStyle}>
-          <button onClick={prev} style={btnSecondary}>Prev</button>
-          <button onClick={next} style={btnPrimary}>Next</button>
+        <div style={{ width: isMobile ? 320 : 900, height: 320, margin: '0 auto' }}>
+          <List
+            height={320}
+            width={isMobile ? 320 : 900}
+            itemCount={nftImages.length}
+            itemSize={isMobile ? 260 : 260}
+            layout="horizontal"
+          >
+            {renderItem}
+          </List>
         </div>
       </div>
     </section>
