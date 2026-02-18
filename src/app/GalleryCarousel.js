@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 
 const nftImages = [
   "/images/nft_226.png",
@@ -19,37 +19,71 @@ const nftImages = [
   "/images/nft_98.png",
 ];
 
-export default function GalleryCarousel() {
   const [index, setIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
-  const prev = () =>
-    setIndex((i) => (i - 1 + nftImages.length) % nftImages.length);
+  // Responsive check
+  React.useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 700);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
-  const next = () =>
-    setIndex((i) => (i + 1) % nftImages.length);
+  const prev = () => setIndex((i) => (i - 1 + nftImages.length) % nftImages.length);
+  const next = () => setIndex((i) => (i + 1) % nftImages.length);
+  const getCard = (offset) => nftImages[(index + offset + nftImages.length) % nftImages.length];
 
-  const getCard = (offset) =>
-    nftImages[(index + offset + nftImages.length) % nftImages.length];
+  // Responsive styles
+  const mobileCardStyle = {
+    width: 220,
+    aspectRatio: "1 / 1",
+    borderRadius: "1.2rem",
+    background: "#fff",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    transition: "all 0.35s ease",
+    overflow: "hidden",
+  };
+  const mobileImgStyle = {
+    width: "100%",
+    height: "100%",
+    aspectRatio: "1 / 1",
+    objectFit: "cover",
+    maxWidth: 220,
+    maxHeight: 220,
+  };
+  const mobileContainerStyle = {
+    ...containerStyle,
+    maxWidth: 340,
+    padding: "1.2rem 0.5rem",
+  };
+  const mobileCarouselStyle = {
+    ...carouselStyle,
+    gap: "0.5rem",
+    minHeight: 240,
+  };
 
   return (
     <section style={sectionStyle}>
-      <div style={containerStyle}>
+      <div style={isMobile ? mobileContainerStyle : containerStyle}>
         <h2 style={titleStyle}>Gallery</h2>
-
-        <div style={carouselStyle}>
-          {[-2, -1, 0, 1, 2].map((offset, i) => {
+        <div style={isMobile ? mobileCarouselStyle : carouselStyle}>
+          {(isMobile ? [0] : [-2, -1, 0, 1, 2]).map((offset, i) => {
             const img = getCard(offset);
             const center = offset === 0;
-
             return (
               <div
                 key={`${index}-${i}`}
                 style={{
-                  ...cardStyle,
-                  transform: `scale(${center ? 1.15 : 0.9}) rotate(${offset * 6}deg) translateY(${center ? 0 : 18}px)`,
-                  opacity: center ? 1 : 0.35,
-                  filter: center ? "none" : "blur(1.2px)",
-                  zIndex: 10 - Math.abs(offset),
+                  ...(isMobile ? mobileCardStyle : cardStyle),
+                  transform: isMobile
+                    ? undefined
+                    : `scale(${center ? 1.15 : 0.9}) rotate(${offset * 6}deg) translateY(${center ? 0 : 18}px)`,
+                  opacity: isMobile ? 1 : center ? 1 : 0.35,
+                  filter: isMobile ? "none" : center ? "none" : "blur(1.2px)",
+                  zIndex: isMobile ? 1 : 10 - Math.abs(offset),
                   border: center ? "6px solid #ff595e" : "none",
                   boxShadow: center
                     ? "0 0 0 5px #ff595e, 0 12px 30px rgba(0,0,0,0.25)"
@@ -60,13 +94,12 @@ export default function GalleryCarousel() {
                   src={img}
                   alt="NFT"
                   loading="lazy"
-                  style={imgStyle}
+                  style={isMobile ? mobileImgStyle : imgStyle}
                 />
               </div>
             );
           })}
         </div>
-
         <div style={navStyle}>
           <button onClick={prev} style={btnSecondary}>
             Prev
