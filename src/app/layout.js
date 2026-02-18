@@ -1,4 +1,4 @@
-"use client";
+// Removed 'use client' to allow metadata export as a server component
 import { Geist, Geist_Mono } from "next/font/google";
 import { Pacifico } from "next/font/google";
 import "./globals.css";
