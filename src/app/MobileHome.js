@@ -24,14 +24,11 @@ export default function MobileHome() {
         <a href="https://opensea.io/collection/nexora-base" target="_blank" rel="noopener noreferrer" style={{ display: 'block', background: 'linear-gradient(90deg,#38ef7d 0%,#1194f6 40%,#7b2ff2 100%)', color: '#fff', fontWeight: 700, borderRadius: '1.2rem', padding: '1rem', margin: '0.5rem 0', fontSize: '1.1rem', textDecoration: 'none', letterSpacing:'0.01em' }}>Explore Collection</a>
         <a href="#" style={{ display: 'block', background: '#18181b', color: '#fff', fontWeight: 700, borderRadius: '1.2rem', padding: '1rem', margin: '0.5rem 0', fontSize: '1.1rem', textDecoration: 'none', letterSpacing:'0.01em' }}>Apply for Allowlist</a>
         <div style={{display:'flex',justifyContent:'center',gap:'1.5rem',marginTop:'0.7rem'}}>
-          <a href="https://discord.gg/" target="_blank" rel="noopener noreferrer" style={{display:'inline-flex',alignItems:'center',justifyContent:'center'}}>
-            <img src="/images/social_discord.png" alt="Discord" style={{width:'32px',height:'32px',opacity:0.7}} />
-          </a>
-          <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" style={{display:'inline-flex',alignItems:'center',justifyContent:'center'}}>
+          <a href="https://x.com/Nexora_base" target="_blank" rel="noopener noreferrer" style={{display:'inline-flex',alignItems:'center',justifyContent:'center'}}>
             <img src="/images/social_x.png" alt="X" style={{width:'32px',height:'32px',opacity:0.7}} />
           </a>
-          <a href="https://opensea.io/" target="_blank" rel="noopener noreferrer" style={{display:'inline-flex',alignItems:'center',justifyContent:'center'}}>
-            <img src="/images/social_opensea.png" alt="OpenSea" style={{width:'32px',height:'32px',opacity:0.7}} />
+          <a href="https://basescan.org/address/0x91afb23f7e3567baac193e342be9668ea7feaf9e" target="_blank" rel="noopener noreferrer" style={{display:'inline-flex',alignItems:'center',justifyContent:'center'}}>
+            <img src="/images/social_base.png" alt="Base" style={{width:'32px',height:'32px',opacity:0.7}} />
           </a>
         </div>
       </section>
