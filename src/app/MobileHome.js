@@ -21,15 +21,44 @@ export default function MobileHome() {
         <div style={{ fontSize: '1.1rem', fontWeight: 700, marginBottom: '1rem', color: '#7b2ff2' }}>
           <AnimatedDescription />
         </div>
-        <a href="https://opensea.io/collection/nexora-base" target="_blank" rel="noopener noreferrer" style={{ display: 'block', background: 'linear-gradient(90deg,#38ef7d 0%,#1194f6 40%,#7b2ff2 100%)', color: '#fff', fontWeight: 700, borderRadius: '1.2rem', padding: '1rem', margin: '0.5rem 0', fontSize: '1.1rem', textDecoration: 'none', letterSpacing:'0.01em' }}>Explore Collection</a>
-        <a href="#" style={{ display: 'block', background: '#18181b', color: '#fff', fontWeight: 700, borderRadius: '1.2rem', padding: '1rem', margin: '0.5rem 0', fontSize: '1.1rem', textDecoration: 'none', letterSpacing:'0.01em' }}>Apply for Allowlist</a>
-        <div style={{display:'flex',justifyContent:'center',gap:'1.5rem',marginTop:'0.7rem'}}>
-          <a href="https://x.com/Nexora_base" target="_blank" rel="noopener noreferrer" style={{display:'inline-flex',alignItems:'center',justifyContent:'center'}}>
-            <img src="/images/social_x.png" alt="X" style={{width:'32px',height:'32px',opacity:0.7}} />
-          </a>
-          <a href="https://basescan.org/address/0x91afb23f7e3567baac193e342be9668ea7feaf9e" target="_blank" rel="noopener noreferrer" style={{display:'inline-flex',alignItems:'center',justifyContent:'center'}}>
-            <img src="/images/social_base.png" alt="Base" style={{width:'32px',height:'32px',opacity:0.7}} />
-          </a>
+      </section>
+      {/* 8-Bit Revolution Section */}
+      <div style={{width:'100%',display:'flex',justifyContent:'center',margin:'2rem 0 1.2rem 0'}}>
+        <h2 style={{fontSize:'2.2rem',fontWeight:900,letterSpacing:'0.04em',margin:0,padding:0,textTransform:'uppercase',textAlign:'center',background:'linear-gradient(90deg, #38ef7d 0%, #1194f6 40%, #7b2ff2 100%)',WebkitBackgroundClip:'text',WebkitTextFillColor:'transparent',backgroundClip:'text',color:'transparent',animation:'gradient-move 4s linear infinite alternate',backgroundColor:'#f8f8f6'}}>The 8-Bit Revolution</h2>
+      </div>
+      <section style={{display:'flex',flexDirection:'column',alignItems:'center',gap:'1.2rem',background:'#f7f8fa',borderRadius:'1.2rem',boxShadow:'0 2px 16px #0001',padding:'1.5rem 0.7rem',margin:'0 auto 1.2rem auto',maxWidth:'98vw'}}>
+        <div style={{display:'flex',flexDirection:'column',alignItems:'center',gap:'1.2rem',margin:'0 0 1.2rem 0'}}>
+          <a href="https://opensea.io/collection/nexora-base" target="_blank" rel="noopener noreferrer" style={{ display: 'block', background: 'linear-gradient(90deg,#38ef7d 0%,#1194f6 40%,#7b2ff2 100%)', color: '#fff', fontWeight: 700, borderRadius: '1.2rem', padding: '1rem', margin: '0.5rem 0', fontSize: '1.1rem', textDecoration: 'none', letterSpacing:'0.01em', minWidth:'180px' }}>Explore Collection</a>
+          <a href="#" style={{ display: 'block', background: '#18181b', color: '#fff', fontWeight: 700, borderRadius: '1.2rem', padding: '1rem', margin: '0.5rem 0', fontSize: '1.1rem', textDecoration: 'none', letterSpacing:'0.01em', minWidth:'180px' }}>Apply for Allowlist</a>
+          <div style={{display:'flex',justifyContent:'center',gap:'1.2rem',marginTop:'0.7rem'}}>
+            <a href="https://x.com/Nexora_base" target="_blank" rel="noopener noreferrer" style={{display:'inline-flex',alignItems:'center',justifyContent:'center'}}>
+              <img src="/images/social_x.png" alt="X" style={{width:'32px',height:'32px',opacity:0.7}} />
+            </a>
+            <a href="https://opensea.io/collection/nexora-base" target="_blank" rel="noopener noreferrer" style={{display:'inline-flex',alignItems:'center',justifyContent:'center'}}>
+              <img src="/images/social_opensea.png" alt="OpenSea" style={{width:'32px',height:'32px',opacity:0.7}} />
+            </a>
+            <a href="https://basescan.org/address/0x91afb23f7e3567baac193e342be9668ea7feaf9e" target="_blank" rel="noopener noreferrer" style={{display:'inline-flex',alignItems:'center',justifyContent:'center'}}>
+              <img src="/images/social_base.png" alt="Base" style={{width:'32px',height:'32px',opacity:0.7}} />
+            </a>
+          </div>
+        </div>
+        <div style={{background:'#f3e9f7',borderRadius:'1.2rem',padding:'1.2rem',boxShadow:'0 2px 16px #0001',display:'flex',flexDirection:'column',alignItems:'center',position:'relative',width:'100%',maxWidth:'320px',margin:'0 auto'}}>
+          <img src="/images/nft_102.png" alt="NEXORA NFT" style={{width:'180px',height:'180px',borderRadius:'1.2rem',marginBottom:'1.2rem',background:'#fff'}} />
+          <div style={{position:'absolute',top:'1.2rem',right:'1.2rem',background:'#fff',borderRadius:'1rem',padding:'0.5rem 1.2rem',boxShadow:'0 2px 8px #0001',fontWeight:700,fontSize:'1.1rem',color:'#7b2ff2',textAlign:'center'}}>3,333<br /><span style={{fontWeight:400,fontSize:'0.95rem',color:'#aaa'}}>UNIQUE ITEMS</span></div>
+          <div style={{position:'absolute',bottom:'1.2rem',left:'1.2rem',background:'#fff',borderRadius:'0.8rem',padding:'0.4rem 1.1rem',boxShadow:'0 2px 8px #0001',fontWeight:700,fontSize:'1rem',color:'#ff9900',textAlign:'center'}}>Base<br /><span style={{fontWeight:400,fontSize:'0.9rem',color:'#aaa'}}>NETWORK</span></div>
+        </div>
+        <div style={{fontSize:'1.1rem',fontWeight:400,lineHeight:1.6,color:'#222',margin:'1.2rem 0',textAlign:'center',maxWidth:'340px'}}>
+          Welcome to the <b style={{color:'#7b2ff2',fontWeight:700}}>NEXORA revolution</b>. We’re building a brand that blends pixel art, web3, and the magic of digital collectibles.<br /><br />
+          Each of the <b style={{color:'#222',fontWeight:700}}>3,333 NEXORAs</b> is algorithmically generated from over <span style={{color:'#7b2ff2',fontWeight:700,textDecoration:'underline'}}>100+ hand-drawn traits</span>. From wizards to pixel gems, no two are alike.<br /><br />
+          Living on the Base blockchain, your NEXORA is your membership card to an exclusive community of creators, collectors, and digital pioneers.
+        </div>
+        <div style={{display:'flex',alignItems:'center',gap:'0.5rem',marginTop:'0.7rem',justifyContent:'center'}}>
+          <img src="/images/nft_11.png" alt="NEXORA Avatar 1" style={{width:'36px',height:'36px',borderRadius:'50%',border:'2px solid #fff',boxShadow:'0 2px 8px #0001'}} />
+          <img src="/images/nft_16.png" alt="NEXORA Avatar 2" style={{width:'36px',height:'36px',borderRadius:'50%',border:'2px solid #fff',boxShadow:'0 2px 8px #0001'}} />
+          <img src="/images/nft_54.png" alt="NEXORA Avatar 3" style={{width:'36px',height:'36px',borderRadius:'50%',border:'2px solid #fff',boxShadow:'0 2px 8px #0001'}} />
+          <img src="/images/nft_3.png" alt="NEXORA Avatar 4" style={{width:'36px',height:'36px',borderRadius:'50%',border:'2px solid #fff',boxShadow:'0 2px 8px #0001'}} />
+          <img src="/images/nft_8.png" alt="NEXORA Avatar 5" style={{width:'36px',height:'36px',borderRadius:'50%',border:'2px solid #fff',boxShadow:'0 2px 8px #0001'}} />
+          <span style={{marginLeft:'0.7rem',fontWeight:700,fontSize:'1rem',color:'#222'}}>Join Us</span>
         </div>
       </section>
       <section style={{ margin: '0 0 1.2rem 0' }}>
