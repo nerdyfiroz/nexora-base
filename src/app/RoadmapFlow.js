@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const milestones = [
     {
@@ -50,8 +50,39 @@ const milestones = [
 
 import { useState } from "react";
 
-function RoadmapFlow() {
   const [active, setActive] = useState(null);
+  const [visible, setVisible] = useState(Array(milestones.length).fill(false));
+  const pinRefs = useRef([]);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const observer = new window.IntersectionObserver(
+      (entries) => {
+        setVisible((prev) => {
+          const updated = [...prev];
+          entries.forEach((entry) => {
+            const idx = Number(entry.target.getAttribute('data-index'));
+            if (entry.isIntersecting) {
+              updated[idx] = true;
+            } else {
+              updated[idx] = false;
+            }
+          });
+          return updated;
+        });
+      },
+      {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.3,
+      }
+    );
+    pinRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section style={{
       width: "100%",
@@ -92,6 +123,9 @@ function RoadmapFlow() {
             return (
               <div
                 key={i}
+                ref={el => pinRefs.current[i] = el}
+                data-index={i}
+                className={`roadmap-milestone-pin${visible[i] ? ' visible' : ''}`}
                 style={{
                   position: "absolute",
                   left: pin.x - 32,
@@ -109,7 +143,7 @@ function RoadmapFlow() {
                   fontWeight: 700,
                   zIndex: 3,
                   cursor: "pointer",
-                  transition: "transform 0.2s cubic-bezier(.68,-0.55,.27,1.55), box-shadow 0.2s",
+                  transition: "transform 0.5s cubic-bezier(.68,-0.55,.27,1.55), box-shadow 0.2s, opacity 0.5s",
                   transform: active === i ? "scale(1.15)" : "scale(1)"
                 }}
                 onClick={() => setActive(i)}
@@ -149,6 +183,19 @@ function RoadmapFlow() {
             </div>
           )}
         </div>
+        <style jsx>{`
+          .roadmap-milestone-pin {
+            opacity: 0;
+            transform: translateY(40px) scale(1);
+            pointer-events: none;
+          }
+          .roadmap-milestone-pin.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            pointer-events: auto;
+            transition: transform 0.7s cubic-bezier(.68,-0.55,.27,1.55), opacity 0.7s;
+          }
+        `}</style>
       </div>
     </section>
   );
