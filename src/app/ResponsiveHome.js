@@ -28,7 +28,7 @@ export default function ResponsiveHome() {
             <AnimatedDescription gradientAnimated />
           </div>
         </div>
-        <div style={{margin:'0 auto',maxWidth:'520px',textAlign:'center',fontSize:'1.25rem',fontWeight:500,color:'#333',lineHeight:1.6,background:'#fff',borderRadius:'1.2rem',padding:'0.7rem 1.5rem',boxShadow:'0 2px 12px #0001',marginBottom:'1.2rem'}}>Discover the next generation of pixel art collectibles, powered by Base and web3. Join the revolution!</div>
+        <div style={{margin:'0 auto',maxWidth:'520px',textAlign:'center',fontSize:'1.25rem',fontWeight:500,color:'#333',lineHeight:1.6,marginBottom:'1.2rem'}}>Discover the next generation of pixel art collectibles, powered by Base and web3. Join the revolution!</div>
         <div style={{ marginTop: 24, width: '100%' }}>
           <NexoraMarquee />
         </div>
