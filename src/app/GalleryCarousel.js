@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Virtuoso } from "react-virtuoso";
+// Removed virtualization for compatibility and navigation
 
 const nftImages = [
   "/images/nft_226.png",
@@ -20,7 +20,7 @@ const nftImages = [
   "/images/nft_98.png",
 ];
 
-function GalleryCarousel() {
+  const [index, setIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth <= 700);
@@ -29,24 +29,40 @@ function GalleryCarousel() {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  // Virtualized item renderer for Virtuoso
-  const renderItem = (index) => (
-    <div style={cardStyle} key={index}>
-      <img src={nftImages[index]} alt="NFT" loading="lazy" style={imgStyle} />
-    </div>
-  );
+  const prev = () => setIndex((i) => (i - 1 + nftImages.length) % nftImages.length);
+  const next = () => setIndex((i) => (i + 1) % nftImages.length);
+  const getCard = (offset) => nftImages[(index + offset + nftImages.length) % nftImages.length];
 
   return (
     <section style={{ ...sectionStyle, background: 'rgba(255,255,255,0.06)', zIndex: 1 }}>
       <div style={containerStyle}>
         <h2 style={titleStyle}>Gallery</h2>
-        <div style={{ width: isMobile ? 320 : 900, height: 320, margin: '0 auto' }}>
-          <Virtuoso
-            style={{ width: isMobile ? 320 : 900, height: 320 }}
-            totalCount={nftImages.length}
-            itemContent={renderItem}
-            horizontal={true}
-          />
+        <div style={carouselStyle}>
+          {(isMobile ? [0] : [-2, -1, 0, 1, 2]).map((offset, i) => {
+            const img = getCard(offset);
+            const center = offset === 0;
+            return (
+              <div
+                key={`${index}-${i}`}
+                style={{
+                  ...cardStyle,
+                  width: isMobile ? 220 : 260,
+                  height: isMobile ? 220 : 260,
+                  transform: !isMobile ? `scale(${center ? 1.08 : 0.9}) rotate(${offset * 5}deg)` : "none",
+                  opacity: isMobile ? 1 : center ? 1 : 0.35,
+                  filter: isMobile ? "none" : center ? "none" : "blur(1px)",
+                  zIndex: isMobile ? 1 : 10 - Math.abs(offset),
+                  border: center ? "5px solid #ff595e" : "none",
+                }}
+              >
+                <img src={img} alt="NFT" loading="lazy" style={{...imgStyle, maxWidth: '100%', maxHeight: '100%'}} />
+              </div>
+            );
+          })}
+        </div>
+        <div style={navStyle}>
+          <button onClick={prev} style={btnSecondary}>Prev</button>
+          <button onClick={next} style={btnPrimary}>Next</button>
         </div>
       </div>
     </section>
