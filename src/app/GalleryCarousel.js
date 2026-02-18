@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -40,10 +39,10 @@ export default function GalleryCarousel() {
 
   return (
     <section style={sectionStyle}>
-      <div style={isMobile ? mobileContainerStyle : containerStyle}>
+      <div style={containerStyle}>
         <h2 style={titleStyle}>Gallery</h2>
 
-        <div style={isMobile ? mobileCarouselStyle : carouselStyle}>
+        <div style={carouselStyle}>
           {(isMobile ? [0] : [-2, -1, 0, 1, 2]).map((offset, i) => {
             const img = getCard(offset);
             const center = offset === 0;
@@ -52,25 +51,17 @@ export default function GalleryCarousel() {
               <div
                 key={`${index}-${i}`}
                 style={{
-                  ...(isMobile ? mobileCardStyle : cardStyle),
-                  transform: isMobile
-                    ? "none"
-                    : `scale(${center ? 1.15 : 0.9}) rotate(${offset * 6}deg) translateY(${center ? 0 : 18}px)`,
+                  ...cardStyle,
+                  transform: !isMobile
+                    ? `scale(${center ? 1.08 : 0.9}) rotate(${offset * 5}deg)`
+                    : "none",
                   opacity: isMobile ? 1 : center ? 1 : 0.35,
-                  filter: isMobile ? "none" : center ? "none" : "blur(1.2px)",
+                  filter: isMobile ? "none" : center ? "none" : "blur(1px)",
                   zIndex: isMobile ? 1 : 10 - Math.abs(offset),
-                  border: center ? "6px solid #ff595e" : "none",
-                  boxShadow: center
-                    ? "0 0 0 5px #ff595e, 0 12px 30px rgba(0,0,0,0.25)"
-                    : "0 4px 16px rgba(0,0,0,0.12)",
+                  border: center ? "5px solid #ff595e" : "none",
                 }}
               >
-                <img
-                  src={img}
-                  alt="NFT"
-                  loading="lazy"
-                  style={isMobile ? mobileImgStyle : imgStyle}
-                />
+                <img src={img} alt="NFT" loading="lazy" style={imgStyle} />
               </div>
             );
           })}
@@ -85,52 +76,51 @@ export default function GalleryCarousel() {
   );
 }
 
-/* ---------- styles ---------- */
+/* ---------------- STYLES ---------------- */
 
 const sectionStyle = {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  minHeight: "70vh",
   padding: "3rem 1rem",
+  overflowX: "hidden",
 };
 
 const containerStyle = {
   background: "rgba(255,255,255,0.06)",
   border: "3px solid #2ec4b6",
-  borderRadius: "2.5rem",
-  boxShadow: "0 12px 40px rgba(0,0,0,0.3)",
-  padding: "3rem 2rem",
-  maxWidth: 1200,
+  borderRadius: "2.2rem",
+  padding: "2.5rem 1.5rem",
   width: "100%",
+  maxWidth: 1200,
   textAlign: "center",
 };
 
 const titleStyle = {
-  fontSize: "2.6rem",
-  fontWeight: 800,
+  fontSize: "2.4rem",
   color: "#2ec4b6",
-  marginBottom: "2.2rem",
+  marginBottom: "2rem",
+  fontWeight: 800,
 };
 
 const carouselStyle = {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  gap: "2.2rem",
-  minHeight: 700,
+  gap: "1.5rem",
+  flexWrap: "nowrap",
 };
 
 const cardStyle = {
-  width: 700,
+  width: "clamp(240px, 60vw, 560px)",
   aspectRatio: "1 / 1",
-  borderRadius: "2.2rem",
+  borderRadius: "2rem",
   background: "#fff",
+  overflow: "hidden",
+  transition: "all 0.35s ease",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  overflow: "hidden",
-  transition: "all 0.35s ease",
 };
 
 const imgStyle = {
@@ -142,11 +132,12 @@ const imgStyle = {
 const navStyle = {
   display: "flex",
   justifyContent: "center",
-  gap: "2rem",
+  gap: "1.8rem",
+  marginTop: "2rem",
 };
 
 const btnPrimary = {
-  padding: "0.8rem 2.4rem",
+  padding: "0.8rem 2.3rem",
   borderRadius: "2rem",
   background: "#2ec4b6",
   color: "#fff",
@@ -160,32 +151,4 @@ const btnSecondary = {
   background: "#fff",
   color: "#2ec4b6",
   border: "2px solid #2ec4b6",
-};
-
-/* Mobile */
-
-const mobileContainerStyle = {
-  ...containerStyle,
-  maxWidth: 340,
-  padding: "1.2rem 0.5rem",
-};
-
-const mobileCarouselStyle = {
-  display: "flex",
-  justifyContent: "center",
-  minHeight: 240,
-};
-
-const mobileCardStyle = {
-  width: 220,
-  aspectRatio: "1 / 1",
-  borderRadius: "1.2rem",
-  overflow: "hidden",
-  background: "#fff",
-};
-
-const mobileImgStyle = {
-  width: "100%",
-  height: "100%",
-  objectFit: "cover",
 };
