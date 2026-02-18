@@ -24,9 +24,8 @@ export default function ResponsiveHome() {
         </div>
         <h1 className="nexora-title" style={{ fontSize: '3.2rem', fontWeight: 900, marginBottom: 12, letterSpacing: '0.04em', textAlign: 'center', background: 'linear-gradient(90deg,#6366f1 0%,#a78bfa 50%,#f472b6 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', color: 'transparent' }}>NEXORA</h1>
         <div style={{marginBottom:'0.5rem',marginTop:'0.5rem',width:'100%',display:'flex',flexDirection:'column',alignItems:'center'}}>
-          <span style={{fontSize:'2.1rem',fontWeight:600,letterSpacing:'0.01em',background:'linear-gradient(90deg,#38ef7d 0%,#1194f6 40%,#7b2ff2 100%)',WebkitBackgroundClip:'text',WebkitTextFillColor:'transparent',backgroundClip:'text',color:'transparent',textShadow:'0 2px 12px #fff8',marginBottom:'0.2rem'}}>Magic Meets Metadata ⚡️</span>
           <div style={{marginTop:'0.2rem',marginBottom:'0.2rem',width:'100%',maxWidth:'520px'}}>
-            <AnimatedDescription />
+            <AnimatedDescription gradientAnimated />
           </div>
         </div>
         <div style={{margin:'0 auto',maxWidth:'520px',textAlign:'center',fontSize:'1.25rem',fontWeight:500,color:'#333',lineHeight:1.6,background:'#fff',borderRadius:'1.2rem',padding:'0.7rem 1.5rem',boxShadow:'0 2px 12px #0001',marginBottom:'1.2rem'}}>Discover the next generation of pixel art collectibles, powered by Base and web3. Join the revolution!</div>
