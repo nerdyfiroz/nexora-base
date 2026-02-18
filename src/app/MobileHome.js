@@ -23,10 +23,10 @@ export default function MobileHome() {
         </div>
         {/* Moving Marquee Sentences */}
         <div style={{width:'100%',overflow:'hidden',margin:'1.2rem 0 1.2rem 0',position:'relative',height:'auto',display:'flex',flexDirection:'column',gap:'0.2em'}}>
-          <div className="nexora-marquee nexora-marquee-left nexora-marquee-gradient" style={{fontSize:'2rem',animationDuration:'18s',marginBottom:'0.2em',position:'relative',width:'100%'}}>
+          <div className="nexora-marquee nexora-marquee-left nexora-marquee-gradient" style={{fontSize:'2rem',animationDuration:'8s',marginBottom:'0.2em',position:'relative',width:'100%'}}>
             <span className="nexora-marquee-gradient-text">A 8BIT REVOLUTION • NEXORA • MAGIC MEETS METADATA⚡️ • APPLY • BASE • JOIN US • 3333 SUPPLY •</span>
           </div>
-          <div className="nexora-marquee nexora-marquee-right nexora-marquee-gradient" style={{fontSize:'2rem',animationDuration:'18s',position:'relative',width:'100%'}}>
+          <div className="nexora-marquee nexora-marquee-right nexora-marquee-gradient" style={{fontSize:'2rem',animationDuration:'8s',position:'relative',width:'100%'}}>
             <span className="nexora-marquee-gradient-text">3333 SUPPLY • JOIN US • BASE • APPLY • MAGIC MEETS METADATA⚡️ • NEXORA • A 8BIT REVOLUTION •</span>
           </div>
         </div>

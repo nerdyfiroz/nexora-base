@@ -22,7 +22,7 @@ export default function NexoraMarquee() {
         style={{
           position: 'relative',
           fontSize: '4.5rem',
-          animationDuration: `${18 / speed}s`,
+          animationDuration: `${8 / speed}s`,
           marginBottom: '0.2em',
         }}
       >
@@ -35,7 +35,7 @@ export default function NexoraMarquee() {
         style={{
           position: 'relative',
           fontSize: '4.5rem',
-          animationDuration: `${18 / speed}s`,
+          animationDuration: `${8 / speed}s`,
         }}
       >
         <span className="nexora-marquee-gradient-text">
