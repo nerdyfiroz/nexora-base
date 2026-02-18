@@ -13,20 +13,34 @@ export default function ResponsiveHome() {
   }
   // Desktop UI (fully polished)
   return (
-    <main className="nexora-main" style={{ minHeight: '100vh', padding: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', background: 'var(--background)' }}>
-      {/* Hero Section */}
-      <section style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '3.5rem 0 2.5rem 0', background: 'linear-gradient(90deg,#f7e6ff 0%,#e0f7fa 100%)', borderRadius: '0 0 2.5rem 2.5rem', boxShadow: '0 8px 32px #0001', position: 'relative' }}>
+    <>
+      <main className="nexora-main" style={{ minHeight: '100vh', padding: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', background: 'var(--background)' }}>
+        {/* Hero Section */}
+        <section style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '3.5rem 0 2.5rem 0', background: 'linear-gradient(90deg,#f7e6ff 0%,#e0f7fa 100%)', borderRadius: '0 0 2.5rem 2.5rem', boxShadow: '0 8px 32px #0001', position: 'relative' }}>
         {/* Header Images */}
-        <div style={{display:'flex',justifyContent:'center',alignItems:'center',gap:'2.5rem',marginBottom:'1.2rem'}}>
-          <img src="/images/nft_226.png" alt="Header NFT 1" style={{width:'80px',height:'80px',borderRadius:'1.2rem',boxShadow:'0 2px 12px #7b2ff2',background:'#fff'}} />
-          <img src="/images/nft_11.png" alt="Nexora Logo" style={{ width: 120, height: 120, borderRadius: '2rem', boxShadow: '0 2px 16px #7b2ff2',background:'#fff' }} />
-          <img src="/images/nft_16.png" alt="Header NFT 2" style={{width:'80px',height:'80px',borderRadius:'1.2rem',boxShadow:'0 2px 12px #7b2ff2',background:'#fff'}} />
+        <div style={{display:'flex',justifyContent:'center',alignItems:'center',gap:'1.2rem',marginBottom:'1.2rem'}}>
+          {/* Left NFTs */}
+          <img src="/images/nft_3.png" alt="NFT 3" className="nexora-hero-nft-glow" style={{width:'60px',height:'60px',borderRadius:'50%',boxShadow:'0 2px 12px #7b2ff2',background:'#fff',objectFit:'cover'}} />
+          <img src="/images/nft_4.png" alt="NFT 4" className="nexora-hero-nft-glow" style={{width:'70px',height:'70px',borderRadius:'1.2rem',boxShadow:'0 2px 12px #7b2ff2',background:'#fff',objectFit:'cover'}} />
+          {/* Center NFTs */}
+          <img src="/images/nft_226.png" alt="Header NFT 1" className="nexora-hero-nft-glow" style={{width:'80px',height:'80px',borderRadius:'1.2rem',boxShadow:'0 2px 12px #7b2ff2',background:'#fff',objectFit:'cover'}} />
+          <img src="/images/nft_11.png" alt="Nexora Logo" className="nexora-hero-nft-glow" style={{ width: 120, height: 120, borderRadius: '2rem', boxShadow: '0 2px 16px #7b2ff2',background:'#fff',objectFit:'cover' }} />
+          <img src="/images/nft_16.png" alt="Header NFT 2" className="nexora-hero-nft-glow" style={{width:'80px',height:'80px',borderRadius:'1.2rem',boxShadow:'0 2px 12px #7b2ff2',background:'#fff',objectFit:'cover'}} />
+          {/* Right NFTs */}
+          <img src="/images/nft_5.png" alt="NFT 5" className="nexora-hero-nft-glow" style={{width:'70px',height:'70px',borderRadius:'0.7rem',boxShadow:'0 2px 12px #7b2ff2',background:'#fff',objectFit:'cover'}} />
+          <img src="/images/nft_8.png" alt="NFT 8" className="nexora-hero-nft-glow" style={{width:'60px',height:'60px',borderRadius:'30%',boxShadow:'0 2px 12px #7b2ff2',background:'#fff',objectFit:'cover'}} />
         </div>
         <h1 className="nexora-title" style={{ fontSize: '3.2rem', fontWeight: 900, marginBottom: 12, letterSpacing: '0.04em', textAlign: 'center', background: 'linear-gradient(90deg,#6366f1 0%,#a78bfa 50%,#f472b6 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', color: 'transparent' }}>NEXORA</h1>
-        <div style={{marginBottom:'0.5rem',marginTop:'0.5rem',width:'100%',display:'flex',flexDirection:'column',alignItems:'center'}}>
-          <div style={{marginTop:'0.2rem',marginBottom:'0.2rem',width:'100%',maxWidth:'520px'}}>
-            <AnimatedDescription gradientAnimated />
+        <div style={{marginBottom:'0.5rem',marginTop:'0.5rem',width:'100%',display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'center',gap:'1.2rem'}}>
+          {/* Left NFTs for subtitle */}
+          <img src="/images/nft_54.png" alt="NFT 54" className="nexora-hero-nft-glow" style={{width:'48px',height:'48px',borderRadius:'1.2rem',boxShadow:'0 2px 12px #7b2ff2',background:'#fff',objectFit:'cover'}} />
+          <img src="/images/nft_63.png" alt="NFT 63" className="nexora-hero-nft-glow" style={{width:'44px',height:'44px',borderRadius:'50%',boxShadow:'0 2px 12px #7b2ff2',background:'#fff',objectFit:'cover'}} />
+          <div style={{margin:'0 0.5rem',flex:1,maxWidth:'520px',display:'flex',justifyContent:'center'}}>
+            <AnimatedDescription />
           </div>
+          {/* Right NFTs for subtitle */}
+          <img src="/images/nft_76.png" alt="NFT 76" className="nexora-hero-nft-glow" style={{width:'44px',height:'44px',borderRadius:'30%',boxShadow:'0 2px 12px #7b2ff2',background:'#fff',objectFit:'cover'}} />
+          <img src="/images/nft_98.png" alt="NFT 98" className="nexora-hero-nft-glow" style={{width:'48px',height:'48px',borderRadius:'1.2rem',boxShadow:'0 2px 12px #7b2ff2',background:'#fff',objectFit:'cover'}} />
         </div>
         <div style={{margin:'0 auto',maxWidth:'520px',textAlign:'center',fontSize:'1.25rem',fontWeight:500,color:'#333',lineHeight:1.6,marginBottom:'1.2rem'}}>Discover the next generation of pixel art collectibles, powered by Base and web3. Join the revolution!</div>
         <div style={{ marginTop: 24, width: '100%' }}>
@@ -143,5 +157,16 @@ export default function ResponsiveHome() {
         <span style={{ color: '#bbb', fontWeight: 400, marginLeft: 8 }}>| &copy; 2026</span>
       </footer>
     </main>
+    <style jsx global>{`
+      .nexora-hero-nft-glow {
+        transition: box-shadow 0.2s, filter 0.2s;
+      }
+      .nexora-hero-nft-glow:hover {
+        box-shadow: 0 0 32px 0 #7b2ff2, 0 2px 16px #0001;
+        filter: brightness(1.12) drop-shadow(0 0 16px #7b2ff2);
+        z-index: 2;
+      }
+    `}</style>
+  </>
   );
 }
