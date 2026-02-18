@@ -11,9 +11,11 @@ import AnimatedBackground from "./AnimatedBackground";
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
+      <body className="offwhite-bg fullpage-layout">
         <AnimatedBackground />
-        {children}
+        <main className="content-overlay">
+          {children}
+        </main>
       </body>
     </html>
   );
