@@ -1,15 +1,39 @@
+/* ---------------- IMPORTS (MUST BE FIRST) ---------------- */
+
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+/* ---------------- ROOT ---------------- */
+
 :root {
   --background: #f8f8f6;
   --foreground: #171717;
 }
 
+/* ---------------- GLOBAL FIX ---------------- */
+
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  background: var(--background) !important;
+  min-height: 100vh;
+  color: #000;
+  font-family: 'Space Grotesk', Arial, Helvetica, sans-serif;
+  position: relative;
+}
+
+/* ---------------- BACKGROUND LAYERS ---------------- */
 
 .offwhite-bg {
   background: var(--background) !important;
   min-height: 100vh;
   position: relative;
 }
-
 
 .fullpage-layout {
   min-height: 100vh;
@@ -18,15 +42,13 @@
 
 .animated-bg-canvas {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw !important;
-  height: 100vh !important;
+  inset: 0;
+  width: 100%;        /* 🔥 FIXED (was 100vw) */
+  height: 100%;
   z-index: 0;
   pointer-events: none;
   background: transparent;
 }
-
 
 .content-overlay {
   position: relative;
@@ -35,229 +57,24 @@
   display: flex;
   flex-direction: column;
 }
-.nexora-gallery-section {
-    padding: 0.5rem 0.1rem 1.2rem 0.1rem !important;
-    min-height: 40vh !important;
-  }
-  .nexora-gallery-title {
-    font-size: 1.3rem !important;
-    margin-bottom: 1.2rem !important;
-    text-align: center !important;
-  }
-  .nexora-gallery-carousel {
-    min-height: 180px !important;
-    gap: 0.2rem !important;
-    margin-bottom: 1.2rem !important;
-  }
-  .nexora-gallery-card {
-    width: 120px !important;
-    height: 120px !important;
-    border-radius: 0.7rem !important;
-    margin: 0 0.1rem !important;
-  }
-  .nexora-gallery-card-center {
-    width: 140px !important;
-    height: 140px !important;
-    border-radius: 1rem !important;
-  }
-  .nexora-gallery-card img {
-    width: 95% !important;
-    height: 95% !important;
-    border-radius: 0.6rem !important;
-  }
-/* Gallery hover glow effect */
-.nexora-gallery-glow:hover {
-  box-shadow: 0 0 32px 0 #7b2ff2, 0 2px 16px #0001;
-  filter: brightness(1.15) drop-shadow(0 0 16px #7b2ff2);
-  z-index: 2;
-}
-/* Gallery NFT hover glow effect */
-.nexora-gallery-nft {
-  transition: box-shadow 0.2s, filter 0.2s;
-  box-shadow: 0 2px 12px #0001;
-}
-.nexora-gallery-nft:hover {
-  box-shadow: 0 0 32px 0 #7b2ff2, 0 2px 16px #0001;
-  filter: brightness(1.12) drop-shadow(0 0 16px #7b2ff2);
-  z-index: 2;
-}
-/* Only for hero floating NFTs */
-.hero-floating-nft {
-  transition: box-shadow 0.2s, filter 0.2s;
-  box-shadow: 0 2px 12px #0001;
-}
-.hero-floating-nft:hover {
-  box-shadow: 0 0 32px 0 #7b2ff2, 0 2px 16px #0001;
-  filter: brightness(1.12) drop-shadow(0 0 16px #7b2ff2);
-  z-index: 2;
-}
-@import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 
+/* ---------------- NOISE OVERLAY ---------------- */
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (max-width: 700px) {
-  .nexora-marquee-gradient-text {
-    font-size: 2.1rem !important;
-    line-height: 1.15 !important;
-    word-break: break-word !important;
-    padding: 0 0.2em !important;
-    text-align: left !important;
-  }
-  .nexora-feature-desc {
-    font-size: 1rem !important;
-    padding: 0 0.2em !important;
-  }
-  .nexora-title {
-    font-size: 2.1rem !important;
-    word-break: break-word !important;
-    padding: 0.1em 0.2em !important;
-    text-align: center !important;
-    max-width: 98vw !important;
-    display: block;
-    font-weight: 900 !important;
-    letter-spacing: 0.03em !important;
-    margin-bottom: 0.2em !important;
-  }
-  .nexora-main {
-    padding: 0 0.2rem !important;
-  }
-  main {
-    flex-direction: column !important;
-    gap: 0.7rem !important;
-    padding: 0.7rem 0 2.5rem 0 !important;
-    max-width: 100vw !important;
-  }
-    /* Hero logo image on mobile */
-    .nexora-hero-logo {
-      width: 72px !important;
-      height: 72px !important;
-      margin-bottom: 0.7em !important;
-      border-radius: 1.2rem !important;
-      box-shadow: 0 2px 12px #7b2ff2 !important;
-      display: block !important;
-      margin-left: auto !important;
-      margin-right: auto !important;
-    }
-  .nexora-feature-section {
-    flex-direction: column !important;
-    gap: 1.2rem !important;
-    padding: 1.2rem 0.5rem !important;
-    max-width: 100vw !important;
-  }
-  .nexora-feature-imgbox {
-    width: 90vw !important;
-    height: 90vw !important;
-    min-width: 0 !important;
-    max-width: 340px !important;
-    min-height: 0 !important;
-    max-height: 340px !important;
-  }
-  .nexora-feature-imgbox::before {
-    width: 100% !important;
-    height: 100% !important;
-    border-radius: 2rem !important;
-  }
-  .nexora-feature-img {
-    width: 80vw !important;
-    height: 80vw !important;
-    max-width: 300px !important;
-    max-height: 300px !important;
-    border-radius: 1.2rem !important;
-  }
-  .nexora-feature-badge, .nexora-feature-network {
-    font-size: 1rem !important;
-    padding: 0.4rem 0.8rem !important;
-    min-width: 60px !important;
-  }
-  .nexora-feature-badge {
-    top: 8px !important;
-    right: 8px !important;
-  }
-  .nexora-feature-network {
-    bottom: 8px !important;
-    left: 8px !important;
-  }
-  .nexora-feature-avatars img {
-    width: 32px !important;
-    height: 32px !important;
-  }
-  .nexora-feature-join {
-    font-size: 1rem !important;
-  }
-  .nexora-btn {
-    font-size: 1.1rem !important;
-    padding: 1rem 1.5rem !important;
-    min-width: 140px !important;
-    border-radius: 1.2rem !important;
-    margin: 0.3rem 0 !important;
-  }
-    .nexora-gallery-nav button,
-    .nexora-gallery-nav .nexora-btn {
-      font-size: 1.1rem !important;
-      padding: 1rem 1.5rem !important;
-      min-width: 120px !important;
-      border-radius: 1.2rem !important;
-      margin: 0.3rem 0.2rem !important;
-    }
-  .nft-float-center, .nft-float-corner {
-    width: 60vw !important;
-    height: 60vw !important;
-    max-width: 160px !important;
-    max-height: 160px !important;
-    min-width: 60px !important;
-    min-height: 60px !important;
-  }
-  .nexora-builder-credit {
-    flex-direction: column !important;
-    gap: 0.7rem !important;
-    margin: 1.5rem 0 0.7rem 0 !important;
-    font-size: 1.05rem !important;
-    align-items: center !important;
-    text-align: center !important;
-  }
-  .nexora-builder-credit img {
-    width: 32px !important;
-    height: 32px !important;
-    margin: 0.2rem 0 !important;
-  }
-}
-
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-body {
-  background: #f8f8f6 !important;
-  min-height: 100vh;
-  color: #000;
-  font-family: 'Space Grotesk', Arial, Helvetica, sans-serif;
-  position: relative;
-  overflow-x: hidden;
-}
-
-body:before {
+body::before {
   content: "";
   pointer-events: none;
   z-index: 9999;
   opacity: 0.15;
   mix-blend-mode: multiply;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.4'/%3E%3C/svg%3E");
   width: 100%;
   height: 100%;
   position: fixed;
-  top: 0;
-  left: 0;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.4'/%3E%3C/svg%3E");
 }
 
-/* --- Gallery-style featured NFT and floating badges --- */
+/* ---------------- FEATURE NFT ---------------- */
+
 .nexora-feature-imgbox {
   position: relative;
   width: 340px;
@@ -267,19 +84,18 @@ body:before {
   align-items: center;
   justify-content: center;
 }
+
 .nexora-feature-imgbox::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 340px;
-  height: 340px;
+  inset: 0;
   background: #f7e6ff;
   border-radius: 2.5rem;
   filter: blur(2px) opacity(0.45);
   z-index: 1;
   pointer-events: none;
 }
+
 .nexora-feature-img {
   background: #fff;
   border-radius: 1.5rem;
@@ -291,63 +107,61 @@ body:before {
   object-fit: cover;
   border: 4px solid #fff;
 }
-.nexora-feature-badge,
-.nexora-feature-network {
-  position: absolute;
-  background: #fff;
-  border-radius: 1rem;
-  box-shadow: 0 2px 8px #0001;
-  font-weight: 700;
-  z-index: 3;
-  padding: 0.5rem 1.2rem;
-  min-width: 80px;
-  text-align: center;
-  transition: box-shadow 0.2s;
-  animation: badge-float 2.2s ease-in-out infinite alternate;
-}
-.nexora-feature-badge {
-  color: #6c63ff;
-  top: 18px;
-  right: 18px;
-  animation-delay: 0s;
-}
-.nexora-feature-badge span {
-  font-weight: 400;
-  font-size: 1rem;
-  color: #aaa;
-}
-.nexora-feature-network {
-  color: #ff9900;
-  bottom: 18px;
-  left: 18px;
-  border-radius: 0.8rem;
-  font-size: 1.1rem;
-  min-width: 60px;
-  padding: 0.4rem 1.1rem;
-  animation-delay: 1.1s;
-}
-.nexora-feature-network span {
-  color: #aaa;
-  font-weight: 400;
-  font-size: 0.95rem;
-}
-@keyframes badge-float {
-  0%   { transform: translateY(0) scale(1); }
-  50%  { transform: translateY(-8px) scale(1.07); }
-  100% { transform: translateY(0) scale(1); }
+
+/* ---------------- MOBILE SAFE SECTION FIX ---------------- */
+
+@media (max-width: 700px) {
+
+  main {
+    flex-direction: column !important;
+    gap: 0.7rem !important;
+    padding: 0.7rem 0 2.5rem 0 !important;
+    max-width: 100% !important;   /* 🔥 FIX */
+  }
+
+  .nexora-feature-imgbox {
+    width: 90vw !important;
+    height: 90vw !important;
+    max-width: 340px !important;
+    max-height: 340px !important;
+  }
+
+  .nexora-feature-img {
+    width: 80vw !important;
+    height: 80vw !important;
+    max-width: 300px !important;
+    max-height: 300px !important;
+  }
+
+  .nexora-main,
+  .nexora-feature-section,
+  .nexora-gallery-section {
+    max-width: 100% !important;  /* 🔥 prevents overflow */
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+  }
 }
 
-.animated-bg-canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 0;
-  pointer-events: none;
+/* ---------------- DARK MODE ---------------- */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+
+  body {
+    background: var(--background) !important;
+    color: var(--foreground);
+  }
 }
 
-.nexora-main, .nexora-gallery-section, .nexora-builder-credit, .nexora-footer {
+/* ---------------- Z INDEX LAYERS ---------------- */
+
+.nexora-main,
+.nexora-gallery-section,
+.nexora-builder-credit,
+.nexora-footer {
   position: relative;
   z-index: 1;
 }
