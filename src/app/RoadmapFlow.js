@@ -199,6 +199,5 @@ import { useState } from "react";
       </div>
     </section>
   );
-}
 
 export default RoadmapFlow;
