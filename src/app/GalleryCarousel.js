@@ -120,7 +120,7 @@ const carouselStyle = {
 };
 
 const cardStyle = {
-  width: 320,
+  width: 420, // Increased size
   aspectRatio: "1 / 1", // ✅ Perfect Square
   borderRadius: "1.5rem",
   background: "#fff",
@@ -134,6 +134,7 @@ const cardStyle = {
 const imgStyle = {
   width: "100%",
   height: "100%",
+  aspectRatio: "1 / 1", // Ensures perfect square
   objectFit: "cover", // keeps image proportional
 };
 
