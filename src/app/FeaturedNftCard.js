@@ -64,7 +64,7 @@ export default function FeaturedNftCard({
           height={260}
           style={{ borderRadius: "1.2rem", objectFit: "cover" }}
         />
-        {/* Top right badge */}
+        {/* Top right badge - gently moving */}
         <div
           style={{
             position: "absolute",
@@ -80,12 +80,13 @@ export default function FeaturedNftCard({
             textAlign: "center",
             zIndex: 3,
             minWidth: 80,
+            animation: "badgeMoveTop 2.5s ease-in-out infinite alternate",
           }}
         >
           {uniqueCount.toLocaleString()}<br />
           <span style={{ fontWeight: 400, fontSize: "1rem", color: "#aaa" }}>UNIQUE ITEMS</span>
         </div>
-        {/* Bottom left badge */}
+        {/* Bottom left badge - gently moving */}
         <div
           style={{
             position: "absolute",
@@ -101,11 +102,23 @@ export default function FeaturedNftCard({
             textAlign: "center",
             zIndex: 3,
             minWidth: 60,
+            animation: "badgeMoveBottom 2.5s ease-in-out infinite alternate",
           }}
         >
           {networkLabel}<br />
           <span style={{ fontWeight: 400, fontSize: "0.95rem", color: "#aaa" }}>{networkSub}</span>
         </div>
+        {/* Add keyframes for badge movement */}
+        <style jsx>{`
+          @keyframes badgeMoveTop {
+            0% { transform: translateY(0px) scale(1); }
+            100% { transform: translateY(-8px) scale(1.04); }
+          }
+          @keyframes badgeMoveBottom {
+            0% { transform: translateY(0px) scale(1); }
+            100% { transform: translateY(8px) scale(1.04); }
+          }
+        `}</style>
       </div>
     </div>
   );
