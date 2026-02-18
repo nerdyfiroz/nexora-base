@@ -120,9 +120,9 @@ const carouselStyle = {
 };
 
 const cardStyle = {
-  width: 420, // Increased size
+  width: 540, // Much bigger size
   aspectRatio: "1 / 1", // ✅ Perfect Square
-  borderRadius: "1.5rem",
+  borderRadius: "2.2rem",
   background: "#fff",
   display: "flex",
   alignItems: "center",
@@ -136,6 +136,8 @@ const imgStyle = {
   height: "100%",
   aspectRatio: "1 / 1", // Ensures perfect square
   objectFit: "cover", // keeps image proportional
+  maxWidth: 540,
+  maxHeight: 540,
 };
 
 const navStyle = {
