@@ -36,16 +36,25 @@ const milestones = [
 
 
   // Vertical roadmap config
-  const svgWidth = 180;
+  const svgWidth = 320;
   const svgHeight = 700;
   const topPad = 60;
   const bottomPad = 60;
-  const lineX = svgWidth / 2;
+  const leftX = 60;
+  const rightX = svgWidth - 60;
+  const centerX = svgWidth / 2;
   const step = (svgHeight - topPad - bottomPad) / (milestones.length - 1);
-  const pinPositions = Array.from({ length: milestones.length }, (_, i) => ({
-    x: lineX,
-    y: topPad + i * step
-  }));
+  // Alternate left, right, center, right, left, ...
+  const pinPositions = Array.from({ length: milestones.length }, (_, i) => {
+    let x;
+    if (i % 2 === 0) x = leftX;
+    else x = rightX;
+    // Optionally, for more Z, you can do: if (i === 0 || i === milestones.length-1) x = centerX;
+    return {
+      x,
+      y: topPad + i * step
+    };
+  });
 
 
 
@@ -110,12 +119,38 @@ function RoadmapFlow() {
           letterSpacing: "0.04em"
         }}>Roadmap</h2>
         <div style={{ position: "relative", width: svgWidth, height: svgHeight, margin: "0 auto" }}>
-          {/* Vertical line path */}
+          {/* Z-line path */}
           <svg width={svgWidth} height={svgHeight} style={{ position: "absolute", left: 0, top: 0, zIndex: 1 }}>
-            <line x1={lineX} y1={topPad} x2={lineX} y2={svgHeight - bottomPad} stroke="#444" strokeWidth={18} strokeLinecap="round" />
-            <line x1={lineX} y1={topPad} x2={lineX} y2={svgHeight - bottomPad} stroke="#fff" strokeWidth={6} strokeDasharray="18 18" strokeLinecap="round" />
-            {/* Arrowhead */}
-            <polygon points={`${lineX - 18},${svgHeight - bottomPad - 10} ${lineX},${svgHeight - bottomPad + 30} ${lineX + 18},${svgHeight - bottomPad - 10}`} fill="#444" />
+            <polyline
+              fill="none"
+              stroke="#444"
+              strokeWidth={18}
+              strokeLinecap="round"
+              points={pinPositions.map(p => `${p.x},${p.y}`).join(' ')}
+            />
+            <polyline
+              fill="none"
+              stroke="#fff"
+              strokeWidth={6}
+              strokeDasharray="18 18"
+              strokeLinecap="round"
+              points={pinPositions.map(p => `${p.x},${p.y}`).join(' ')}
+            />
+            {/* Arrowhead at the end of the Z-line */}
+            {(() => {
+              const last = pinPositions[pinPositions.length - 1];
+              const prev = pinPositions[pinPositions.length - 2];
+              const angle = Math.atan2(last.y - prev.y, last.x - prev.x);
+              const size = 18;
+              const ax = last.x;
+              const ay = last.y;
+              const points = [
+                `${ax + size * Math.cos(angle - Math.PI / 6)},${ay + size * Math.sin(angle - Math.PI / 6)}`,
+                `${ax},${ay}`,
+                `${ax + size * Math.cos(angle + Math.PI / 6)},${ay + size * Math.sin(angle + Math.PI / 6)}`
+              ].join(' ');
+              return <polyline points={points} fill="#444" stroke="#444" strokeWidth={2} />;
+            })()}
           </svg>
           {/* Milestone pins */}
           {milestones.map((m, i) => {
