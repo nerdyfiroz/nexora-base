@@ -34,21 +34,22 @@ export default function AnimatedDescription({ gradientAnimated }) {
   }, [index]);
 
   return (
-    <div className="h-12 flex items-center justify-center">
-      <span
-        className={`animated-sentence transition-opacity duration-400 ease-in-out text-xl md:text-2xl font-semibold ${fade ? 'opacity-100' : 'opacity-0'}`}
-        style={gradientAnimated ? {
-          background: gradients[index % gradients.length],
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
-          backgroundClip: 'text',
-          color: 'transparent',
-          textShadow: '0 2px 12px #fff8',
-          transition: 'background 0.5s',
-        } : {}}
-      >
-        {sentences[index]}
-      </span>
-    </div>
+    <span
+      className={`animated-sentence transition-opacity duration-400 ease-in-out text-xl md:text-2xl font-semibold ${fade ? 'opacity-100' : 'opacity-0'}`}
+      style={gradientAnimated ? {
+        background: gradients[index % gradients.length],
+        WebkitBackgroundClip: 'text',
+        WebkitTextFillColor: 'transparent',
+        backgroundClip: 'text',
+        color: 'transparent',
+        textShadow: '0 2px 12px #fff8',
+        transition: 'background 0.5s',
+        display: 'inline-block',
+        padding: 0,
+        margin: 0
+      } : {}}
+    >
+      {sentences[index]}
+    </span>
   );
 }
