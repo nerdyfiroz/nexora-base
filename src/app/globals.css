@@ -5,13 +5,9 @@
 
 /* ================= THEME ================= */
 
-:root tells {
-  --bg-main: #f8f8f6;
-  --fg-main: #171717;
-
-  --g1: #7b2ff2;
-  --g2: #00d4ff;
-  --g3: #ff7ad9;
+body {
+  background: #f8f8f6;
+  color: #171717;
 }
 
 /* ================= GLOBAL SAFETY ================= */
@@ -30,45 +26,15 @@ body {
 
 /* ================= ANIMATED BACKGROUND ================= */
 
-.animated-bg-canvas {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 0;
-  filter: blur(0.6px);
-  opacity: 0.85;
-}
+
 
 /* Gradient animated glow */
 
-.animated-bg-canvas line,
-.animated-bg-canvas path {
-  stroke-width: 1.4px !important;
-  stroke: linear-gradient(45deg, var(--g1), var(--g2), var(--g3));
-  filter: drop-shadow(0 0 6px var(--g2));
-  animation: gradientShift 6s linear infinite;
-}
 
-.animated-bg-canvas circle {
-  fill: var(--g2);
-  filter: blur(1px) drop-shadow(0 0 10px var(--g1));
-  animation: dotPulse 4s ease-in-out infinite alternate;
-}
 
 /* ================= GRADIENT MOTION ================= */
 
-@keyframes gradientShift {
-  0%   { filter: hue-rotate(0deg) drop-shadow(0 0 6px #7b2ff2); }
-  50%  { filter: hue-rotate(120deg) drop-shadow(0 0 10px #00d4ff); }
-  100% { filter: hue-rotate(240deg) drop-shadow(0 0 6px #ff7ad9); }
-}
 
-@keyframes dotPulse {
-  0% { opacity: 0.5; transform: scale(0.9); }
-  100% { opacity: 1; transform: scale(1.15); }
-}
 
 /* ================= CONTENT LAYERS ================= */
 
