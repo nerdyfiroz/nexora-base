@@ -44,8 +44,18 @@ export default function GalleryCarousel() {
                   position: 'relative',
                 }}
               >
-                </div>
-              );
+                <img
+                  src={img}
+                  alt="NFT"
+                  style={{
+                    width: '92%',
+                    height: '92%',
+                    borderRadius: '1.2rem',
+                    objectFit: 'cover',
+                    background: '#fff',
+                    boxShadow: isCenter ? '0 0 0 3px #ff595e' : '0 2px 16px #0001',
+                    transition: 'box-shadow 0.3s',
+                  }}
                 />
               </div>
             );
