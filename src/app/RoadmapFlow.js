@@ -49,7 +49,7 @@ const milestones = [
 
 
 
-
+function RoadmapFlow() {
   const [active, setActive] = useState(null);
   const [visible, setVisible] = useState(Array(milestones.length).fill(false));
   const pinRefs = useRef([]);
@@ -199,5 +199,6 @@ const milestones = [
       </div>
     </section>
   );
+}
 
 export default RoadmapFlow;
