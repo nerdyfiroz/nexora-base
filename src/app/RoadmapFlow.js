@@ -48,7 +48,7 @@ const milestones = [
   }));
 
 
-import { useState } from "react";
+
 
   const [active, setActive] = useState(null);
   const [visible, setVisible] = useState(Array(milestones.length).fill(false));
