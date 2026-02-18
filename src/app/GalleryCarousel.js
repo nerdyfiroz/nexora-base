@@ -96,7 +96,7 @@ const containerStyle = {
   borderRadius: "2.5rem",
   boxShadow: "0 12px 40px rgba(0,0,0,0.3)",
   padding: "3rem 2rem",
-  maxWidth: 720,
+  maxWidth: 1200, // allow much larger cards
   width: "100%",
   textAlign: "center",
 };
@@ -113,14 +113,14 @@ const carouselStyle = {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  gap: "1.4rem",
-  minHeight: 360,
-  overflow: "hidden",
+  gap: "2.2rem",
+  minHeight: 700, // allow for much larger cards
+  overflow: "visible",
   marginBottom: "2.4rem",
 };
 
 const cardStyle = {
-  width: 540, // Much bigger size
+  width: 700, // Even bigger size
   aspectRatio: "1 / 1", // ✅ Perfect Square
   borderRadius: "2.2rem",
   background: "#fff",
@@ -136,8 +136,8 @@ const imgStyle = {
   height: "100%",
   aspectRatio: "1 / 1", // Ensures perfect square
   objectFit: "cover", // keeps image proportional
-  maxWidth: 540,
-  maxHeight: 540,
+  maxWidth: 700,
+  maxHeight: 700,
 };
 
 const navStyle = {
