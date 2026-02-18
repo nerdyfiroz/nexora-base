@@ -3,6 +3,7 @@ import dynamic from "next/dynamic";
 import { useIsMobile } from "./useIsMobile";
 import NexoraMarquee from "./NexoraMarquee";
 import GalleryCarousel from "./GalleryCarousel";
+import RoadmapFlow from "./RoadmapFlow";
 const MobileHome = dynamic(() => import("./MobileHome"), { ssr: false });
 export default function ResponsiveHome() {
   const isMobile = useIsMobile();
