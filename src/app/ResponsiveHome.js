@@ -20,27 +20,27 @@ export default function ResponsiveHome() {
         {/* Header Images */}
         <div style={{display:'flex',justifyContent:'center',alignItems:'center',gap:'1.2rem',marginBottom:'1.2rem'}}>
           {/* Left NFTs */}
-          <img src="/images/nft_3.png" alt="NFT 3" className="nexora-hero-nft-glow" style={{width:'60px',height:'60px',borderRadius:'50%',boxShadow:'0 2px 12px #7b2ff2',background:'#fff',objectFit:'cover'}} />
-          <img src="/images/nft_4.png" alt="NFT 4" className="nexora-hero-nft-glow" style={{width:'70px',height:'70px',borderRadius:'1.2rem',boxShadow:'0 2px 12px #7b2ff2',background:'#fff',objectFit:'cover'}} />
+          <img src="/images/nft_3.png" alt="NFT 3" loading="lazy" className="nexora-hero-nft-glow" style={{width:'60px',height:'60px',borderRadius:'50%',boxShadow:'0 2px 12px #7b2ff2',background:'#fff',objectFit:'cover'}} />
+          <img src="/images/nft_4.png" alt="NFT 4" loading="lazy" className="nexora-hero-nft-glow" style={{width:'70px',height:'70px',borderRadius:'1.2rem',boxShadow:'0 2px 12px #7b2ff2',background:'#fff',objectFit:'cover'}} />
           {/* Center NFTs */}
-          <img src="/images/nft_226.png" alt="Header NFT 1" className="nexora-hero-nft-glow" style={{width:'80px',height:'80px',borderRadius:'1.2rem',boxShadow:'0 2px 12px #7b2ff2',background:'#fff',objectFit:'cover'}} />
-          <img src="/images/nft_11.png" alt="Nexora Logo" className="nexora-hero-nft-glow" style={{ width: 120, height: 120, borderRadius: '2rem', boxShadow: '0 2px 16px #7b2ff2',background:'#fff',objectFit:'cover' }} />
-          <img src="/images/nft_16.png" alt="Header NFT 2" className="nexora-hero-nft-glow" style={{width:'80px',height:'80px',borderRadius:'1.2rem',boxShadow:'0 2px 12px #7b2ff2',background:'#fff',objectFit:'cover'}} />
+          <img src="/images/nft_226.png" alt="Header NFT 1" loading="lazy" className="nexora-hero-nft-glow" style={{width:'80px',height:'80px',borderRadius:'1.2rem',boxShadow:'0 2px 12px #7b2ff2',background:'#fff',objectFit:'cover'}} />
+          <img src="/images/nft_11.png" alt="Nexora Logo" loading="lazy" className="nexora-hero-nft-glow" style={{ width: 120, height: 120, borderRadius: '2rem', boxShadow: '0 2px 16px #7b2ff2',background:'#fff',objectFit:'cover' }} />
+          <img src="/images/nft_16.png" alt="Header NFT 2" loading="lazy" className="nexora-hero-nft-glow" style={{width:'80px',height:'80px',borderRadius:'1.2rem',boxShadow:'0 2px 12px #7b2ff2',background:'#fff',objectFit:'cover'}} />
           {/* Right NFTs */}
-          <img src="/images/nft_5.png" alt="NFT 5" className="nexora-hero-nft-glow" style={{width:'70px',height:'70px',borderRadius:'0.7rem',boxShadow:'0 2px 12px #7b2ff2',background:'#fff',objectFit:'cover'}} />
-          <img src="/images/nft_8.png" alt="NFT 8" className="nexora-hero-nft-glow" style={{width:'60px',height:'60px',borderRadius:'30%',boxShadow:'0 2px 12px #7b2ff2',background:'#fff',objectFit:'cover'}} />
+          <img src="/images/nft_5.png" alt="NFT 5" loading="lazy" className="nexora-hero-nft-glow" style={{width:'70px',height:'70px',borderRadius:'0.7rem',boxShadow:'0 2px 12px #7b2ff2',background:'#fff',objectFit:'cover'}} />
+          <img src="/images/nft_8.png" alt="NFT 8" loading="lazy" className="nexora-hero-nft-glow" style={{width:'60px',height:'60px',borderRadius:'30%',boxShadow:'0 2px 12px #7b2ff2',background:'#fff',objectFit:'cover'}} />
         </div>
-        <h1 className="nexora-title" style={{ fontSize: '3.2rem', fontWeight: 900, marginBottom: 12, letterSpacing: '0.04em', textAlign: 'center', background: 'linear-gradient(90deg,#6366f1 0%,#a78bfa 50%,#f472b6 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', color: 'transparent' }}>NEXORA</h1>
+        <h1 className="nexora-title">NEXORA</h1>
         <div style={{marginBottom:'0.5rem',marginTop:'0.5rem',width:'100%',display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'center',gap:'1.2rem'}}>
           {/* Left NFTs for subtitle */}
-          <img src="/images/nft_54.png" alt="NFT 54" className="nexora-hero-nft-glow" style={{width:'48px',height:'48px',borderRadius:'1.2rem',boxShadow:'0 2px 12px #7b2ff2',background:'#fff',objectFit:'cover'}} />
-          <img src="/images/nft_63.png" alt="NFT 63" className="nexora-hero-nft-glow" style={{width:'44px',height:'44px',borderRadius:'50%',boxShadow:'0 2px 12px #7b2ff2',background:'#fff',objectFit:'cover'}} />
+          <img src="/images/nft_54.png" alt="NFT 54" loading="lazy" className="nexora-hero-nft-glow" style={{width:'48px',height:'48px',borderRadius:'1.2rem',boxShadow:'0 2px 12px #7b2ff2',background:'#fff',objectFit:'cover'}} />
+          <img src="/images/nft_63.png" alt="NFT 63" loading="lazy" className="nexora-hero-nft-glow" style={{width:'44px',height:'44px',borderRadius:'50%',boxShadow:'0 2px 12px #7b2ff2',background:'#fff',objectFit:'cover'}} />
           <div style={{margin:'0 0.5rem',flex:1,maxWidth:'520px',display:'flex',justifyContent:'center'}}>
             <AnimatedDescription />
           </div>
           {/* Right NFTs for subtitle */}
-          <img src="/images/nft_76.png" alt="NFT 76" className="nexora-hero-nft-glow" style={{width:'44px',height:'44px',borderRadius:'30%',boxShadow:'0 2px 12px #7b2ff2',background:'#fff',objectFit:'cover'}} />
-          <img src="/images/nft_98.png" alt="NFT 98" className="nexora-hero-nft-glow" style={{width:'48px',height:'48px',borderRadius:'1.2rem',boxShadow:'0 2px 12px #7b2ff2',background:'#fff',objectFit:'cover'}} />
+          <img src="/images/nft_76.png" alt="NFT 76" loading="lazy" className="nexora-hero-nft-glow" style={{width:'44px',height:'44px',borderRadius:'30%',boxShadow:'0 2px 12px #7b2ff2',background:'#fff',objectFit:'cover'}} />
+          <img src="/images/nft_98.png" alt="NFT 98" loading="lazy" className="nexora-hero-nft-glow" style={{width:'48px',height:'48px',borderRadius:'1.2rem',boxShadow:'0 2px 12px #7b2ff2',background:'#fff',objectFit:'cover'}} />
         </div>
         <div style={{margin:'0 auto',maxWidth:'520px',textAlign:'center',fontSize:'1.25rem',fontWeight:500,color:'#333',lineHeight:1.6,marginBottom:'1.2rem'}}>Discover the next generation of pixel art collectibles, powered by Base and web3. Join the revolution!</div>
         <div style={{ marginTop: 24, width: '100%' }}>
@@ -120,7 +120,7 @@ export default function ResponsiveHome() {
           </div>
         </div>
         <div className="nexora-feature-imgbox" style={{flex:'0 0 320px',background:'#f3e9f7',borderRadius:'1.2rem',padding:'1.2rem',boxShadow:'0 2px 16px #0001',display:'flex',flexDirection:'column',alignItems:'center',position:'relative'}}>
-          <img src="/images/nft_102.png" alt="NEXORA NFT" className="nexora-feature-img" style={{width:'220px',height:'220px',borderRadius:'1.2rem',marginBottom:'1.2rem',background:'#fff'}} />
+          <img src="/images/nft_102.png" alt="NEXORA NFT" loading="lazy" className="nexora-feature-img" style={{width:'220px',height:'220px',borderRadius:'1.2rem',marginBottom:'1.2rem',background:'#fff'}} />
           <div className="nexora-feature-badge" style={{position:'absolute',top:'1.2rem',right:'1.2rem',background:'#fff',borderRadius:'1rem',padding:'0.5rem 1.2rem',boxShadow:'0 2px 8px #0001',fontWeight:700,fontSize:'1.3rem',color:'#7b2ff2',textAlign:'center'}}>3,333<br /><span style={{fontWeight:400,fontSize:'1rem',color:'#aaa'}}>UNIQUE ITEMS</span></div>
           <div className="nexora-feature-network" style={{position:'absolute',bottom:'1.2rem',left:'1.2rem',background:'#fff',borderRadius:'0.8rem',padding:'0.4rem 1.1rem',boxShadow:'0 2px 8px #0001',fontWeight:700,fontSize:'1.1rem',color:'#ff9900',textAlign:'center'}}>Base<br /><span style={{fontWeight:400,fontSize:'0.95rem',color:'#aaa'}}>NETWORK</span></div>
         </div>
@@ -131,11 +131,11 @@ export default function ResponsiveHome() {
             Living on the Base blockchain, your NEXORA is your membership card to an exclusive community of creators, collectors, and digital pioneers.
           </div>
           <div className="nexora-feature-avatars" style={{display:'flex',alignItems:'center',gap:'0.5rem',marginTop:'1.2rem'}}>
-            <img src="/images/nft_11.png" alt="NEXORA Avatar 1" style={{width:'44px',height:'44px',borderRadius:'50%',border:'2px solid #fff',boxShadow:'0 2px 8px #0001'}} />
-            <img src="/images/nft_16.png" alt="NEXORA Avatar 2" style={{width:'44px',height:'44px',borderRadius:'50%',border:'2px solid #fff',boxShadow:'0 2px 8px #0001'}} />
-            <img src="/images/nft_54.png" alt="NEXORA Avatar 3" style={{width:'44px',height:'44px',borderRadius:'50%',border:'2px solid #fff',boxShadow:'0 2px 8px #0001'}} />
-            <img src="/images/nft_3.png" alt="NEXORA Avatar 4" style={{width:'44px',height:'44px',borderRadius:'50%',border:'2px solid #fff',boxShadow:'0 2px 8px #0001'}} />
-            <img src="/images/nft_8.png" alt="NEXORA Avatar 5" style={{width:'44px',height:'44px',borderRadius:'50%',border:'2px solid #fff',boxShadow:'0 2px 8px #0001'}} />
+            <img src="/images/nft_11.png" alt="NEXORA Avatar 1" loading="lazy" style={{width:'44px',height:'44px',borderRadius:'50%',border:'2px solid #fff',boxShadow:'0 2px 8px #0001'}} />
+            <img src="/images/nft_16.png" alt="NEXORA Avatar 2" loading="lazy" style={{width:'44px',height:'44px',borderRadius:'50%',border:'2px solid #fff',boxShadow:'0 2px 8px #0001'}} />
+            <img src="/images/nft_54.png" alt="NEXORA Avatar 3" loading="lazy" style={{width:'44px',height:'44px',borderRadius:'50%',border:'2px solid #fff',boxShadow:'0 2px 8px #0001'}} />
+            <img src="/images/nft_3.png" alt="NEXORA Avatar 4" loading="lazy" style={{width:'44px',height:'44px',borderRadius:'50%',border:'2px solid #fff',boxShadow:'0 2px 8px #0001'}} />
+            <img src="/images/nft_8.png" alt="NEXORA Avatar 5" loading="lazy" style={{width:'44px',height:'44px',borderRadius:'50%',border:'2px solid #fff',boxShadow:'0 2px 8px #0001'}} />
             <span className="nexora-feature-join" style={{marginLeft:'1rem',fontWeight:700,fontSize:'1.1rem',color:'#222'}}>Join Us</span>
           </div>
         </div>

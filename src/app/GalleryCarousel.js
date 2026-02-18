@@ -38,7 +38,7 @@ export default function GalleryCarousel() {
     nftImages[(index + offset + nftImages.length) % nftImages.length];
 
   return (
-    <section style={sectionStyle}>
+    <section style={{ ...sectionStyle, background: 'rgba(255,255,255,0.06)', zIndex: 1 }}>
       <div style={containerStyle}>
         <h2 style={titleStyle}>Gallery</h2>
 
@@ -83,11 +83,11 @@ const sectionStyle = {
   justifyContent: "center",
   alignItems: "center",
   padding: "3rem 1rem",
-  overflowX: "hidden",
+  // overflowX removed to allow scrolling and background
 };
 
 const containerStyle = {
-  background: "rgba(255,255,255,0.06)",
+  background: "transparent",
   border: "3px solid #2ec4b6",
   borderRadius: "2.2rem",
   padding: "2.5rem 1.5rem",

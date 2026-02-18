@@ -80,6 +80,7 @@ body {
 .bit-revolution-section,
 .nexora-footer {
   position: relative;
+  background: transparent;
   /* z-index removed to allow animated background to show through */
 }
 
