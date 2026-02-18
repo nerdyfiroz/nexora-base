@@ -1,33 +1,31 @@
-/* ================= IMPORTS (ALWAYS FIRST) ================= */
+/* ================= IMPORTS ================= */
 
 @import "tailwindcss";
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
 
-/* ================= ROOT THEME ================= */
+/* ================= THEME ================= */
 
-:root {
+:root tells {
   --bg-main: #f8f8f6;
   --fg-main: #171717;
 
-  --anim-line: rgba(120, 120, 120, 0.35);
-  --anim-dot: rgba(140, 140, 140, 0.45);
+  --g1: #7b2ff2;
+  --g2: #00d4ff;
+  --g3: #ff7ad9;
 }
 
 /* ================= GLOBAL SAFETY ================= */
 
-html,
-body {
+html, body {
   width: 100%;
-  max-width: 100%;
   overflow-x: hidden;
   background: var(--bg-main);
 }
 
 body {
   min-height: 100vh;
-  color: var(--fg-main);
   font-family: "Space Grotesk", Arial, Helvetica, sans-serif;
-  position: relative;
+  color: var(--fg-main);
 }
 
 /* ================= ANIMATED BACKGROUND ================= */
@@ -37,22 +35,39 @@ body {
   inset: 0;
   width: 100%;
   height: 100%;
-  z-index: 0;
   pointer-events: none;
-  opacity: 0.75;
-  filter: contrast(1.1);
+  z-index: 0;
+  filter: blur(0.6px);
+  opacity: 0.85;
 }
 
-/* Force animation colors visible on light background */
+/* Gradient animated glow */
 
 .animated-bg-canvas line,
 .animated-bg-canvas path {
-  stroke: var(--anim-line) !important;
+  stroke-width: 1.4px !important;
+  stroke: linear-gradient(45deg, var(--g1), var(--g2), var(--g3));
+  filter: drop-shadow(0 0 6px var(--g2));
+  animation: gradientShift 6s linear infinite;
 }
 
-.animated-bg-canvas circle,
-.animated-bg-canvas rect {
-  fill: var(--anim-dot) !important;
+.animated-bg-canvas circle {
+  fill: var(--g2);
+  filter: blur(1px) drop-shadow(0 0 10px var(--g1));
+  animation: dotPulse 4s ease-in-out infinite alternate;
+}
+
+/* ================= GRADIENT MOTION ================= */
+
+@keyframes gradientShift {
+  0%   { filter: hue-rotate(0deg) drop-shadow(0 0 6px #7b2ff2); }
+  50%  { filter: hue-rotate(120deg) drop-shadow(0 0 10px #00d4ff); }
+  100% { filter: hue-rotate(240deg) drop-shadow(0 0 6px #ff7ad9); }
+}
+
+@keyframes dotPulse {
+  0% { opacity: 0.5; transform: scale(0.9); }
+  100% { opacity: 1; transform: scale(1.15); }
 }
 
 /* ================= CONTENT LAYERS ================= */
@@ -60,94 +75,35 @@ body {
 .content-overlay,
 .nexora-main,
 .nexora-gallery-section,
-.nexora-footer,
 .bit-revolution-section,
-.nexora-builder-credit {
+.nexora-footer {
   position: relative;
   z-index: 2;
 }
 
-/* ================= HERO / FEATURE NFT ================= */
-
-.nexora-feature-imgbox {
-  position: relative;
-  width: 340px;
-  height: 340px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.nexora-feature-imgbox::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: #f7e6ff;
-  border-radius: 2.5rem;
-  filter: blur(2px) opacity(0.45);
-  z-index: 1;
-}
-
-.nexora-feature-img {
-  width: 300px;
-  height: 300px;
-  object-fit: cover;
-  background: #fff;
-  border-radius: 1.5rem;
-  box-shadow: 0 8px 40px #0002, 0 2px 12px #0001;
-  position: relative;
-  z-index: 2;
-  border: 4px solid #fff;
-}
-
-/* ================= MOBILE FIXES ================= */
+/* ================= MOBILE FIX ================= */
 
 @media (max-width: 700px) {
 
-  section,
-  main,
-  .nexora-main,
-  .nexora-gallery-section {
+  .animated-bg-canvas {
+    opacity: 1;
+    filter: blur(0.8px);
+  }
+
+  section {
     max-width: 100%;
-    overflow: visible !important;
-  }
-
-  .nexora-feature-imgbox {
-    width: 90vw;
-    height: 90vw;
-    max-width: 340px;
-    max-height: 340px;
-  }
-
-  .nexora-feature-img {
-    width: 80vw;
-    height: 80vw;
-    max-width: 300px;
-    max-height: 300px;
-  }
-
-  /* Keep Bit Revolution visible */
-
-  .bit-revolution-section {
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
+    overflow: visible;
   }
 }
 
 /* ================= SOCIAL ICON FIX ================= */
 
-@media (max-width: 700px) {
-  .nexora-icon-discord { display: none !important; }
-  .nexora-icon-base { display: inline-flex !important; }
-}
+@media (max-width:700px) {
+  .nexora-icon-discord {
+    display: none !important;
+  }
 
-/* ================= REMOVE DARK MODE OVERRIDE ================= */
-
-@media (prefers-color-scheme: dark) {
-  body {
-    background: var(--bg-main) !important;
-    color: var(--fg-main) !important;
+  .nexora-icon-base {
+    display: inline-flex !important;
   }
 }
