@@ -1,40 +1,141 @@
 "use client";
 import dynamic from "next/dynamic";
 import { useIsMobile } from "./useIsMobile";
-import GalleryCarousel from "./GalleryCarousel";
-import AnimatedDescription from "./AnimatedDescription";
-import RoadmapFlow from "./RoadmapFlow";
-import NexoraMarquee from "./NexoraMarquee";
-
-const MobileHome = dynamic(() => import("./MobileHome"), { ssr: false });
-
 export default function ResponsiveHome() {
   const isMobile = useIsMobile();
   if (isMobile) {
     return <MobileHome />;
   }
-  // Desktop UI
+  // Desktop UI (fully polished)
   return (
-    <div className="nexora-main" style={{ minHeight: '100vh', padding: '0 2rem', maxWidth: 1200, margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-      <header style={{ width: '100%', textAlign: 'center', margin: '2.5rem 0 1.5rem 0' }}>
-        <span className="nexora-title" style={{ fontFamily: 'var(--font-pacifico), cursive', fontWeight: 400, fontSize: '3.5rem', letterSpacing: '-0.04em', textShadow: '0 2px 24px #a78bfa33' }}>NEXORA</span>
-        <div style={{ marginTop: '1.2rem' }}>
-          <AnimatedDescription />
+    <main className="nexora-main" style={{ minHeight: '100vh', padding: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', background: 'var(--background)' }}>
+      {/* Hero Section */}
+      <section style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '3.5rem 0 2.5rem 0', background: 'linear-gradient(90deg,#f7e6ff 0%,#e0f7fa 100%)', borderRadius: '0 0 2.5rem 2.5rem', boxShadow: '0 8px 32px #0001', position: 'relative' }}>
+        {/* Header Images */}
+        <div style={{display:'flex',justifyContent:'center',alignItems:'center',gap:'2.5rem',marginBottom:'1.2rem'}}>
+          <img src="/images/nft_226.png" alt="Header NFT 1" style={{width:'80px',height:'80px',borderRadius:'1.2rem',boxShadow:'0 2px 12px #7b2ff2',background:'#fff'}} />
+          <img src="/images/nexora_logo.png" alt="Nexora Logo" style={{ width: 120, height: 120, borderRadius: '2rem', boxShadow: '0 2px 16px #7b2ff2',background:'#fff' }} />
+          <img src="/images/nft_16.png" alt="Header NFT 2" style={{width:'80px',height:'80px',borderRadius:'1.2rem',boxShadow:'0 2px 12px #7b2ff2',background:'#fff'}} />
         </div>
-      </header>
-      <section style={{ width: '100%', margin: '0 0 2.5rem 0' }}>
-        <NexoraMarquee />
+        <h1 className="nexora-title" style={{ fontSize: '3.2rem', fontWeight: 900, marginBottom: 12, letterSpacing: '0.04em', textAlign: 'center', background: 'linear-gradient(90deg,#6366f1 0%,#a78bfa 50%,#f472b6 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', color: 'transparent' }}>NEXORA</h1>
+        <div style={{marginBottom:'0.5rem',marginTop:'0.5rem'}}>
+          <span style={{fontSize:'2.1rem',fontWeight:600,letterSpacing:'0.01em',background:'linear-gradient(90deg,#38ef7d 0%,#1194f6 40%,#7b2ff2 100%)',WebkitBackgroundClip:'text',WebkitTextFillColor:'transparent',backgroundClip:'text',color:'transparent',textShadow:'0 2px 12px #fff8'}}>Magic Meets Metadata ⚡️</span>
+        </div>
+        <div style={{margin:'0 auto',maxWidth:'520px',textAlign:'center',fontSize:'1.25rem',fontWeight:500,color:'#333',lineHeight:1.6,background:'#fff',borderRadius:'1.2rem',padding:'0.7rem 1.5rem',boxShadow:'0 2px 12px #0001',marginBottom:'1.2rem'}}>Discover the next generation of pixel art collectibles, powered by Base and web3. Join the revolution!</div>
+        <div style={{ marginTop: 24, width: '100%' }}>
+          <NexoraMarquee />
+        </div>
       </section>
-      <section style={{ width: '100%', margin: '0 0 2.5rem 0' }}>
-        <GalleryCarousel />
+
+      {/* 8-Bit Revolution Section */}
+      <div style={{width:'100%',display:'flex',justifyContent:'center',margin:'2.5rem 0 1.5rem 0'}}>
+        <h2 className="nexora-marquee-gradient-text" style={{fontSize:'4.2rem',fontWeight:900,letterSpacing:'0.04em',margin:0,padding:0,textTransform:'uppercase',textAlign:'center',background:'linear-gradient(90deg, #38ef7d 0%, #1194f6 40%, #7b2ff2 100%)',WebkitBackgroundClip:'text',WebkitTextFillColor:'transparent',backgroundClip:'text',color:'transparent',animation:'gradient-move 4s linear infinite alternate'}}>The 8-Bit Revolution</h2>
+      </div>
+      <section className="nexora-feature-section" style={{display:'flex',alignItems:'center',gap:'2.5rem',background:'#f7f8fa',borderRadius:'1.5rem',boxShadow:'0 4px 32px #0001',padding:'2.5rem 2rem',margin:'0 auto 2.5rem auto',maxWidth:'1100px'}}>
+        {/* Buttons and Socials */}
+        <div style={{display:'flex',flexDirection:'column',alignItems:'center',gap:'1.5rem',margin:'2.5rem 0 1.5rem 0'}}>
+          <div style={{display:'flex',gap:'2.2rem',marginBottom:'0.7rem'}}>
+            <a href="https://opensea.io/" target="_blank" rel="noopener noreferrer" style={{
+              display:'inline-block',
+              padding:'0.9rem 2.2rem',
+              borderRadius:'2.5rem',
+              background:'#fff',
+              boxShadow:'0 2px 16px #0001',
+              fontWeight:700,
+              fontSize:'1.25rem',
+              letterSpacing:'0.01em',
+              color:'#222',
+              textDecoration:'none',
+              border:'none',
+              transition:'box-shadow 0.2s',
+              minWidth:'220px',
+              textAlign:'center',
+              backgroundClip:'padding-box',
+              WebkitBackgroundClip:'padding-box',
+            }}>
+              <span style={{
+                background: 'linear-gradient(90deg,#38ef7d 0%,#1194f6 40%,#7b2ff2 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                color: 'transparent',
+                fontWeight: 700,
+                fontSize: '1.25rem',
+                letterSpacing: '0.01em',
+                display: 'inline-block',
+              }}>
+                Explore Collection
+              </span>
+            </a>
+            <a href="#" style={{
+              display:'inline-block',
+              padding:'0.9rem 2.2rem',
+              borderRadius:'2.5rem',
+              background:'#000',
+              color:'#fff',
+              fontWeight:700,
+              fontSize:'1.25rem',
+              letterSpacing:'0.01em',
+              textDecoration:'none',
+              border:'none',
+              minWidth:'220px',
+              textAlign:'center',
+              boxShadow:'0 2px 16px #0001',
+              transition:'box-shadow 0.2s',
+            }}>
+              Apply for Allowlist
+            </a>
+          </div>
+          <div style={{display:'flex',gap:'2.2rem',marginTop:'0.7rem'}}>
+            <a href="https://discord.gg/" target="_blank" rel="noopener noreferrer" style={{display:'inline-flex',alignItems:'center',justifyContent:'center'}}>
+              <img src="/images/social_discord.png" alt="Discord" style={{width:'38px',height:'38px',opacity:0.7}} />
+            </a>
+            <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" style={{display:'inline-flex',alignItems:'center',justifyContent:'center'}}>
+              <img src="/images/social_x.png" alt="X" style={{width:'38px',height:'38px',opacity:0.7}} />
+            </a>
+            <a href="https://opensea.io/" target="_blank" rel="noopener noreferrer" style={{display:'inline-flex',alignItems:'center',justifyContent:'center'}}>
+              <img src="/images/social_opensea.png" alt="OpenSea" style={{width:'38px',height:'38px',opacity:0.7}} />
+            </a>
+          </div>
+        </div>
+        <div className="nexora-feature-imgbox" style={{flex:'0 0 320px',background:'#f3e9f7',borderRadius:'1.2rem',padding:'1.2rem',boxShadow:'0 2px 16px #0001',display:'flex',flexDirection:'column',alignItems:'center',position:'relative'}}>
+          <img src="/images/nft_102.png" alt="NEXORA NFT" className="nexora-feature-img" style={{width:'220px',height:'220px',borderRadius:'1.2rem',marginBottom:'1.2rem',background:'#fff'}} />
+          <div className="nexora-feature-badge" style={{position:'absolute',top:'1.2rem',right:'1.2rem',background:'#fff',borderRadius:'1rem',padding:'0.5rem 1.2rem',boxShadow:'0 2px 8px #0001',fontWeight:700,fontSize:'1.3rem',color:'#7b2ff2',textAlign:'center'}}>3,333<br /><span style={{fontWeight:400,fontSize:'1rem',color:'#aaa'}}>UNIQUE ITEMS</span></div>
+          <div className="nexora-feature-network" style={{position:'absolute',bottom:'1.2rem',left:'1.2rem',background:'#fff',borderRadius:'0.8rem',padding:'0.4rem 1.1rem',boxShadow:'0 2px 8px #0001',fontWeight:700,fontSize:'1.1rem',color:'#ff9900',textAlign:'center'}}>Base<br /><span style={{fontWeight:400,fontSize:'0.95rem',color:'#aaa'}}>NETWORK</span></div>
+        </div>
+        <div className="nexora-feature-content" style={{flex:1,minWidth:'320px'}}>
+          <div className="nexora-feature-desc" style={{fontSize:'1.25rem',fontWeight:400,lineHeight:1.6,color:'#222',marginBottom:'1.5rem'}}>
+            Welcome to the <b style={{color:'#7b2ff2',fontWeight:700}}>NEXORA revolution</b>. We’re building a brand that blends pixel art, web3, and the magic of digital collectibles.<br /><br />
+            Each of the <b style={{color:'#222',fontWeight:700}}>3,333 NEXORAs</b> is algorithmically generated from over <a href="#" style={{color:'#7b2ff2',fontWeight:700,textDecoration:'underline'}}>100+ hand-drawn traits</a>. From wizards to pixel gems, no two are alike.<br /><br />
+            Living on the Base blockchain, your NEXORA is your membership card to an exclusive community of creators, collectors, and digital pioneers.
+          </div>
+          <div className="nexora-feature-avatars" style={{display:'flex',alignItems:'center',gap:'0.5rem',marginTop:'1.2rem'}}>
+            <img src="/images/nft_11.png" alt="NEXORA Avatar 1" style={{width:'44px',height:'44px',borderRadius:'50%',border:'2px solid #fff',boxShadow:'0 2px 8px #0001'}} />
+            <img src="/images/nft_16.png" alt="NEXORA Avatar 2" style={{width:'44px',height:'44px',borderRadius:'50%',border:'2px solid #fff',boxShadow:'0 2px 8px #0001'}} />
+            <img src="/images/nft_54.png" alt="NEXORA Avatar 3" style={{width:'44px',height:'44px',borderRadius:'50%',border:'2px solid #fff',boxShadow:'0 2px 8px #0001'}} />
+            <img src="/images/nft_3.png" alt="NEXORA Avatar 4" style={{width:'44px',height:'44px',borderRadius:'50%',border:'2px solid #fff',boxShadow:'0 2px 8px #0001'}} />
+            <img src="/images/nft_8.png" alt="NEXORA Avatar 5" style={{width:'44px',height:'44px',borderRadius:'50%',border:'2px solid #fff',boxShadow:'0 2px 8px #0001'}} />
+            <span className="nexora-feature-join" style={{marginLeft:'1rem',fontWeight:700,fontSize:'1.1rem',color:'#222'}}>Join Us</span>
+          </div>
+        </div>
       </section>
-      <section style={{ width: '100%', margin: '0 0 2.5rem 0' }}>
-        <RoadmapFlow />
-      </section>
-      <footer className="nexora-footer" style={{ textAlign: 'center', margin: '2.5rem 0 1rem 0', fontSize: '1rem', color: '#a1a1aa' }}>
-        <img src="/images/rumiilyan.jpeg" alt="Rumi Ilyan" style={{ width: '40px', height: '40px', borderRadius: '50%', objectFit: 'cover', boxShadow: '0 2px 8px #0002', display: 'block', margin: '0 auto 0.5rem auto' }} />
-        Website built by <a href="https://x.com/RamiIlyan" target="_blank" rel="noopener noreferrer" style={{ color: '#007aff', fontWeight: 700, textDecoration: 'none' }}>Rumi Ilyan</a>
+
+      {/* Gallery Carousel */}
+      <GalleryCarousel />
+
+      {/* Roadmap Section */}
+      <RoadmapFlow />
+
+      {/* Footer / Builder Credit */}
+      <footer className="nexora-builder-credit" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1.2rem', margin: '2.5rem 0 1.5rem 0', fontSize: '1.1rem', color: '#888' }}>
+        <span>Built by</span>
+        <a href="https://twitter.com/0xNexora" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: 8, textDecoration: 'none', color: '#7b2ff2', fontWeight: 700 }}>
+// ...existing code...
+          <img src="/images/nexora_logo.png" alt="Nexora Logo" style={{ width: 40, height: 40, borderRadius: '1rem', marginRight: 8 }} />
+          @0xNexora
+        </a>
+        <span style={{ color: '#bbb', fontWeight: 400, marginLeft: 8 }}>| &copy; 2026</span>
       </footer>
-    </div>
+    </main>
   );
 }
