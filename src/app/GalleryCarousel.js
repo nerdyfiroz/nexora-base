@@ -111,10 +111,8 @@ const nftImages = [
       </div>
     </section>
   );
-}
 
-/* ---------- styles ---------- */
-
+// ---------- styles ----------
 const sectionStyle = {
   display: "flex",
   justifyContent: "center",
