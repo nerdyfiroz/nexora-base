@@ -20,6 +20,8 @@ const nftImages = [
   "/images/nft_98.png",
 ];
 
+
+function GalleryCarousel() {
   const [index, setIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
@@ -67,6 +69,7 @@ const nftImages = [
       </div>
     </section>
   );
+}
 
 export default GalleryCarousel;
 
