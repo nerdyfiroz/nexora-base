@@ -45,37 +45,22 @@ export default function GalleryCarousel() {
               <div
                 key={`${index}-${i}`}
                 style={{
-                  width: 300, // square
-                  height: 300, // square
-                  aspectRatio: "1 / 1",
-                  borderRadius: "1.2rem",
-                  background: "#fff",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  transition: "all 0.35s ease",
-                  transform: `scale(${center ? 1.18 : 0.9}) rotate(${offset * 7}deg) translateY(${center ? 0 : 22}px)`,
+                  ...cardStyle,
+                  transform: `scale(${center ? 1.15 : 0.9}) rotate(${offset * 6}deg) translateY(${center ? 0 : 18}px)`,
                   opacity: center ? 1 : 0.35,
-                  filter: center ? "none" : "blur(1.5px)",
+                  filter: center ? "none" : "blur(1.2px)",
                   zIndex: 10 - Math.abs(offset),
                   border: center ? "6px solid #ff595e" : "none",
                   boxShadow: center
-                    ? "0 0 0 5px #ff595e, 0 10px 28px rgba(0,0,0,0.25)"
+                    ? "0 0 0 5px #ff595e, 0 12px 30px rgba(0,0,0,0.25)"
                     : "0 4px 16px rgba(0,0,0,0.12)",
                 }}
               >
                 <img
                   src={img}
-                  alt="NFT artwork"
+                  alt="NFT"
                   loading="lazy"
-                  style={{
-                    width: "96%",
-                    height: "96%",
-                    aspectRatio: "1 / 1",
-                    objectFit: "cover",
-                    borderRadius: "0.9rem",
-                    background: "#fff",
-                  }}
+                  style={imgStyle}
                 />
               </div>
             );
@@ -106,10 +91,10 @@ const sectionStyle = {
 };
 
 const containerStyle = {
-  background: "#f8f8f6", // off-white
+  background: "rgba(255,255,255,0.06)",
   border: "3px solid #2ec4b6",
   borderRadius: "2.5rem",
-  boxShadow: "0 12px 40px rgba(0,0,0,0.08)",
+  boxShadow: "0 12px 40px rgba(0,0,0,0.3)",
   padding: "3rem 2rem",
   maxWidth: 720,
   width: "100%",
@@ -129,30 +114,27 @@ const carouselStyle = {
   justifyContent: "center",
   alignItems: "center",
   gap: "1.4rem",
-  minHeight: 380,
+  minHeight: 360,
   overflow: "hidden",
   marginBottom: "2.4rem",
 };
 
 const cardStyle = {
-  width: 300, // square
-  height: 300, // square
-  aspectRatio: "1 / 1",
-  borderRadius: "1.2rem",
+  width: 320,
+  aspectRatio: "1 / 1", // ✅ Perfect Square
+  borderRadius: "1.5rem",
   background: "#fff",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
   transition: "all 0.35s ease",
+  overflow: "hidden",
 };
 
 const imgStyle = {
-  width: "96%",
-  height: "96%",
-  aspectRatio: "1 / 1",
-  objectFit: "cover",
-  borderRadius: "0.9rem",
-  background: "#fff",
+  width: "100%",
+  height: "100%",
+  objectFit: "cover", // keeps image proportional
 };
 
 const navStyle = {
@@ -162,9 +144,9 @@ const navStyle = {
 };
 
 const btnPrimary = {
-  fontSize: "1.3rem",
-  padding: "0.85rem 2.6rem",
-  borderRadius: "2.2rem",
+  fontSize: "1.2rem",
+  padding: "0.8rem 2.4rem",
+  borderRadius: "2rem",
   background: "#2ec4b6",
   color: "#fff",
   border: "2.5px solid #2ec4b6",
