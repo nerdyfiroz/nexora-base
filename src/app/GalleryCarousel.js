@@ -45,7 +45,15 @@ export default function GalleryCarousel() {
               <div
                 key={`${index}-${i}`}
                 style={{
-                  ...cardStyle,
+                  width: 300, // square
+                  height: 300, // square
+                  aspectRatio: "1 / 1",
+                  borderRadius: "1.2rem",
+                  background: "#fff",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  transition: "all 0.35s ease",
                   transform: `scale(${center ? 1.18 : 0.9}) rotate(${offset * 7}deg) translateY(${center ? 0 : 22}px)`,
                   opacity: center ? 1 : 0.35,
                   filter: center ? "none" : "blur(1.5px)",
@@ -58,9 +66,16 @@ export default function GalleryCarousel() {
               >
                 <img
                   src={img}
-                  alt="NFT"
+                  alt="NFT artwork"
                   loading="lazy"
-                  style={imgStyle}
+                  style={{
+                    width: "96%",
+                    height: "96%",
+                    aspectRatio: "1 / 1",
+                    objectFit: "cover",
+                    borderRadius: "0.9rem",
+                    background: "#fff",
+                  }}
                 />
               </div>
             );
@@ -91,10 +106,10 @@ const sectionStyle = {
 };
 
 const containerStyle = {
-  background: "rgba(255,255,255,0.08)",
+  background: "#f8f8f6", // off-white
   border: "3px solid #2ec4b6",
   borderRadius: "2.5rem",
-  boxShadow: "0 12px 40px rgba(0,0,0,0.3)",
+  boxShadow: "0 12px 40px rgba(0,0,0,0.08)",
   padding: "3rem 2rem",
   maxWidth: 720,
   width: "100%",
@@ -120,9 +135,10 @@ const carouselStyle = {
 };
 
 const cardStyle = {
-  width: 330,
-  height: 330,
-  borderRadius: "1.8rem",
+  width: 300, // square
+  height: 300, // square
+  aspectRatio: "1 / 1",
+  borderRadius: "1.2rem",
   background: "#fff",
   display: "flex",
   alignItems: "center",
@@ -131,10 +147,12 @@ const cardStyle = {
 };
 
 const imgStyle = {
-  width: "92%",
-  height: "92%",
+  width: "96%",
+  height: "96%",
+  aspectRatio: "1 / 1",
   objectFit: "cover",
-  borderRadius: "1.2rem",
+  borderRadius: "0.9rem",
+  background: "#fff",
 };
 
 const navStyle = {
