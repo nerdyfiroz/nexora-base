@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { FixedSizeList as List } from "react-window";
+import { Virtuoso } from "react-virtuoso";
 
 const nftImages = [
   "/images/nft_226.png",
@@ -20,6 +20,7 @@ const nftImages = [
   "/images/nft_98.png",
 ];
 
+function GalleryCarousel() {
   const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth <= 700);
@@ -28,9 +29,9 @@ const nftImages = [
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  // Virtualized item renderer
-  const renderItem = ({ index, style }) => (
-    <div style={{ ...cardStyle, ...style }} key={index}>
+  // Virtualized item renderer for Virtuoso
+  const renderItem = (index) => (
+    <div style={cardStyle} key={index}>
       <img src={nftImages[index]} alt="NFT" loading="lazy" style={imgStyle} />
     </div>
   );
@@ -40,94 +41,92 @@ const nftImages = [
       <div style={containerStyle}>
         <h2 style={titleStyle}>Gallery</h2>
         <div style={{ width: isMobile ? 320 : 900, height: 320, margin: '0 auto' }}>
-          <List
-            height={320}
-            width={isMobile ? 320 : 900}
-            itemCount={nftImages.length}
-            itemSize={isMobile ? 260 : 260}
-            layout="horizontal"
-          >
-            {renderItem}
-          </List>
+          <Virtuoso
+            style={{ width: isMobile ? 320 : 900, height: 320 }}
+            totalCount={nftImages.length}
+            itemContent={renderItem}
+            horizontal={true}
+          />
         </div>
       </div>
     </section>
   );
 }
 
-/* ---------------- STYLES ---------------- */
+export default GalleryCarousel;
 
+// ---------------- STYLES ----------------
 const sectionStyle = {
   display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  padding: "3rem 1rem",
-  // overflowX removed to allow scrolling and background
-};
+    justifyContent: "center",
+    alignItems: "center",
+    padding: "3rem 1rem",
+    // overflowX removed to allow scrolling and background
+  };
 
-const containerStyle = {
-  background: "transparent",
-  border: "3px solid #2ec4b6",
-  borderRadius: "2.2rem",
-  padding: "2.5rem 1.5rem",
-  width: "100%",
-  maxWidth: 1200,
-  textAlign: "center",
-};
+  const containerStyle = {
+    background: "transparent",
+    border: "3px solid #2ec4b6",
+    borderRadius: "2.2rem",
+    padding: "2.5rem 1.5rem",
+    width: "100%",
+    maxWidth: 1200,
+    textAlign: "center",
+  };
 
-const titleStyle = {
-  fontSize: "2.4rem",
-  color: "#2ec4b6",
-  marginBottom: "2rem",
-  fontWeight: 800,
-};
+  const titleStyle = {
+    fontSize: "2.4rem",
+    color: "#2ec4b6",
+    marginBottom: "2rem",
+    fontWeight: 800,
+  };
 
-const carouselStyle = {
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  gap: "1.5rem",
-  flexWrap: "nowrap",
-};
+  const carouselStyle = {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: "1.5rem",
+    flexWrap: "nowrap",
+  };
 
-const cardStyle = {
-  width: "clamp(240px, 60vw, 560px)",
-  aspectRatio: "1 / 1",
-  borderRadius: "2rem",
-  background: "#fff",
-  overflow: "hidden",
-  transition: "all 0.35s ease",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-};
+  const cardStyle = {
+    width: "clamp(240px, 60vw, 560px)",
+    aspectRatio: "1 / 1",
+    borderRadius: "2rem",
+    background: "#fff",
+    overflow: "hidden",
+    transition: "all 0.35s ease",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  };
 
-const imgStyle = {
-  width: "100%",
-  height: "100%",
-  objectFit: "cover",
-};
+  const imgStyle = {
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+  };
 
-const navStyle = {
-  display: "flex",
-  justifyContent: "center",
-  gap: "1.8rem",
-  marginTop: "2rem",
-};
+  const navStyle = {
+    display: "flex",
+    justifyContent: "center",
+    gap: "1.8rem",
+    marginTop: "2rem",
+  };
 
-const btnPrimary = {
-  padding: "0.8rem 2.3rem",
-  borderRadius: "2rem",
-  background: "#2ec4b6",
-  color: "#fff",
-  border: "none",
-  fontWeight: 700,
-  cursor: "pointer",
-};
+  const btnPrimary = {
+    padding: "0.8rem 2.3rem",
+    borderRadius: "2rem",
+    background: "#2ec4b6",
+    color: "#fff",
+    border: "none",
+    fontWeight: 700,
+    cursor: "pointer",
+  };
 
-const btnSecondary = {
-  ...btnPrimary,
-  background: "#fff",
-  color: "#2ec4b6",
-  border: "2px solid #2ec4b6",
-};
+  const btnSecondary = {
+    ...btnPrimary,
+    background: "#fff",
+    color: "#2ec4b6",
+    border: "2px solid #2ec4b6",
+  };
