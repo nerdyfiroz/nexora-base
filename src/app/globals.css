@@ -72,13 +72,15 @@ body {
 
 /* ================= CONTENT LAYERS ================= */
 
+
+/* Remove z-index from overlays and main containers so animated background is always visible */
 .content-overlay,
 .nexora-main,
 .nexora-gallery-section,
 .bit-revolution-section,
 .nexora-footer {
   position: relative;
-  z-index: 2;
+  /* z-index removed to allow animated background to show through */
 }
 
 /* ================= MOBILE FIX ================= */
