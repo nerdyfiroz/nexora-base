@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { Pacifico } from "next/font/google";
 import "./globals.css";
 import "./nexora.css";
-import AnimatedBackground from "./AnimatedBackground";
+// import AnimatedBackground from "./AnimatedBackground";
 
 // AnimatedBackground is now imported as a client component
 
@@ -12,7 +12,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="offwhite-bg fullpage-layout">
-        <AnimatedBackground />
+
         <main className="content-overlay">
           {children}
         </main>
