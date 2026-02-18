@@ -5,7 +5,7 @@ import RoadmapFlow from "./RoadmapFlow";
 
 export default function MobileHome() {
   return (
-    <div style={{ minHeight: '100vh', background: '#f7f8fa', padding: '0 0.5rem' }}>
+    <div style={{ background: '#f7f8fa', padding: '0 0.5rem' }}>
       <header style={{ width: '100%', textAlign: 'center', padding: '1.2rem 0 0.5rem 0' }}>
         <div style={{display:'flex',justifyContent:'center',alignItems:'center',gap:'1.2rem',marginBottom:'0.7rem'}}>
           <img src="/images/nft_226.png" alt="Header NFT 1" style={{width:'48px',height:'48px',borderRadius:'0.7rem',boxShadow:'0 2px 8px #7b2ff2',background:'#fff'}} />
