@@ -4,11 +4,15 @@ import { useState, useEffect } from "react";
 export default function AdminReview() {
   const [apps, setApps] = useState([]);
   const [filter, setFilter] = useState("pending");
+  const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
     fetch(`/api/admin?status=${filter}`)
       .then(res => res.json())
       .then(setApps);
+    fetch('/api/whitelist')
+      .then(res => res.json())
+      .then(setTasks);
   }, [filter]);
 
   const updateStatus = async (id, status) => {
@@ -37,6 +41,16 @@ export default function AdminReview() {
     URL.revokeObjectURL(url);
   };
 
+  const deleteApp = async (id) => {
+    if (typeof window !== 'undefined' && !window.confirm('Delete this application?')) return;
+    await fetch(`/api/admin`, {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id })
+    });
+    setApps(apps => apps.filter(a => a.id !== id));
+  };
+
   return (
     <div style={{ marginBottom: 32 }}>
       <h3 style={{ fontWeight: 700, fontSize: "1.3rem", marginBottom: 16 }}>Whitelist Applications Review</h3>
@@ -50,15 +64,32 @@ export default function AdminReview() {
         </select>
       </div>
       <ul style={{ marginBottom: 16 }}>
-        {apps.map(app => (
-          <li key={app.id} style={{ marginBottom: 8, background: "#f8f8f6", padding: 12, borderRadius: 8 }}>
-            <span style={{ fontWeight: 600 }}>{app.wallet_address}</span>
-            <span style={{ marginLeft: 12, color: "#2ec4b6" }}>{app.status}</span>
-            <button onClick={() => updateStatus(app.id, "reviewed")} style={{ marginLeft: 8 }}>Review</button>
-            <button onClick={() => updateStatus(app.id, "gtd")} style={{ marginLeft: 8, color: "#007aff" }}>Give GTD</button>
-            <button onClick={() => updateStatus(app.id, "wl")} style={{ marginLeft: 8, color: "#7b2ff2" }}>Give WL</button>
-          </li>
-        ))}
+        {apps.map(app => {
+          let proofs = {};
+          try {
+            proofs = typeof app.tasks === 'string' ? JSON.parse(app.tasks) : app.tasks;
+          } catch (e) {}
+          return (
+            <li key={app.id} style={{ marginBottom: 16, background: "#f8f8f6", padding: 16, borderRadius: 10 }}>
+              <div style={{ fontWeight: 600, marginBottom: 4 }}>{app.wallet_address}</div>
+              <div style={{ marginBottom: 8, color: "#2ec4b6" }}>Status: {app.status}</div>
+              <div style={{ marginBottom: 8 }}>
+                <b>Proofs:</b>
+                <ul style={{ margin: 0, paddingLeft: 18 }}>
+                  {tasks.map(task => (
+                    <li key={task.id}>
+                      <span style={{ fontWeight: 500 }}>{task.name}:</span> {proofs[task.id] || <span style={{ color: '#aaa' }}>No proof</span>}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <button onClick={() => updateStatus(app.id, "reviewed")} style={{ marginRight: 8 }}>Review</button>
+              <button onClick={() => updateStatus(app.id, "gtd")} style={{ marginRight: 8, color: "#007aff" }}>Give GTD</button>
+              <button onClick={() => updateStatus(app.id, "wl")} style={{ marginRight: 8, color: "#7b2ff2" }}>Give WL</button>
+              <button onClick={() => deleteApp(app.id)} style={{ color: "#e63946", marginLeft: 8 }}>Delete</button>
+            </li>
+          );
+        })}
       </ul>
       <div style={{ display: "flex", gap: 12 }}>
         <button onClick={() => exportWinners("gtd")} style={{ padding: 8, borderRadius: 6, background: "#007aff", color: "#fff", fontWeight: 700, border: "none" }}>Export GTD Winners</button>
