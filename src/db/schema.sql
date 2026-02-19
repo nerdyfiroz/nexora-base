@@ -7,11 +7,11 @@ CREATE TABLE whitelist_applications (
   created_at TIMESTAMP DEFAULT NOW()
 );
 
--- Tasks table (admin controls tasks)
 CREATE TABLE whitelist_tasks (
   id SERIAL PRIMARY KEY,
   name VARCHAR(128) NOT NULL,
   description TEXT,
+  link TEXT,
   required BOOLEAN DEFAULT true,
   created_at TIMESTAMP DEFAULT NOW()
 );

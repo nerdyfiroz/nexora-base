@@ -3,7 +3,8 @@ import { useState, useEffect } from "react";
 
 export default function AdminTasks() {
   const [tasks, setTasks] = useState([]);
-  const [newTask, setNewTask] = useState({ name: "", description: "", required: true });
+  const [newTask, setNewTask] = useState({ name: "", description: "", required: true, link: "" });
+  const [editTask, setEditTask] = useState(null);
 
   useEffect(() => {
     fetch("/api/tasks")
@@ -17,7 +18,19 @@ export default function AdminTasks() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newTask),
     });
-    setNewTask({ name: "", description: "", required: true });
+    setNewTask({ name: "", description: "", required: true, link: "" });
+    fetch("/api/tasks").then(res => res.json()).then(setTasks);
+  };
+
+  const startEdit = (task) => setEditTask({ ...task });
+  const cancelEdit = () => setEditTask(null);
+  const saveEdit = async () => {
+    await fetch(`/api/tasks`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(editTask),
+    });
+    setEditTask(null);
     fetch("/api/tasks").then(res => res.json()).then(setTasks);
   };
 
@@ -41,12 +54,50 @@ export default function AdminTasks() {
       <ul style={{ marginBottom: 16 }}>
         {tasks.map(task => (
           <li key={task.id} style={{ marginBottom: 8 }}>
-            <span style={{ fontWeight: 600 }}>{task.name}</span> - {task.description || "No description"}
-            <span style={{ marginLeft: 12, color: task.required ? "#2ec4b6" : "#aaa" }}>
-              {task.required ? "Required" : "Optional"}
-            </span>
-            <button onClick={() => toggleRequired(task.id, !task.required)} style={{ marginLeft: 8 }}>Toggle</button>
-            <button onClick={() => removeTask(task.id)} style={{ marginLeft: 8, color: "#ff595e" }}>Remove</button>
+            {editTask && editTask.id === task.id ? (
+              <>
+                <input
+                  type="text"
+                  value={editTask.name}
+                  onChange={e => setEditTask({ ...editTask, name: e.target.value })}
+                  style={{ padding: 6, borderRadius: 4, border: "1px solid #ccc", marginRight: 4 }}
+                />
+                <input
+                  type="text"
+                  value={editTask.description}
+                  onChange={e => setEditTask({ ...editTask, description: e.target.value })}
+                  style={{ padding: 6, borderRadius: 4, border: "1px solid #ccc", marginRight: 4 }}
+                />
+                <input
+                  type="text"
+                  value={editTask.link || ""}
+                  onChange={e => setEditTask({ ...editTask, link: e.target.value })}
+                  placeholder="Task link (optional)"
+                  style={{ padding: 6, borderRadius: 4, border: "1px solid #ccc", marginRight: 4 }}
+                />
+                <select
+                  value={editTask.required ? "true" : "false"}
+                  onChange={e => setEditTask({ ...editTask, required: e.target.value === "true" })}
+                  style={{ padding: 6, borderRadius: 4, border: "1px solid #ccc", marginRight: 4 }}
+                >
+                  <option value="true">Required</option>
+                  <option value="false">Optional</option>
+                </select>
+                <button onClick={saveEdit} style={{ marginLeft: 4, color: "#2ec4b6" }}>Save</button>
+                <button onClick={cancelEdit} style={{ marginLeft: 4, color: "#aaa" }}>Cancel</button>
+              </>
+            ) : (
+              <>
+                <span style={{ fontWeight: 600 }}>{task.name}</span> - {task.description || "No description"}
+                {task.link && <a href={task.link} target="_blank" rel="noopener noreferrer" style={{ marginLeft: 8, color: "#2ec4b6" }}>Task Link</a>}
+                <span style={{ marginLeft: 12, color: task.required ? "#2ec4b6" : "#aaa" }}>
+                  {task.required ? "Required" : "Optional"}
+                </span>
+                <button onClick={() => toggleRequired(task.id, !task.required)} style={{ marginLeft: 8 }}>Toggle</button>
+                <button onClick={() => startEdit(task)} style={{ marginLeft: 8, color: "#007aff" }}>Edit</button>
+                <button onClick={() => removeTask(task.id)} style={{ marginLeft: 8, color: "#ff595e" }}>Remove</button>
+              </>
+            )}
           </li>
         ))}
       </ul>
@@ -63,6 +114,13 @@ export default function AdminTasks() {
           placeholder="Description"
           value={newTask.description}
           onChange={e => setNewTask({ ...newTask, description: e.target.value })}
+          style={{ padding: 8, borderRadius: 6, border: "1px solid #ccc" }}
+        />
+        <input
+          type="text"
+          placeholder="Task link (optional)"
+          value={newTask.link}
+          onChange={e => setNewTask({ ...newTask, link: e.target.value })}
           style={{ padding: 8, borderRadius: 6, border: "1px solid #ccc" }}
         />
         <select

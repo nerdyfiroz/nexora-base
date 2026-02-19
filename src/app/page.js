@@ -1,7 +1,13 @@
 
-import ResponsiveHome from "./ResponsiveHome";
 
-export default function Home() {
-  return <ResponsiveHome />;
+import ResponsiveHome from "./ResponsiveHome";
+import WhitelistForm from "./WhitelistForm";
+
+  return (
+    <>
+      <ResponsiveHome />
+      <WhitelistForm />
+    </>
+  );
 }
 
