@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 const isValidWallet = (addr) => /^0x[a-fA-F0-9]{40}$/.test(addr);
 
