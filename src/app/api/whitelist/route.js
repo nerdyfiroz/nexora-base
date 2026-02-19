@@ -18,22 +18,29 @@ export async function GET(req) {
       fs.readFile(gtdPath, "utf8"),
     ]);
 
-    const clean = s => s.replace(/[#].*|\s+/g, "").toLowerCase();
-    const addr = address.toLowerCase();
+    const clean = s =>
+      s.replace(/[#].*/g, "").trim().toLowerCase();
 
-    const fcfs = fcfsRaw.split(/\r?\n/).map(clean).filter(Boolean);
-    const gtd = gtdRaw.split(/\r?\n/).map(clean).filter(Boolean);
+    const addr = clean(address);
 
-    // GTD HAS PRIORITY
-if (gtd.includes(addr)) {
-  return res.status(200).json({ status: 'gtd' });
-}
+    const fcfs = fcfsRaw
+      .split(/\r?\n/)
+      .map(clean)
+      .filter(Boolean);
 
-if (fcfs.includes(addr)) {
-  return res.status(200).json({ status: 'wl' });
-}
+    const gtd = gtdRaw
+      .split(/\r?\n/)
+      .map(clean)
+      .filter(Boolean);
 
-return res.status(200).json({ status: 'none' });
+    // ✅ GTD ALWAYS WINS
+    if (gtd.includes(addr)) {
+      return Response.json({ status: "gtd" });
+    }
+
+    if (fcfs.includes(addr)) {
+      return Response.json({ status: "wl" });
+    }
 
     return Response.json({ status: "none" });
 
