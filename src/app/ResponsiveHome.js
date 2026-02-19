@@ -5,9 +5,12 @@ import NexoraMarquee from "./NexoraMarquee";
 import AnimatedDescription from "./AnimatedDescription";
 import GalleryCarousel from "./GalleryCarousel";
 import RoadmapFlow from "./RoadmapFlow";
+import { useState } from "react";
+import WhitelistForm from "./WhitelistForm";
 const MobileHome = dynamic(() => import("./MobileHome"), { ssr: false });
 export default function ResponsiveHome() {
   const isMobile = useIsMobile();
+  const [showWhitelistModal, setShowWhitelistModal] = useState(false);
   if (isMobile) {
     return <MobileHome />;
   }
@@ -88,7 +91,7 @@ export default function ResponsiveHome() {
                 Explore Collection
               </span>
             </a>
-            <a href="#" style={{
+            <button type="button" onClick={() => setShowWhitelistModal(true)} style={{
               display:'inline-block',
               padding:'0.9rem 2.2rem',
               borderRadius:'2.5rem',
@@ -103,9 +106,10 @@ export default function ResponsiveHome() {
               textAlign:'center',
               boxShadow:'0 2px 16px #0001',
               transition:'box-shadow 0.2s',
+              cursor:'pointer',
             }}>
-              Apply for Allowlist
-            </a>
+              Check Whitelist Status
+            </button>
           </div>
           <div style={{display:'flex',gap:'2.2rem',marginTop:'0.7rem'}}>
             <a href="https://x.com/Nexora_base" target="_blank" rel="noopener noreferrer" style={{display:'inline-flex',alignItems:'center',justifyContent:'center'}}>
@@ -157,6 +161,15 @@ export default function ResponsiveHome() {
         <span style={{ color: '#bbb', fontWeight: 400, marginLeft: 8 }}>| &copy; 2026</span>
       </footer>
     </main>
+    {/* Whitelist Modal */}
+    <div className={`nexora-modal-overlay${showWhitelistModal ? ' nexora-modal-open' : ''}`} style={{pointerEvents: showWhitelistModal ? 'auto' : 'none'}}>
+      <div className={`nexora-modal${showWhitelistModal ? ' nexora-modal-in' : ''}`} style={{maxWidth: 400, width: '95vw'}}>
+        <button onClick={() => setShowWhitelistModal(false)} style={{position:'absolute',top:8,right:8,background:'#fff',border:'none',borderRadius:16,fontSize:24,fontWeight:700,width:36,height:36,cursor:'pointer',boxShadow:'0 2px 8px #0002'}}>×</button>
+        {showWhitelistModal && (
+          <WhitelistForm />
+        )}
+      </div>
+    </div>
     <style jsx global>{`
       .nexora-hero-nft-glow {
         transition: box-shadow 0.2s, filter 0.2s;
