@@ -1,5 +1,8 @@
+
 "use client";
 import { useState } from "react";
+import AdminTasks from "./AdminTasks";
+import AdminReview from "./AdminReview";
 
 export default function AdminPanel() {
   const [code, setCode] = useState("");
@@ -36,8 +39,7 @@ export default function AdminPanel() {
       <p>Whitelist management, GTD/WL review, task controls, and export features will appear here.</p>
       <AdminTasks />
       <AdminReview />
-    import AdminReview from "./AdminReview";
     </div>
   );
-import AdminTasks from "./AdminTasks";
+}
 }
