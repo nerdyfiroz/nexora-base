@@ -17,6 +17,15 @@ export default function ResponsiveHome() {
   // Desktop UI (fully polished)
   return (
     <>
+      {/* Whitelist Modal (should be at the top for proper overlay) */}
+      <div className={`nexora-modal-overlay${showWhitelistModal ? ' nexora-modal-open' : ''}`} style={{pointerEvents: showWhitelistModal ? 'auto' : 'none'}}>
+        <div className={`nexora-modal${showWhitelistModal ? ' nexora-modal-in' : ''}`} style={{maxWidth: 400, width: '95vw'}}>
+          <button onClick={() => setShowWhitelistModal(false)} style={{position:'absolute',top:8,right:8,background:'#fff',border:'none',borderRadius:16,fontSize:24,fontWeight:700,width:36,height:36,cursor:'pointer',boxShadow:'0 2px 8px #0002'}}>×</button>
+          {showWhitelistModal && (
+            <WhitelistForm />
+          )}
+        </div>
+      </div>
       <main className="nexora-main" style={{ padding: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', background: 'var(--background)' }}>
         {/* Hero Section */}
         <section style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '3.5rem 0 2.5rem 0', background: 'linear-gradient(90deg,#f7e6ff 0%,#e0f7fa 100%)', borderRadius: '0 0 2.5rem 2.5rem', boxShadow: '0 8px 32px #0001', position: 'relative' }}>
@@ -161,15 +170,6 @@ export default function ResponsiveHome() {
         <span style={{ color: '#bbb', fontWeight: 400, marginLeft: 8 }}>| &copy; 2026</span>
       </footer>
     </main>
-    {/* Whitelist Modal */}
-    <div className={`nexora-modal-overlay${showWhitelistModal ? ' nexora-modal-open' : ''}`} style={{pointerEvents: showWhitelistModal ? 'auto' : 'none'}}>
-      <div className={`nexora-modal${showWhitelistModal ? ' nexora-modal-in' : ''}`} style={{maxWidth: 400, width: '95vw'}}>
-        <button onClick={() => setShowWhitelistModal(false)} style={{position:'absolute',top:8,right:8,background:'#fff',border:'none',borderRadius:16,fontSize:24,fontWeight:700,width:36,height:36,cursor:'pointer',boxShadow:'0 2px 8px #0002'}}>×</button>
-        {showWhitelistModal && (
-          <WhitelistForm />
-        )}
-      </div>
-    </div>
     <style jsx global>{`
       .nexora-hero-nft-glow {
         transition: box-shadow 0.2s, filter 0.2s;

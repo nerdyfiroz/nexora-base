@@ -18,8 +18,8 @@ export default async function handler(req, res) {
         ]);
         const clean = s => s.replace(/[#].*|\s+/g, '').toLowerCase();
         const addr = address.toLowerCase();
-        const fcfs = fcfsRaw.split(/\r?\n/).map(clean).filter(Boolean);
-        const gtd = gtdRaw.split(/\r?\n/).map(clean).filter(Boolean);
+        const fcfs = fcfsRaw.split(/\r?\n/).map(clean).filter(Boolean).filter(a => a !== 'address');
+        const gtd = gtdRaw.split(/\r?\n/).map(clean).filter(Boolean).filter(a => a !== 'address');
         if (fcfs.includes(addr)) {
           return res.status(200).json({ status: 'wl' });
         }
