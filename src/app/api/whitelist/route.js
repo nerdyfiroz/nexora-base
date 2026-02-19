@@ -24,8 +24,16 @@ export async function GET(req) {
     const fcfs = fcfsRaw.split(/\r?\n/).map(clean).filter(Boolean);
     const gtd = gtdRaw.split(/\r?\n/).map(clean).filter(Boolean);
 
-    if (fcfs.includes(addr)) return Response.json({ status: "wl" });
-    if (gtd.includes(addr)) return Response.json({ status: "gtd" });
+    // GTD HAS PRIORITY
+if (gtd.includes(addr)) {
+  return res.status(200).json({ status: 'gtd' });
+}
+
+if (fcfs.includes(addr)) {
+  return res.status(200).json({ status: 'wl' });
+}
+
+return res.status(200).json({ status: 'none' });
 
     return Response.json({ status: "none" });
 
