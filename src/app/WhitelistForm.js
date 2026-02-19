@@ -10,43 +10,36 @@ export default function WhitelistForm() {
   const [errorMsg, setErrorMsg] = useState("");
   const [loading, setLoading] = useState(false);
   const [showChecker, setShowChecker] = useState(false);
-  const modalRef = useRef(null);
+
   const lastCheck = useRef(0);
   const COOLDOWN = 2500;
-
-  // Click outside to close modal
-  useEffect(() => {
-    if (!showChecker) return;
-    function handleClick(e) {
-      if (modalRef.current && !modalRef.current.contains(e.target)) {
-        setShowChecker(false);
-      }
-    }
-    document.addEventListener("mousedown", handleClick);
-    return () => document.removeEventListener("mousedown", handleClick);
-  }, [showChecker]);
 
   const checkStatus = async (e) => {
     e.preventDefault();
     if (loading) return;
+
     if (!isValidWallet(wallet)) {
       setStatus("error");
       setErrorMsg("Invalid wallet address format");
       return;
     }
+
     const now = Date.now();
     if (now - lastCheck.current < COOLDOWN) {
       setStatus("error");
       setErrorMsg("Please wait before checking again");
       return;
     }
+
     lastCheck.current = now;
+
     setLoading(true);
     setStatus(null);
     setErrorMsg("");
+
     try {
       const res = await fetch(`/api/whitelist?address=${wallet}`);
-      if (!res.ok) throw new Error("API failed");
+      if (!res.ok) throw new Error();
       const data = await res.json();
       setStatus(data.status || "none");
     } catch {
@@ -58,13 +51,19 @@ export default function WhitelistForm() {
   };
 
   return (
-    <div style={{ width: "100%", display: "flex", flexDirection: "column", alignItems: "center", minHeight: 320 }}>
-      {/* Floating checker button */}
+    <div
+      style={{
+        width: "100%",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
+    >
+      {/* Toggle button */}
       <button
-        onClick={() => setShowChecker((v) => !v)}
+        onClick={() => setShowChecker(v => !v)}
         style={{
           marginTop: 24,
-          zIndex: 20,
           border: "none",
           background: "#fff",
           color: "#2ec4b6",
@@ -74,26 +73,23 @@ export default function WhitelistForm() {
           boxShadow: "0 4px 24px rgba(46,196,182,.18)",
           padding: "14px 32px",
           cursor: "pointer",
-          transition: "transform .5s cubic-bezier(.68,-0.55,.27,1.55)",
-          transform: showChecker ? "translateY(20px) scale(1.08)" : "translateY(0) scale(1)"
+          transition: "all .35s ease",
+          transform: showChecker ? "translateY(10px) scale(1.05)" : "translateY(0)"
         }}
       >
         {showChecker ? "Close Checker" : "Check Whitelist Status"}
       </button>
-      {/* Modal always under the button */}
+
+      {/* Modal (no layout shift ever) */}
       <div
-        ref={modalRef}
         style={{
-          marginTop: showChecker ? 18 : 0,
+          marginTop: 18,
           opacity: showChecker ? 1 : 0,
+          transform: showChecker ? "translateY(0)" : "translateY(-16px)",
+          transition: "all .35s ease",
           pointerEvents: showChecker ? "auto" : "none",
-          transition: "opacity .5s cubic-bezier(.68,-0.55,.27,1.55), margin-top .5s cubic-bezier(.68,-0.55,.27,1.55)",
-          zIndex: 10,
           width: 420,
-          maxWidth: "90vw",
-          boxShadow: showChecker ? "0 15px 40px rgba(0,0,0,.13)" : "none",
-          position: "relative",
-          display: showChecker ? "block" : "none"
+          maxWidth: "90vw"
         }}
       >
         <form
@@ -102,13 +98,13 @@ export default function WhitelistForm() {
             padding: 26,
             background: "#fff",
             borderRadius: 18,
-            maxWidth: 420,
-            boxShadow: "0 15px 40px rgba(0,0,0,.1)"
+            boxShadow: "0 15px 40px rgba(0,0,0,.12)"
           }}
         >
           <h2 style={{ fontWeight: 800, fontSize: "1.6rem", marginBottom: 18 }}>
             Whitelist Checker
           </h2>
+
           <input
             value={wallet}
             onChange={(e) => setWallet(e.target.value.trim())}
@@ -122,6 +118,7 @@ export default function WhitelistForm() {
               fontSize: 16
             }}
           />
+
           <button
             disabled={loading}
             style={{
@@ -137,11 +134,12 @@ export default function WhitelistForm() {
           >
             {loading ? "Checking..." : "Check Status"}
           </button>
-          {/* Animated result area */}
+
+          {/* Result reveal */}
           <div
             style={{
               overflow: "hidden",
-              transition: "all .35s ease",
+              transition: "all .3s ease",
               maxHeight: status ? 120 : 0,
               marginTop: status ? 18 : 0
             }}
