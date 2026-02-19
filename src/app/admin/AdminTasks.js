@@ -49,11 +49,11 @@ export default function AdminTasks() {
   };
 
   return (
-    <div style={{ marginBottom: 32 }}>
+    <div style={{ marginBottom: 32, width: '100%', minWidth: 0 }}>
       <h3 style={{ fontWeight: 700, fontSize: "1.3rem", marginBottom: 16 }}>Whitelist Tasks</h3>
-      <ul style={{ marginBottom: 16 }}>
+      <ul style={{ marginBottom: 16, padding: 0, width: '100%' }}>
         {tasks.map(task => (
-          <li key={task.id} style={{ marginBottom: 8 }}>
+          <li key={task.id} style={{ marginBottom: 8, listStyle: 'none', width: '100%' }}>
             {editTask && editTask.id === task.id ? (
               <>
                 <input
@@ -101,37 +101,37 @@ export default function AdminTasks() {
           </li>
         ))}
       </ul>
-      <div style={{ display: "flex", gap: 8 }}>
+      <div style={{ display: "flex", gap: 8, flexWrap: 'wrap', width: '100%' }}>
         <input
           type="text"
           placeholder="Task name"
           value={newTask.name}
           onChange={e => setNewTask({ ...newTask, name: e.target.value })}
-          style={{ padding: 8, borderRadius: 6, border: "1px solid #ccc" }}
+          style={{ padding: 8, borderRadius: 6, border: "1px solid #ccc", minWidth: 0, flex: 1 }}
         />
         <input
           type="text"
           placeholder="Description"
           value={newTask.description}
           onChange={e => setNewTask({ ...newTask, description: e.target.value })}
-          style={{ padding: 8, borderRadius: 6, border: "1px solid #ccc" }}
+          style={{ padding: 8, borderRadius: 6, border: "1px solid #ccc", minWidth: 0, flex: 2 }}
         />
         <input
           type="text"
           placeholder="Task link (optional)"
           value={newTask.link}
           onChange={e => setNewTask({ ...newTask, link: e.target.value })}
-          style={{ padding: 8, borderRadius: 6, border: "1px solid #ccc" }}
+          style={{ padding: 8, borderRadius: 6, border: "1px solid #ccc", minWidth: 0, flex: 2 }}
         />
         <select
           value={newTask.required ? "true" : "false"}
           onChange={e => setNewTask({ ...newTask, required: e.target.value === "true" })}
-          style={{ padding: 8, borderRadius: 6, border: "1px solid #ccc" }}
+          style={{ padding: 8, borderRadius: 6, border: "1px solid #ccc", minWidth: 0, flex: 1 }}
         >
           <option value="true">Required</option>
           <option value="false">Optional</option>
         </select>
-        <button onClick={addTask} style={{ padding: 8, borderRadius: 6, background: "#2ec4b6", color: "#fff", fontWeight: 700, border: "none" }}>Add Task</button>
+        <button onClick={addTask} style={{ padding: 8, borderRadius: 6, background: "#2ec4b6", color: "#fff", fontWeight: 700, border: "none", minWidth: 0, flex: 1 }}>Add Task</button>
       </div>
     </div>
   );

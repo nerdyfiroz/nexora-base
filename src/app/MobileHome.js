@@ -2,8 +2,11 @@
 import AnimatedDescription from "./AnimatedDescription";
 import GalleryCarousel from "./GalleryCarousel";
 import RoadmapFlow from "./RoadmapFlow";
+import { useState } from "react";
+import WhitelistForm from "./WhitelistForm";
 
 export default function MobileHome() {
+  const [showModal, setShowModal] = useState(false);
   return (
     <div style={{ background: '#f8f8f6', padding: '0 0.5rem', minHeight: '100vh' }}>
       <header style={{ width: '100%', textAlign: 'center', padding: '1.2rem 0 0.5rem 0' }}>
@@ -29,7 +32,7 @@ export default function MobileHome() {
       <section style={{display:'flex',flexDirection:'column',alignItems:'center',gap:'1rem',background:'#fff',borderRadius:'1rem',padding:'1rem 0.7rem',margin:'0 auto 1rem auto',maxWidth:'98vw'}}>
         <div style={{display:'flex',flexDirection:'column',alignItems:'center',gap:'1rem',margin:'0 0 1rem 0'}}>
           <a href="https://opensea.io/collection/nexora-base" target="_blank" rel="noopener noreferrer" style={{ display: 'block', background: '#2ec4b6', color: '#fff', fontWeight: 700, borderRadius: '1rem', padding: '0.8rem', margin: '0.5rem 0', fontSize: '1rem', textDecoration: 'none', letterSpacing:'0.01em', minWidth:'160px' }}>Explore Collection</a>
-          <a href="#" style={{ display: 'block', background: '#222', color: '#fff', fontWeight: 700, borderRadius: '1rem', padding: '0.8rem', margin: '0.5rem 0', fontSize: '1rem', textDecoration: 'none', letterSpacing:'0.01em', minWidth:'160px' }}>Apply for Allowlist</a>
+          <button type="button" onClick={() => setShowModal(true)} style={{ display: 'block', background: '#222', color: '#fff', fontWeight: 700, borderRadius: '1rem', padding: '0.8rem', margin: '0.5rem 0', fontSize: '1rem', textDecoration: 'none', letterSpacing:'0.01em', minWidth:'160px', border: 'none', width: '100%' }}>Apply for Allowlist</button>
           <div style={{display:'flex',justifyContent:'center',gap:'1rem',marginTop:'0.7rem'}}>
             <a href="https://x.com/Nexora_base" target="_blank" rel="noopener noreferrer" style={{display:'inline-flex',alignItems:'center',justifyContent:'center'}}>
               <img src="/images/social_x.png" alt="X" style={{width:'28px',height:'28px',opacity:0.7}} />
@@ -71,6 +74,41 @@ export default function MobileHome() {
         <img src="/images/rumiilyan.jpeg" alt="Rumi Ilyan" style={{ width: '28px', height: '28px', borderRadius: '50%', objectFit: 'cover', display: 'block', margin: '0 auto 0.5rem auto' }} />
         Website built by <a href="https://x.com/RamiIlyan" target="_blank" rel="noopener noreferrer" style={{ color: '#007aff', fontWeight: 700, textDecoration: 'none' }}>Rumi Ilyan</a>
       </footer>
+      {/* Whitelist Modal */}
+      <div className={`nexora-modal-overlay${showModal ? ' nexora-modal-open' : ''}`} style={{pointerEvents: showModal ? 'auto' : 'none'}}>
+        <div className={`nexora-modal${showModal ? ' nexora-modal-in' : ''}`} style={{maxWidth: 400, width: '95vw'}}>
+          <button onClick={() => setShowModal(false)} style={{position:'absolute',top:8,right:8,background:'#fff',border:'none',borderRadius:16,fontSize:24,fontWeight:700,width:36,height:36,cursor:'pointer',boxShadow:'0 2px 8px #0002'}}>×</button>
+          <WhitelistForm />
+        </div>
+      </div>
+      <style jsx global>{`
+        .nexora-modal-overlay {
+          position: fixed;
+          top: 0; left: 0; width: 100vw; height: 100vh;
+          background: rgba(0,0,0,0.35);
+          z-index: 1000;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          opacity: 0;
+          transition: opacity 0.35s cubic-bezier(.4,0,.2,1);
+        }
+        .nexora-modal-open {
+          opacity: 1;
+          pointer-events: auto;
+        }
+        .nexora-modal {
+          position: relative;
+          z-index: 1001;
+          transform: scale(0.92) translateY(32px);
+          opacity: 0;
+          transition: transform 0.35s cubic-bezier(.4,0,.2,1), opacity 0.35s cubic-bezier(.4,0,.2,1);
+        }
+        .nexora-modal-in {
+          transform: scale(1) translateY(0);
+          opacity: 1;
+        }
+      `}</style>
     </div>
   );
 }

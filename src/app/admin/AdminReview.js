@@ -52,7 +52,7 @@ export default function AdminReview() {
   };
 
   return (
-    <div style={{ marginBottom: 32 }}>
+    <div style={{ marginBottom: 32, width: '100%', minWidth: 0 }}>
       <h3 style={{ fontWeight: 700, fontSize: "1.3rem", marginBottom: 16 }}>Whitelist Applications Review</h3>
       <div style={{ marginBottom: 16 }}>
         <label>Filter: </label>
@@ -63,37 +63,39 @@ export default function AdminReview() {
           <option value="wl">WL</option>
         </select>
       </div>
-      <ul style={{ marginBottom: 16 }}>
+      <ul style={{ marginBottom: 16, padding: 0, width: '100%' }}>
         {apps.map(app => {
           let proofs = {};
           try {
             proofs = typeof app.tasks === 'string' ? JSON.parse(app.tasks) : app.tasks;
           } catch (e) {}
           return (
-            <li key={app.id} style={{ marginBottom: 16, background: "#f8f8f6", padding: 16, borderRadius: 10 }}>
-              <div style={{ fontWeight: 600, marginBottom: 4 }}>{app.wallet_address}</div>
+            <li key={app.id} style={{ marginBottom: 16, background: "#f8f8f6", padding: 16, borderRadius: 10, listStyle: 'none', width: '100%' }}>
+              <div style={{ fontWeight: 600, marginBottom: 4, wordBreak: 'break-all' }}>{app.wallet_address}</div>
               <div style={{ marginBottom: 8, color: "#2ec4b6" }}>Status: {app.status}</div>
               <div style={{ marginBottom: 8 }}>
                 <b>Proofs:</b>
                 <ul style={{ margin: 0, paddingLeft: 18 }}>
                   {tasks.map(task => (
-                    <li key={task.id}>
+                    <li key={task.id} style={{wordBreak:'break-all'}}>
                       <span style={{ fontWeight: 500 }}>{task.name}:</span> {proofs[task.id] || <span style={{ color: '#aaa' }}>No proof</span>}
                     </li>
                   ))}
                 </ul>
               </div>
-              <button onClick={() => updateStatus(app.id, "reviewed")} style={{ marginRight: 8 }}>Review</button>
-              <button onClick={() => updateStatus(app.id, "gtd")} style={{ marginRight: 8, color: "#007aff" }}>Give GTD</button>
-              <button onClick={() => updateStatus(app.id, "wl")} style={{ marginRight: 8, color: "#7b2ff2" }}>Give WL</button>
-              <button onClick={() => deleteApp(app.id)} style={{ color: "#e63946", marginLeft: 8 }}>Delete</button>
+              <div style={{display:'flex',flexWrap:'wrap',gap:8}}>
+                <button onClick={() => updateStatus(app.id, "reviewed")} style={{ marginRight: 8, flex:1,minWidth:90 }}>Review</button>
+                <button onClick={() => updateStatus(app.id, "gtd")} style={{ marginRight: 8, color: "#007aff", flex:1,minWidth:90 }}>Give GTD</button>
+                <button onClick={() => updateStatus(app.id, "wl")} style={{ marginRight: 8, color: "#7b2ff2", flex:1,minWidth:90 }}>Give WL</button>
+                <button onClick={() => deleteApp(app.id)} style={{ color: "#e63946", marginLeft: 8, flex:1,minWidth:90 }}>Delete</button>
+              </div>
             </li>
           );
         })}
       </ul>
-      <div style={{ display: "flex", gap: 12 }}>
-        <button onClick={() => exportWinners("gtd")} style={{ padding: 8, borderRadius: 6, background: "#007aff", color: "#fff", fontWeight: 700, border: "none" }}>Export GTD Winners</button>
-        <button onClick={() => exportWinners("wl")} style={{ padding: 8, borderRadius: 6, background: "#7b2ff2", color: "#fff", fontWeight: 700, border: "none" }}>Export WL Winners</button>
+      <div style={{ display: "flex", gap: 12, flexWrap:'wrap', width:'100%' }}>
+        <button onClick={() => exportWinners("gtd")} style={{ padding: 8, borderRadius: 6, background: "#007aff", color: "#fff", fontWeight: 700, border: "none", flex:1,minWidth:120 }}>Export GTD Winners</button>
+        <button onClick={() => exportWinners("wl")} style={{ padding: 8, borderRadius: 6, background: "#7b2ff2", color: "#fff", fontWeight: 700, border: "none", flex:1,minWidth:120 }}>Export WL Winners</button>
       </div>
     </div>
   );
