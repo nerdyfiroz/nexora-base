@@ -2,86 +2,66 @@
 
 import { useState, useRef } from "react";
 
-const isValidWallet = (address) => /^0x[a-fA-F0-9]{40}$/.test(address);
+const isValidWallet = (addr) => /^0x[a-fA-F0-9]{40}$/.test(addr);
 
 export default function WhitelistForm() {
   const [wallet, setWallet] = useState("");
   const [status, setStatus] = useState(null);
-  const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
-  const lastCheckRef = useRef(0); // anti-spam cooldown
+  const [loading, setLoading] = useState(false);
 
-  const COOLDOWN = 3000; // 3 seconds
+  const lastCheck = useRef(0);
+  const COOLDOWN = 2500;
 
   const checkStatus = async (e) => {
     e.preventDefault();
 
     if (loading) return;
 
-    const now = Date.now();
-    if (now - lastCheckRef.current < COOLDOWN) {
-      setErrorMsg("Please wait a moment before checking again.");
-      setStatus("error");
-      return;
-    }
-
     if (!isValidWallet(wallet)) {
-      setErrorMsg("Invalid wallet format. Must start with 0x and be 42 characters.");
       setStatus("error");
+      setErrorMsg("Invalid wallet address format");
       return;
     }
 
-    lastCheckRef.current = now;
+    const now = Date.now();
+    if (now - lastCheck.current < COOLDOWN) {
+      setStatus("error");
+      setErrorMsg("Please wait before checking again");
+      return;
+    }
+
+    lastCheck.current = now;
 
     setLoading(true);
     setStatus(null);
     setErrorMsg("");
 
     try {
-      const res = await fetch(
-        "/api/whitelist?address=" + encodeURIComponent(wallet)
-      );
+      const res = await fetch(`/api/whitelist?address=${wallet}`);
+
+      if (!res.ok) throw new Error("API failed");
 
       const data = await res.json();
+      setStatus(data.status || "none");
 
-      if (!res.ok) {
-        setErrorMsg(data.error || "Server error");
-        setStatus("error");
-        return;
-      }
-
-      setStatus(data.status);
-
-    } catch (err) {
-      setErrorMsg("Network error. Try again.");
+    } catch {
       setStatus("error");
+      setErrorMsg("API not responding. Check backend route.");
     } finally {
       setLoading(false);
     }
   };
 
-  const glowStyle = (type) => ({
-    marginTop: 20,
-    padding: 12,
-    borderRadius: 10,
-    fontWeight: 600,
-    textAlign: "center",
-    boxShadow:
-      type === "success"
-        ? "0 0 15px rgba(46,196,182,0.7)"
-        : "0 0 15px rgba(230,57,70,0.7)",
-  });
-
   return (
     <form
       onSubmit={checkStatus}
       style={{
-        padding: 24,
+        padding: 26,
         background: "#fff",
-        borderRadius: 14,
-        margin: "2rem auto",
+        borderRadius: 18,
         maxWidth: 420,
-        boxShadow: "0 10px 30px rgba(0,0,0,.08)",
+        boxShadow: "0 15px 40px rgba(0,0,0,.1)"
       }}
     >
       <h2 style={{ fontWeight: 800, fontSize: "1.6rem", marginBottom: 18 }}>
@@ -89,62 +69,79 @@ export default function WhitelistForm() {
       </h2>
 
       <input
-        type="text"
-        placeholder="0xYourWalletAddress"
         value={wallet}
         onChange={(e) => setWallet(e.target.value.trim())}
+        placeholder="0x..."
         style={{
           width: "100%",
           padding: 14,
-          borderRadius: 10,
-          border: "1px solid #ccc",
+          borderRadius: 12,
+          border: "1px solid #ddd",
           marginBottom: 16,
-          outline: "none",
-          fontSize: "1rem",
+          fontSize: 16
         }}
       />
 
       <button
-        type="submit"
         disabled={loading}
         style={{
           width: "100%",
           padding: 14,
-          borderRadius: 10,
-          background: loading ? "#94d3cc" : "#2ec4b6",
+          borderRadius: 12,
+          background: "#2ec4b6",
           color: "#fff",
           fontWeight: 800,
           border: "none",
-          cursor: loading ? "not-allowed" : "pointer",
-          transition: "0.2s",
+          cursor: loading ? "not-allowed" : "pointer"
         }}
       >
         {loading ? "Checking..." : "Check Status"}
       </button>
 
-      {status === "wl" && (
-        <div style={{ ...glowStyle("success"), color: "#2ec4b6" }}>
-          🎉 You are allocated a <b>WL</b> slot!
-        </div>
-      )}
-
-      {status === "gtd" && (
-        <div style={{ ...glowStyle("success"), color: "#2ec4b6" }}>
-          🚀 You are allocated a <b>GTD</b> slot!
-        </div>
-      )}
-
-      {status === "none" && (
-        <div style={{ ...glowStyle("error"), color: "#e76f51" }}>
-          ❌ Not allocated yet.
-        </div>
-      )}
-
-      {status === "error" && (
-        <div style={{ ...glowStyle("error"), color: "#e63946" }}>
-          ⚠ {errorMsg}
-        </div>
-      )}
+      {/* Animated result area */}
+      <div
+        style={{
+          overflow: "hidden",
+          transition: "all .35s ease",
+          maxHeight: status ? 120 : 0,
+          marginTop: status ? 18 : 0
+        }}
+      >
+        {status === "wl" && successBox("🎉 WL slot confirmed!")}
+        {status === "gtd" && successBox("🚀 GTD slot confirmed!")}
+        {status === "none" && errorBox("❌ Not allocated yet")}
+        {status === "error" && errorBox(`⚠ ${errorMsg}`)}
+      </div>
     </form>
+  );
+}
+
+function successBox(text) {
+  return (
+    <div style={{
+      padding: 14,
+      borderRadius: 12,
+      color: "#1b8f87",
+      background: "#e7fffb",
+      boxShadow: "0 0 18px rgba(46,196,182,.6)",
+      fontWeight: 700
+    }}>
+      {text}
+    </div>
+  );
+}
+
+function errorBox(text) {
+  return (
+    <div style={{
+      padding: 14,
+      borderRadius: 12,
+      color: "#c92b2b",
+      background: "#ffecec",
+      boxShadow: "0 0 18px rgba(230,57,70,.6)",
+      fontWeight: 700
+    }}>
+      {text}
+    </div>
   );
 }
