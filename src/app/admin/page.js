@@ -3,7 +3,7 @@
 import { useState } from "react";
 import AdminTasks from "./AdminTasks";
 import AdminReview from "./AdminReview";
-{
+export default function AdminPage() {
   const [code, setCode] = useState("");
   const [access, setAccess] = useState(false);
   const [giveawayTitle, setGiveawayTitle] = useState("");
