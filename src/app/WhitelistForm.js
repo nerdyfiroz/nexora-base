@@ -7,15 +7,26 @@ export default function WhitelistForm() {
   const [status, setStatus] = useState(null);
   const [loading, setLoading] = useState(false);
 
+  const [errorMsg, setErrorMsg] = useState("");
   const checkStatus = async (e) => {
     e.preventDefault();
     setLoading(true);
     setStatus(null);
+    setErrorMsg("");
     try {
+      console.log("Checking status for:", wallet);
       const res = await fetch("/api/whitelist?address=" + encodeURIComponent(wallet));
+      if (!res.ok) {
+        const errData = await res.json();
+        setErrorMsg(errData.error || "Unknown error");
+        setStatus("error");
+        setLoading(false);
+        return;
+      }
       const data = await res.json();
       setStatus(data.status);
     } catch (err) {
+      setErrorMsg(err.message || "Network error");
       setStatus("error");
     }
     setLoading(false);
@@ -45,7 +56,10 @@ export default function WhitelistForm() {
         <div style={{marginTop:20, color:'#e76f51', fontWeight:600}}>Address is <b>not allocated</b> yet.</div>
       )}
       {status === "error" && (
-        <div style={{marginTop:20, color:'#e63946', fontWeight:600}}>Error checking status. Please try again.</div>
+        <div style={{marginTop:20, color:'#e63946', fontWeight:600}}>
+          Error checking status. Please try again.<br />
+          {errorMsg && <span style={{fontSize:'0.95em',color:'#b71c1c'}}>{errorMsg}</span>}
+        </div>
       )}
     </form>
   );
