@@ -1,50 +1,72 @@
-import React from "react";
+import React from 'react';
 
-export default function UtilitySection() {
+const UtilitySection = () => {
+  const utilities = [
+    {
+      title: "GUARANTEED SLOT",
+      desc: "Hold 6 NEXORA NFTs to secure a GTD slot in the ecosystem.",
+      stat: "6+ NFTs",
+      tag: "VIP ACCESS"
+    },
+    {
+      title: "GAME CHIP MINT",
+      desc: "Get early access to minting before the public sale begins.",
+      stat: "1,111 TOTAL",
+      tag: "ULTRA LIMITED"
+    },
+    {
+      title: "BATTLE ROYALE",
+      desc: "Earn rewards by competing and dominating the arena.",
+      stat: "P2E ACTIVE",
+      tag: "OWN THE ADVANTAGE"
+    }
+  ];
+
   return (
-    <section className="nexora-utility-section" style={{
-      width: '100%',
-      maxWidth: 900,
-      margin: '3rem auto 2.5rem auto',
-      padding: '2.5rem 1.5rem',
-      background: 'linear-gradient(90deg,#f7e6ff 0%,#e0f7fa 100%)',
-      borderRadius: '2rem',
-      boxShadow: '0 4px 24px #0001',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      gap: '1.5rem',
-    }}>
-      <h2 style={{fontSize:'2.2rem',fontWeight:800,marginBottom:'0.5rem',color:'#7b2ff2',letterSpacing:'-1px'}}>NEXORA Utility</h2>
-      <p style={{fontSize:'1.2rem',color:'#333',maxWidth:700,textAlign:'center',marginBottom:'1.2rem'}}>
-        <span role="img" aria-label="game">🎮</span> <b>NEXORA is more than an NFT — it’s your key to the Gameverse.</b><br/>
-        NEXORA isn’t just art. It’s your gateway to our upcoming Battle Royale Play-to-Earn Game Chip ecosystem.
-      </p>
-      <ul style={{fontSize:'1.1rem',color:'#222',listStyle:'none',padding:0,margin:0,maxWidth:700}}>
-        <li style={{marginBottom:'1rem'}}>
-          <span role="img" aria-label="puzzle">🧩</span> <b>Hold 6 NEXORA NFTs = Guaranteed GTD Slot</b><br/>
-          Get early access to Game Chip minting before the public.
-        </li>
-        <li style={{marginBottom:'1rem'}}>
-          <span role="img" aria-label="ticket">🎟️</span> <b>Game Chip Supply: 1,111 only</b><br/>
-          Ultra limited. High demand incoming.
-        </li>
-        <li style={{marginBottom:'1rem'}}>
-          <span role="img" aria-label="art">🖼️</span> <b>NEXORA Supply: 3,333</b><br/>
-          Strong holder advantage built into the ecosystem.
-        </li>
-        <li style={{marginBottom:'1rem'}}>
-          <span role="img" aria-label="money">💰</span> <b>Play to Earn Battle Royale Game</b><br/>
-          Earn rewards by competing, surviving, and dominating the arena.
-        </li>
-        <li style={{marginBottom:'1rem'}}>
-          <span role="img" aria-label="rocket">🚀</span> <b>NEXORA holders OWN the advantage</b><br/>
-          Exclusive access, real utility, and more updates coming soon.
-        </li>
-      </ul>
-      <div style={{fontSize:'1.15rem',color:'#7b2ff2',fontWeight:700,marginTop:'1.2rem',textAlign:'center'}}>
-        Hold NEXORA. Play to win.
+    <section className="bg-[#050505] py-20 px-6 text-white">
+      <div className="max-w-6xl mx-auto">
+        {/* Section Header */}
+        <div className="mb-12 border-l-4 border-[#BC13FE] pl-6">
+          <h2 className="text-5xl font-black tracking-tighter italic">
+            NEXORA <span className="text-[#BC13FE]">UTILITY</span>
+          </h2>
+          <p className="text-gray-400 mt-2 font-mono uppercase tracking-widest">
+            The Key to the Gameverse
+          </p>
+        </div>
+
+        {/* Utility Grid */}
+        <div className="grid md:grid-cols-3 gap-6">
+          {utilities.map((item, index) => (
+            <div 
+              key={index} 
+              className="relative group bg-[#1A1A1A]/50 backdrop-blur-sm border border-white/10 p-8 rounded-br-3xl transition-all duration-300 hover:border-[#BC13FE]/50 hover:-translate-y-2"
+            >
+              {/* Corner Accent */}
+              <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-[#BC13FE] opacity-0 group-hover:opacity-100 transition-opacity" />
+              
+              <div className="text-[#BC13FE] font-mono text-sm mb-4">[{item.tag}]</div>
+              <h3 className="text-2xl font-bold mb-3 tracking-tight">{item.title}</h3>
+              <p className="text-gray-400 text-sm leading-relaxed mb-6">{item.desc}</p>
+              
+              <div className="pt-4 border-t border-white/5">
+                <span className="text-xl font-black font-mono text-white/90">
+                  {item.stat}
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Call to Action Footer */}
+        <div className="mt-12 text-center">
+          <p className="text-gray-500 font-mono animate-pulse">
+            SYSTEM STATUS: PHASE 1 READY // HOLD NEXORA. PLAY TO WIN.
+          </p>
+        </div>
       </div>
     </section>
   );
-}
+};
+
+export default UtilitySection;
