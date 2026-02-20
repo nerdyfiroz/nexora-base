@@ -18,14 +18,26 @@ function getRandomReward() {
 export default function SpinDemoBox() {
   const [spinning, setSpinning] = useState(false);
   const [result, setResult] = useState(null);
+  const [shuffleReward, setShuffleReward] = useState(null);
 
   const handleSpin = () => {
     setSpinning(true);
     setResult(null);
-    setTimeout(() => {
-      setResult(getRandomReward());
-      setSpinning(false);
-    }, 2000);
+    let shuffleCount = 0;
+    const shuffleInterval = setInterval(() => {
+      setShuffleReward(rewards[Math.floor(Math.random() * rewards.length)]);
+      shuffleCount++;
+      if (shuffleCount > 20) {
+        clearInterval(shuffleInterval);
+        const finalReward = getRandomReward();
+        setShuffleReward(finalReward);
+        setTimeout(() => {
+          setResult(finalReward);
+          setShuffleReward(null);
+          setSpinning(false);
+        }, 700);
+      }
+    }, 80);
   };
 
   return (
@@ -37,7 +49,11 @@ export default function SpinDemoBox() {
         ))}
       </div>
       <button onClick={handleSpin} disabled={spinning} style={{padding:'1rem 2.5rem',fontSize:'1.2rem',fontWeight:700,borderRadius:'2rem',background:'#7b2ff2',color:'#fff',border:'none',boxShadow:'0 2px 8px #7b2ff2',cursor:spinning?'not-allowed':'pointer',opacity:spinning?0.6:1,marginBottom:'1.2rem'}}>Spin</button>
-      {spinning && <div style={{fontSize:'1.2rem',color:'#7b2ff2',fontWeight:600}}>Spinning...</div>}
+      {spinning && shuffleReward && (
+        <div style={{fontSize:'1.3rem',color:'#7b2ff2',fontWeight:700,marginTop:'1rem',transition:'all 0.2s'}}>
+          {shuffleReward}
+        </div>
+      )}
       {result && <div style={{fontSize:'1.3rem',color:'#38ef7d',fontWeight:700,marginTop:'1rem'}}>You won: {result}</div>}
     </div>
   );
