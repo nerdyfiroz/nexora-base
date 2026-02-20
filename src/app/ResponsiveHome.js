@@ -5,6 +5,7 @@ import NexoraMarquee from "./NexoraMarquee";
 import AnimatedDescription from "./AnimatedDescription";
 import GalleryCarousel from "./GalleryCarousel";
 import RoadmapFlow from "./RoadmapFlow";
+import UtilitySection from "./UtilitySection";
 import { useState } from "react";
 import WhitelistForm from "./WhitelistForm";
 const MobileHome = dynamic(() => import("./MobileHome"), { ssr: false });
@@ -156,6 +157,9 @@ export default function ResponsiveHome() {
 
       {/* Gallery Carousel */}
       <GalleryCarousel />
+
+      {/* Utility Section */}
+      <UtilitySection />
 
       {/* Roadmap Section */}
       <RoadmapFlow />
