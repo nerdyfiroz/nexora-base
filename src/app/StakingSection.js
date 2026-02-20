@@ -15,7 +15,7 @@ export default function StakingSection() {
           <li>5x Nexora</li>
           <li>5x Bunny Legends</li>
           <li>1x BudGuyz</li>
-          <li>1x Nords</li>
+          <li>1x BasedMinis</li>
           <li>10x Nexora</li>
           <li>8x Nexora</li>
         </ul>
