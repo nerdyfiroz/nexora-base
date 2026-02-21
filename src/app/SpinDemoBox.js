@@ -1,21 +1,27 @@
 import React, { useState } from "react";
 
-export const rewards = [
-  "5$ Token Reward",
-  "1$ Token Reward",
-  "0.5$ Token Reward",
-  "1x Nexora",
-  "2x Nexora",
-  "5x Nexora",
-  "5x Bunny Legends",
-  "1x BudGuyz",
-  "1x BasedMinis",
-  "10x Nexora",
-  "8x Nexora"
+// Rewards and their probabilities
+export const rewardProbabilities = [
+  { label: "5x Nexora", weight: 40 },
+  { label: "2x Nexora", weight: 15 },
+  { label: "1x Nexora", weight: 4 },
+  { label: "10x Nexora", weight: 15 },
+  { label: "5x Bunny Legends", weight: 15 },
+  { label: "$0.5 Token", weight: 10 },
+  { label: "$1 Token", weight: 1 }
 ];
 
+export const rewards = rewardProbabilities.map(r => r.label);
+
+// Weighted random selection
 export function getRandomReward() {
-  return rewards[Math.floor(Math.random() * rewards.length)];
+  const totalWeight = rewardProbabilities.reduce((sum, r) => sum + r.weight, 0);
+  let rand = Math.random() * totalWeight;
+  for (const reward of rewardProbabilities) {
+    if (rand < reward.weight) return reward.label;
+    rand -= reward.weight;
+  }
+  return rewardProbabilities[rewardProbabilities.length - 1].label;
 }
 
 export default function SpinDemoBox() {
