@@ -1,6 +1,8 @@
 "use client";
 import AnimatedDescription from "./AnimatedDescription";
 import GalleryCarousel from "./GalleryCarousel";
+import UtilitySection from "./UtilitySection";
+import StakingSection from "./StakingSection";
 import RoadmapFlow from "./RoadmapFlow";
 import { useState } from "react";
 import WhitelistForm from "./WhitelistForm";
@@ -68,12 +70,10 @@ export default function MobileHome() {
         <GalleryCarousel />
       </section>
       <section style={{ margin: '0 0 1rem 0' }}>
-        {/* Utility Section for mobile */}
-        {typeof window !== 'undefined' && require('./UtilitySection').default && <require('./UtilitySection').default />}
+        <UtilitySection />
       </section>
       <section style={{ margin: '0 0 1rem 0' }}>
-        {/* Staking Section for mobile */}
-        {typeof window !== 'undefined' && require('./StakingSection').default && <require('./StakingSection').default />}
+        <StakingSection />
       </section>
       <section style={{ margin: '0 0 1rem 0' }}>
         <RoadmapFlow />
