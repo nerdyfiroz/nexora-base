@@ -1,3 +1,12 @@
+-- Spin rewards table
+CREATE TABLE spin_rewards (
+  id SERIAL PRIMARY KEY,
+  wallet_address VARCHAR(64) NOT NULL,
+  reward VARCHAR(64) NOT NULL,
+  status VARCHAR(16) DEFAULT 'pending', -- pending, confirmed
+  created_at TIMESTAMP DEFAULT NOW(),
+  confirmed_at TIMESTAMP
+);
 -- Whitelist application table
 CREATE TABLE whitelist_applications (
   id SERIAL PRIMARY KEY,

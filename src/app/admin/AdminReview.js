@@ -1,3 +1,21 @@
+  // Spin rewards admin view
+  const [spinRewards, setSpinRewards] = useState([]);
+  useEffect(() => {
+    fetch('/api/admin?type=spin_rewards')
+      .then(res => res.json())
+      .then(setSpinRewards);
+  }, []);
+
+  const confirmSpinReward = async (id) => {
+    await fetch('/api/admin', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ type: 'confirm_spin_reward', id })
+    });
+    fetch('/api/admin?type=spin_rewards')
+      .then(res => res.json())
+      .then(setSpinRewards);
+  };
 "use client";
 import { useState, useEffect } from "react";
 
@@ -97,6 +115,24 @@ export default function AdminReview() {
         <button onClick={() => exportWinners("gtd")} style={{ padding: 8, borderRadius: 6, background: "#007aff", color: "#fff", fontWeight: 700, border: "none", flex:1,minWidth:120 }}>Export GTD Winners</button>
         <button onClick={() => exportWinners("wl")} style={{ padding: 8, borderRadius: 6, background: "#7b2ff2", color: "#fff", fontWeight: 700, border: "none", flex:1,minWidth:120 }}>Export WL Winners</button>
       </div>
+
+      {/* Spin rewards admin view */}
+      <h3 style={{ fontWeight: 700, fontSize: "1.3rem", margin: '32px 0 16px 0' }}>Spin Rewards Distribution</h3>
+      <ul style={{ marginBottom: 16, padding: 0, width: '100%' }}>
+        {spinRewards.map(reward => (
+          <li key={reward.id} style={{ marginBottom: 16, background: "#f8f8f6", padding: 16, borderRadius: 10, listStyle: 'none', width: '100%' }}>
+            <div style={{ fontWeight: 600, marginBottom: 4, wordBreak: 'break-all' }}>{reward.wallet_address}</div>
+            <div style={{ marginBottom: 8, color: "#2ec4b6" }}>Reward: {reward.reward}</div>
+            <div style={{ marginBottom: 8, color: reward.status === 'confirmed' ? '#38ef7d' : '#e63946' }}>Status: {reward.status}</div>
+            {reward.status === 'pending' && (
+              <button onClick={() => confirmSpinReward(reward.id)} style={{ color: '#fff', background: '#7b2ff2', fontWeight: 700, border: 'none', borderRadius: 8, padding: '8px 16px', marginTop: 8 }}>Confirm Distribution</button>
+            )}
+            {reward.status === 'confirmed' && reward.confirmed_at && (
+              <div style={{ color: '#888', marginTop: 8 }}>Confirmed at: {new Date(reward.confirmed_at).toLocaleString()}</div>
+            )}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

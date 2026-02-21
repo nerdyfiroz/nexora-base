@@ -43,10 +43,20 @@ export default function SpinDemoBox() {
         clearInterval(shuffleInterval);
         const finalReward = getRandomReward();
         setShuffleReward(finalReward);
-        setTimeout(() => {
+        setTimeout(async () => {
           setResult(finalReward);
           setShuffleReward(null);
           setSpinning(false);
+          // Store spin reward for admin distribution
+          if (finalReward && rewardProbabilities.find(r => r.label === finalReward && r.weight > 0)) {
+            // Replace with actual wallet address from user context
+            const wallet_address = window.walletAddress || "demo_wallet";
+            await fetch("/api/spin", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ wallet_address, reward: finalReward })
+            });
+          }
         }, 700);
       }
     }, 80);
