@@ -1,23 +1,8 @@
-  // Spin rewards admin view
-  const [spinRewards, setSpinRewards] = useState([]);
-  useEffect(() => {
-    fetch('/api/admin?type=spin_rewards')
-      .then(res => res.json())
-      .then(setSpinRewards);
-  }, []);
-
-  const confirmSpinReward = async (id) => {
-    await fetch('/api/admin', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ type: 'confirm_spin_reward', id })
-    });
-    fetch('/api/admin?type=spin_rewards')
-      .then(res => res.json())
-      .then(setSpinRewards);
-  };
 "use client";
 import { useState, useEffect } from "react";
+
+// Spin rewards admin view
+// ...existing code...
 
 export default function AdminReview() {
   const [apps, setApps] = useState([]);

@@ -1,7 +1,9 @@
+"use client";
 import React, { useState } from "react";
 import SpinDemoBox from "./SpinDemoBox";
 import WalletConnectUI from "./WalletConnectUI";
 
+export default function StakingSection() {
   const [wallet, setWallet] = useState("");
   return (
     <section style={{width:'100%',maxWidth:'1100px',margin:'2.5rem auto',padding:'2.5rem',background:'#f7f8fa',borderRadius:'1.5rem',boxShadow:'0 4px 32px #0001',display:'flex',flexDirection:'column',alignItems:'center'}}>
