@@ -12,6 +12,9 @@ export default function StakingSection() {
         <ul style={{fontSize:'1.1rem',color:'#222',marginBottom:'1.5rem',textAlign:'left',listStyle:'disc',paddingLeft:'2rem'}}>
           <li>5$ Token Reward</li>
           <li>1$ Token Reward</li>
+          <li>0.5$ Token Reward</li>
+          <li>1x Nexora</li>
+          <li>2x Nexora</li>
           <li>5x Nexora</li>
           <li>5x Bunny Legends</li>
           <li>1x BudGuyz</li>
