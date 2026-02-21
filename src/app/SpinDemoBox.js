@@ -8,7 +8,10 @@ export const rewardProbabilities = [
   { label: "10x Nexora", weight: 15 },
   { label: "5x Bunny Legends", weight: 15 },
   { label: "$0.5 Token", weight: 10 },
-  { label: "$1 Token", weight: 1 }
+  { label: "$1 Token", weight: 1 },
+  { label: "5$ Token Reward", weight: 0 },
+  { label: "1x BudGuyz", weight: 0 },
+  { label: "1x BasedMinis", weight: 0 }
 ];
 
 export const rewards = rewardProbabilities.map(r => r.label);
