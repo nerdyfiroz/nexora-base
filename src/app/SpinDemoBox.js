@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 
-const rewards = [
+export const rewards = [
   "5$ Token Reward",
   "1$ Token Reward",
+  "0.5$ Token Reward",
+  "1x Nexora",
+  "2x Nexora",
   "5x Nexora",
   "5x Bunny Legends",
   "1x BudGuyz",
@@ -11,7 +14,7 @@ const rewards = [
   "8x Nexora"
 ];
 
-function getRandomReward() {
+export function getRandomReward() {
   return rewards[Math.floor(Math.random() * rewards.length)];
 }
 
