@@ -68,6 +68,14 @@ export default function MobileHome() {
         <GalleryCarousel />
       </section>
       <section style={{ margin: '0 0 1rem 0' }}>
+        {/* Utility Section for mobile */}
+        {typeof window !== 'undefined' && require('./UtilitySection').default && <require('./UtilitySection').default />}
+      </section>
+      <section style={{ margin: '0 0 1rem 0' }}>
+        {/* Staking Section for mobile */}
+        {typeof window !== 'undefined' && require('./StakingSection').default && <require('./StakingSection').default />}
+      </section>
+      <section style={{ margin: '0 0 1rem 0' }}>
         <RoadmapFlow />
       </section>
       <footer style={{ textAlign: 'center', margin: '1.5rem 0 1rem 0', fontSize: '0.95rem', color: '#333' }}>
