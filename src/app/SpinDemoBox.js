@@ -43,29 +43,77 @@ export default function SpinDemoBox() {
     }, 80);
   };
 
+  // Circular layout variables
+  const wheelSize = 340;
+  const center = wheelSize / 2;
+  const itemCount = rewards.length;
+  const radius = wheelSize / 2 - 50;
+  const angleStep = (2 * Math.PI) / itemCount;
+
   return (
     <div style={{margin:'2rem 0',padding:'2rem',background:'#fff',borderRadius:'1.2rem',boxShadow:'0 2px 16px #7b2ff2',display:'flex',flexDirection:'column',alignItems:'center',maxWidth:'500px',width:'100%'}}>
       <h3 style={{fontSize:'2rem',fontWeight:700,marginBottom:'1rem',color:'#7b2ff2'}}>Spin Wheel</h3>
-      <div style={{display:'flex',flexDirection:'row',flexWrap:'wrap',justifyContent:'center',gap:'1rem',marginBottom:'2rem'}}>
-        {rewards.map((reward, idx) => (
-          <div key={idx} style={{
-            width:'160px',
-            height:'60px',
-            display:'flex',
-            alignItems:'center',
-            justifyContent:'center',
-            background:'#f7f8fa',
-            borderRadius:'0.4rem',
-            boxShadow:'0 2px 8px #0001',
-            fontWeight:600,
-            color:'#222',
-            fontSize:'1.1rem',
-            margin:'0.2rem',
-            border:'2px solid #e0e7ef'
-          }}>{reward}</div>
-        ))}
+      <div style={{position:'relative',width:wheelSize,height:wheelSize,marginBottom:'2rem'}}>
+        {/* Wheel rewards */}
+        {rewards.map((reward, idx) => {
+          const angle = idx * angleStep - Math.PI/2;
+          const x = center + radius * Math.cos(angle) - 60;
+          const y = center + radius * Math.sin(angle) - 24;
+          const highlight = shuffleReward === reward;
+          return (
+            <div
+              key={idx}
+              style={{
+                position:'absolute',
+                left:`${x}px`,
+                top:`${y}px`,
+                width:'120px',
+                height:'48px',
+                display:'flex',
+                alignItems:'center',
+                justifyContent:'center',
+                background: highlight ? '#38ef7d' : '#f7f8fa',
+                borderRadius:'0.7rem',
+                boxShadow:'0 2px 8px #0001',
+                fontWeight:600,
+                color: highlight ? '#fff' : '#222',
+                fontSize:'1.05rem',
+                border: highlight ? '2px solid #7b2ff2' : '2px solid #e0e7ef',
+                zIndex: highlight ? 2 : 1,
+                transition:'all 0.2s',
+                textAlign:'center',
+                padding:'0 0.5rem',
+                pointerEvents:'none'
+              }}>
+                {reward}
+            </div>
+          );
+        })}
+        {/* Central spin button */}
+        <button
+          onClick={handleSpin}
+          disabled={spinning}
+          style={{
+            position:'absolute',
+            left:`${center-50}px`,
+            top:`${center-50}px`,
+            width:'100px',
+            height:'100px',
+            borderRadius:'50%',
+            background:'#7b2ff2',
+            color:'#fff',
+            fontWeight:700,
+            fontSize:'1.3rem',
+            border:'none',
+            boxShadow:'0 2px 16px #7b2ff2',
+            cursor:spinning?'not-allowed':'pointer',
+            opacity:spinning?0.6:1,
+            zIndex:3,
+            transition:'all 0.2s',
+          }}>
+            Spin 🛞
+        </button>
       </div>
-      <button onClick={handleSpin} disabled={spinning} style={{padding:'1rem 2.5rem',fontSize:'1.2rem',fontWeight:700,borderRadius:'2rem',background:'#7b2ff2',color:'#fff',border:'none',boxShadow:'0 2px 8px #7b2ff2',cursor:spinning?'not-allowed':'pointer',opacity:spinning?0.6:1,marginBottom:'1.2rem'}}>Spin</button>
       {spinning && shuffleReward && (
         <div style={{fontSize:'1.3rem',color:'#7b2ff2',fontWeight:700,marginTop:'1rem',transition:'all 0.2s'}}>
           {shuffleReward}
