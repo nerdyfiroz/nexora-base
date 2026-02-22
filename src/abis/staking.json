@@ -1,0 +1,30 @@
+[
+  {
+    "constant": false,
+    "inputs": [{"name": "tokenIds", "type": "uint256[]"}],
+    "name": "stakeBatch",
+    "outputs": [],
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [{"name": "tokenIds", "type": "uint256[]"}],
+    "name": "unstakeBatch",
+    "outputs": [],
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [{"name": "owner", "type": "address"}],
+    "name": "stakedTokensOfOwner",
+    "outputs": [{"name": "tokenIds", "type": "uint256[]"}],
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [{"name": "tokenId", "type": "uint256"}],
+    "name": "getLockEndTime",
+    "outputs": [{"name": "endTime", "type": "uint256"}],
+    "type": "function"
+  }
+]

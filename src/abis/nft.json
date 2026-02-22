@@ -1,0 +1,37 @@
+[
+  {
+    "constant": true,
+    "inputs": [{"name": "owner", "type": "address"}],
+    "name": "balanceOf",
+    "outputs": [{"name": "balance", "type": "uint256"}],
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [{"name": "owner", "type": "address"}],
+    "name": "tokensOfOwner",
+    "outputs": [{"name": "tokenIds", "type": "uint256[]"}],
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [{"name": "tokenId", "type": "uint256"}],
+    "name": "ownerOf",
+    "outputs": [{"name": "owner", "type": "address"}],
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [{"name": "operator", "type": "address"}, {"name": "approved", "type": "bool"}],
+    "name": "setApprovalForAll",
+    "outputs": [],
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [{"name": "owner", "type": "address"}, {"name": "operator", "type": "address"}],
+    "name": "isApprovedForAll",
+    "outputs": [{"name": "approved", "type": "bool"}],
+    "type": "function"
+  }
+]

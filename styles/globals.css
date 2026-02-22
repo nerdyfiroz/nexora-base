@@ -1,0 +1,5 @@
+body { font-family: 'Inter', sans-serif; background: #f7e6ff; color: #222; }
+.nft-card.selected { border: 2px solid #7b2ff2; background: #e0f7fa; }
+.staked-nft-card { border: 2px solid #7b2ff2; background: #f7e6ff; }
+button { padding: 8px 16px; border-radius: 8px; border: none; background: #7b2ff2; color: #fff; cursor: pointer; margin: 4px; }
+button:disabled { background: #ccc; cursor: not-allowed; }
