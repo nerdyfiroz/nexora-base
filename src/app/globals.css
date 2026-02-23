@@ -70,3 +70,6 @@ section, div {
   transform: translateY(0) scale(1);
   opacity: 1;
 }
+* {
+  outline: 2px solid red;
+}
