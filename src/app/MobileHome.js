@@ -82,6 +82,16 @@ export default function MobileHome() {
       <StakingSection />
       <RoadmapFlow />
 
+      {/* Footer / Builder Credit */}
+      <footer style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '0.7rem', margin: '2.5rem 0 1.5rem 0', fontSize: '1.1rem', color: '#888' }}>
+        <span>Built by</span>
+        <a href="https://x.com/RamiIlyan" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: 8, textDecoration: 'none', color: '#7b2ff2', fontWeight: 700 }}>
+          <img src="/images/rumiilyan.jpeg" alt="Rumi Ilyan" style={{ width: 40, height: 40, borderRadius: '1rem', marginRight: 8, objectFit: 'cover' }} />
+          Rumi Ilyan
+        </a>
+        <span style={{ color: '#bbb', fontWeight: 400, marginLeft: 8 }}>| © 2026</span>
+      </footer>
+
       {showModal && (
         <div style={overlay}>
           <div style={modal}>

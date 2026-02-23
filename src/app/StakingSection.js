@@ -21,10 +21,41 @@ export default function StakingSection() {
   const eligibleForSpin = spinCount > 0;
 
   return (
-    <section style={{width:'100%',maxWidth:'1100px',margin:'2.5rem auto',padding:'2.5rem',background:'#f7f8fa',borderRadius:'1.5rem',boxShadow:'0 4px 32px #0001',display:'flex',flexDirection:'column',alignItems:'center'}}>
-      <h2 style={{fontSize:'2.8rem',fontWeight:900,letterSpacing:'0.04em',marginBottom:'1.2rem',textTransform:'uppercase',background:'linear-gradient(90deg,#7b2ff2 0%,#38ef7d 100%)',WebkitBackgroundClip:'text',WebkitTextFillColor:'transparent',backgroundClip:'text',color:'transparent'}}>Staking</h2>
+    <section
+      style={{
+        width: '100%',
+        maxWidth: 1100,
+        margin: '2.5rem auto',
+        padding: '2.5rem 1rem',
+        background: '#f7f8fa',
+        borderRadius: '1.5rem',
+        boxShadow: '0 4px 32px #0001',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+      }}
+    >
+      <h2
+        style={{
+          fontSize: '2.2rem',
+          fontWeight: 900,
+          letterSpacing: '0.04em',
+          marginBottom: '1.2rem',
+          textTransform: 'uppercase',
+          background: 'linear-gradient(90deg,#7b2ff2 0%,#38ef7d 100%)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          backgroundClip: 'text',
+          color: 'transparent',
+          textAlign: 'center',
+        }}
+      >
+        Staking
+      </h2>
       <StakingDappSection />
-      <SpinDemoBox eligible={eligibleForSpin} spinsLeft={spinCount - spinsUsed} onSpin={() => setSpinsUsed(s => s + 1)} />
+      <div style={{ width: '100%', maxWidth: 500 }}>
+        <SpinDemoBox eligible={eligibleForSpin} spinsLeft={spinCount - spinsUsed} onSpin={() => setSpinsUsed(s => s + 1)} />
+      </div>
     </section>
   );
 }

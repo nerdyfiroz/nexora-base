@@ -72,18 +72,22 @@ export default function SpinDemoBox({ eligible, spinsLeft, onSpin }) {
   const angleStep = (2 * Math.PI) / itemCount;
 
   return (
-    <div style={{
-      margin: isMobile ? '1.2rem 0' : '2rem 0',
-      padding: isMobile ? '1.2rem' : '2rem',
-      background: '#fff',
-      borderRadius: '1.2rem',
-      boxShadow: '0 2px 16px #7b2ff2',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      maxWidth: isMobile ? '98vw' : '500px',
-      width: '100%'
-    }}>
+    <div
+      style={{
+        margin: isMobile ? '1.2rem 0' : '2rem 0',
+        padding: isMobile ? '1.2rem 0.5rem' : '2rem',
+        background: '#fff',
+        borderRadius: '1.2rem',
+        boxShadow: '0 2px 16px #7b2ff2',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        maxWidth: isMobile ? '100vw' : '500px',
+        width: '100vw',
+        boxSizing: 'border-box',
+        overflowX: 'auto',
+      }}
+    >
       <h3 style={{fontSize:'2rem',fontWeight:700,marginBottom:'1rem',color:'#7b2ff2'}}>Spin Wheel</h3>
       <div style={{
         position: 'relative',
