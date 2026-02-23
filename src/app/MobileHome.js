@@ -13,15 +13,14 @@ export default function MobileHome() {
 
   return (
     <div
-      style={{
-        background: "#f8f8f6",
-        minHeight: "100vh",
-        width: "100%",
-        overflowX: "clip",
-        position: "relative",
-        boxSizing: "border-box",
-      }}
-    >
+  style={{
+    background: "#f8f8f6",
+    minHeight: "100dvh",
+    width: "100%",
+    overflowX: "hidden",
+    position: "relative",
+  }}
+>
       {/* HEADER */}
       <header style={wrap}>
         <div style={row}>
