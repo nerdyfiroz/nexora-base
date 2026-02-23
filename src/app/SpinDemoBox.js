@@ -63,17 +63,37 @@ export default function SpinDemoBox({ eligible, spinsLeft, onSpin }) {
     }, 80);
   };
 
-  // Circular layout variables (larger wheel, smaller boxes, rotated)
-  const wheelSize = 420;
+  // Responsive wheel size for mobile
+  const isMobile = typeof window !== 'undefined' && window.innerWidth <= 700;
+  const wheelSize = isMobile ? 300 : 420;
   const center = wheelSize / 2;
   const itemCount = rewards.length;
-  const radius = wheelSize / 2 - 70;
+  const radius = wheelSize / 2 - (isMobile ? 45 : 70);
   const angleStep = (2 * Math.PI) / itemCount;
 
   return (
-    <div style={{margin:'2rem 0',padding:'2rem',background:'#fff',borderRadius:'1.2rem',boxShadow:'0 2px 16px #7b2ff2',display:'flex',flexDirection:'column',alignItems:'center',maxWidth:'500px',width:'100%'}}>
+    <div style={{
+      margin: isMobile ? '1.2rem 0' : '2rem 0',
+      padding: isMobile ? '1.2rem' : '2rem',
+      background: '#fff',
+      borderRadius: '1.2rem',
+      boxShadow: '0 2px 16px #7b2ff2',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      maxWidth: isMobile ? '98vw' : '500px',
+      width: '100%'
+    }}>
       <h3 style={{fontSize:'2rem',fontWeight:700,marginBottom:'1rem',color:'#7b2ff2'}}>Spin Wheel</h3>
-      <div style={{position:'relative',width:wheelSize,height:wheelSize,marginBottom:'2rem'}}>
+      <div style={{
+        position: 'relative',
+        width: wheelSize,
+        height: wheelSize,
+        marginBottom: isMobile ? '1.2rem' : '2rem',
+        maxWidth: '100vw',
+        overflow: 'visible',
+        touchAction: 'pan-y',
+      }}>
         {/* Wheel rewards */}
         {rewards.map((reward, idx) => {
           const angle = idx * angleStep - Math.PI/2;

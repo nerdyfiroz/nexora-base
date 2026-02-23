@@ -51,15 +51,30 @@ export default function MobileHome() {
           Check Whitelist Status
         </button>
 
-        <div style={nftWrap}>
-          <img src="/images/nft_102.png" style={nftImg} />
-          <span style={badge}>3,333 Items</span>
+        <div style={{display:'flex',justifyContent:'center',gap:'1.2rem',margin:'1.2rem 0'}}>
+          <a href="https://x.com/Nexora_base" target="_blank" rel="noopener noreferrer"><img src="/images/social_x.png" alt="X" style={{width:32,height:32,opacity:0.7}} /></a>
+          <a href="https://opensea.io/collection/nexora-base/overview" target="_blank" rel="noopener noreferrer"><img src="/images/social_opensea.png" alt="OpenSea" style={{width:32,height:32,opacity:0.7}} /></a>
+          <a href="https://basescan.org/address/0x91afb23f7e3567baac193e342be9668ea7feaf9e" target="_blank" rel="noopener noreferrer"><img src="/images/social_base.png" alt="Base" style={{width:32,height:32,opacity:0.7}} /></a>
         </div>
 
-        <p style={text}>
-          Each NEXORA is algorithmically generated with 100+ traits on the Base
-          blockchain.
-        </p>
+        <div style={nftWrap}>
+          <img src="/images/nft_102.png" style={nftImg} />
+          <span style={badge}>1,666 Items</span>
+        </div>
+
+        <div style={{margin:'1rem 0',fontSize:'1.1rem',fontWeight:400,lineHeight:1.6,color:'#222'}}>
+          Welcome to the <b style={{color:'#7b2ff2',fontWeight:700}}>NEXORA revolution</b>. We’re building a brand that blends pixel art, web3, and the magic of digital collectibles.<br /><br />
+          Each of the <b style={{color:'#222',fontWeight:700}}>1666 NEXORAs</b> is algorithmically generated from over <span style={{color:'#7b2ff2',fontWeight:700,textDecoration:'underline'}}>100+ hand-drawn traits</span>. From wizards to pixel gems, no two are alike.<br /><br />
+          Living on the Base blockchain, your NEXORA is your membership card to an exclusive community of creators, collectors, and digital pioneers.
+        </div>
+        <div style={{display:'flex',alignItems:'center',gap:'0.5rem',margin:'1.2rem 0'}}>
+          <img src="/images/nft_11.png" alt="NEXORA Avatar 1" style={{width:32,height:32,borderRadius:'50%',border:'2px solid #fff',boxShadow:'0 2px 8px #0001'}} />
+          <img src="/images/nft_16.png" alt="NEXORA Avatar 2" style={{width:32,height:32,borderRadius:'50%',border:'2px solid #fff',boxShadow:'0 2px 8px #0001'}} />
+          <img src="/images/nft_54.png" alt="NEXORA Avatar 3" style={{width:32,height:32,borderRadius:'50%',border:'2px solid #fff',boxShadow:'0 2px 8px #0001'}} />
+          <img src="/images/nft_3.png" alt="NEXORA Avatar 4" style={{width:32,height:32,borderRadius:'50%',border:'2px solid #fff',boxShadow:'0 2px 8px #0001'}} />
+          <img src="/images/nft_8.png" alt="NEXORA Avatar 5" style={{width:32,height:32,borderRadius:'50%',border:'2px solid #fff',boxShadow:'0 2px 8px #0001'}} />
+          <span style={{marginLeft:'0.7rem',fontWeight:700,fontSize:'1rem',color:'#222'}}>Join Us</span>
+        </div>
       </section>
 
       <GalleryCarousel />
