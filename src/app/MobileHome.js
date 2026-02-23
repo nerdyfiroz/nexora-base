@@ -1,126 +1,208 @@
 "use client";
+
 import AnimatedDescription from "./AnimatedDescription";
 import GalleryCarousel from "./GalleryCarousel";
 import UtilitySection from "./UtilitySection";
 import StakingSection from "./StakingSection";
 import RoadmapFlow from "./RoadmapFlow";
-import { useState } from "react";
 import WhitelistForm from "./WhitelistForm";
+import { useState } from "react";
 
 export default function MobileHome() {
   const [showModal, setShowModal] = useState(false);
+
   return (
-    <>
-      {/* Viewport meta for mobile scaling */}
-      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-      <div style={{ background: '#f8f8f6', padding: '0', minHeight: '100vh', width: '100vw', boxSizing: 'border-box' }}>
-      <header style={{ width: '100%', textAlign: 'center', padding: '1.2rem 0 0.5rem 0', boxSizing: 'border-box' }}>
-        <div style={{display:'flex',justifyContent:'center',alignItems:'center',gap:'1rem',marginBottom:'0.7rem'}}>
-          <img src="/images/nft_226.png" alt="Header NFT 1" style={{width:'44px',height:'44px',borderRadius:'0.7rem',background:'#fff'}} />
-          <span style={{ fontFamily: 'Space Grotesk, Arial', fontWeight: 900, fontSize: '2rem', letterSpacing: '0.04em', color: '#222' }}>NEXORA</span>
-          <img src="/images/nft_16.png" alt="Header NFT 2" style={{width:'44px',height:'44px',borderRadius:'0.7rem',background:'#fff'}} />
+    <div
+      style={{
+        background: "#f8f8f6",
+        minHeight: "100vh",
+        width: "100%",
+        overflowX: "hidden",
+        boxSizing: "border-box",
+      }}
+    >
+      {/* HEADER */}
+      <header style={{ textAlign: "center", padding: "1.2rem 0 0.5rem" }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            gap: "1rem",
+            marginBottom: "0.7rem",
+          }}
+        >
+          <img src="/images/nft_226.png" style={iconStyle} />
+          <span style={titleStyle}>NEXORA</span>
+          <img src="/images/nft_16.png" style={iconStyle} />
         </div>
-        <div style={{marginBottom:'0.3rem'}}>
-          <span style={{fontSize:'1.1rem',fontWeight:600,letterSpacing:'0.01em',color:'#555'}}>Magic Meets Metadata ⚡️</span>
+
+        <div style={{ fontWeight: 600, color: "#555" }}>
+          Magic Meets Metadata ⚡️
         </div>
-        <div style={{margin:'0 auto',maxWidth:'340px',textAlign:'center',fontSize:'1rem',fontWeight:500,color:'#333',lineHeight:1.6,background:'#fff',borderRadius:'0.7rem',padding:'0.5rem 1rem',marginBottom:'0.7rem'}}>Discover the next generation of pixel art collectibles, powered by Base and web3. Join the revolution!</div>
+
+        <div style={descBox}>
+          Discover the next generation of pixel art collectibles, powered by
+          Base and web3. Join the revolution!
+        </div>
       </header>
-      <section style={{ background: '#fff', borderRadius: '1rem', padding: '1rem 0.7rem', margin: '0 0.5rem 1rem 0.5rem', textAlign: 'center', boxSizing: 'border-box' }}>
-        <div style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '1rem', color: '#7b2ff2' }}>
+
+      {/* ANIMATED TEXT */}
+      <section style={card}>
+        <div style={{ fontWeight: 700, color: "#7b2ff2" }}>
           <AnimatedDescription />
         </div>
       </section>
-      {/* 8-Bit Revolution Section */}
-      <div style={{width:'100%',display:'flex',justifyContent:'center',margin:'1.5rem 0 1rem 0'}}>
-        <h2 style={{fontSize:'1.6rem',fontWeight:900,letterSpacing:'0.04em',margin:0,padding:0,textTransform:'uppercase',textAlign:'center',color:'#222'}}>The 8-Bit Revolution</h2>
-      </div>
-      <section style={{display:'flex',flexDirection:'column',alignItems:'center',gap:'1rem',background:'#fff',borderRadius:'1rem',padding:'1rem 0.7rem',margin:'0 0.5rem 1rem 0.5rem',maxWidth:'100vw',boxSizing:'border-box'}}>
-        <div style={{display:'flex',flexDirection:'column',alignItems:'center',gap:'1rem',margin:'0 0 1rem 0'}}>
-          <a href="https://opensea.io/collection/nexora-base" target="_blank" rel="noopener noreferrer" style={{ display: 'block', background: '#2ec4b6', color: '#fff', fontWeight: 700, borderRadius: '1rem', padding: '0.8rem', margin: '0.5rem 0', fontSize: '1rem', textDecoration: 'none', letterSpacing:'0.01em', minWidth:'160px' }}>Explore Collection</a>
-          <button type="button" onClick={() => setShowModal(true)} style={{ display: 'block', background: '#222', color: '#fff', fontWeight: 700, borderRadius: '1rem', padding: '0.8rem', margin: '0.5rem 0', fontSize: '1rem', textDecoration: 'none', letterSpacing:'0.01em', minWidth:'160px', border: 'none', width: '100%', cursor: 'pointer' }}>Check Whitelist Status</button>
-          <div style={{display:'flex',justifyContent:'center',gap:'1rem',marginTop:'0.7rem'}}>
-            <a href="https://x.com/Nexora_base" target="_blank" rel="noopener noreferrer" style={{display:'inline-flex',alignItems:'center',justifyContent:'center'}}>
-              <img src="/images/social_x.png" alt="X" style={{width:'28px',height:'28px',opacity:0.7}} />
-            </a>
-            <a href="https://opensea.io/collection/nexora-base" target="_blank" rel="noopener noreferrer" style={{display:'inline-flex',alignItems:'center',justifyContent:'center'}}>
-              <img src="/images/social_opensea.png" alt="OpenSea" style={{width:'28px',height:'28px',opacity:0.7}} />
-            </a>
-            <a href="https://basescan.org/address/0x91afb23f7e3567baac193e342be9668ea7feaf9e" target="_blank" rel="noopener noreferrer" style={{display:'inline-flex',alignItems:'center',justifyContent:'center'}}>
-              <img src="/images/social_base.png" alt="Base" style={{width:'28px',height:'28px',opacity:0.7}} />
-            </a>
+
+      <h2 style={sectionTitle}>The 8-Bit Revolution</h2>
+
+      {/* MAIN CARD */}
+      <section style={card}>
+        <a
+          href="https://opensea.io/collection/nexora-base"
+          target="_blank"
+          style={primaryBtn}
+        >
+          Explore Collection
+        </a>
+
+        <button onClick={() => setShowModal(true)} style={darkBtn}>
+          Check Whitelist Status
+        </button>
+
+        <div style={nftBox}>
+          <img
+            src="/images/nft_102.png"
+            style={{ width: 120, borderRadius: "1rem" }}
+          />
+          <div style={badge}>3,333 ITEMS</div>
+        </div>
+
+        <p style={textBlock}>
+          Welcome to the <b>NEXORA revolution</b>. Each of the 3,333 NFTs is
+          algorithmically generated from 100+ traits on Base blockchain.
+        </p>
+      </section>
+
+      <GalleryCarousel />
+      <UtilitySection />
+      <StakingSection />
+      <RoadmapFlow />
+
+      {/* MODAL */}
+      {showModal && (
+        <div style={overlay}>
+          <div style={modal}>
+            <button onClick={() => setShowModal(false)} style={closeBtn}>
+              ×
+            </button>
+            <WhitelistForm />
           </div>
         </div>
-        <div style={{background:'#f8f8f6',borderRadius:'1rem',padding:'1rem',display:'flex',flexDirection:'column',alignItems:'center',position:'relative',width:'100%',maxWidth:'240px',margin:'0 auto', boxSizing:'border-box'}}>
-          <img src="/images/nft_102.png" alt="NEXORA NFT" style={{width:'120px',height:'120px',borderRadius:'1rem',marginBottom:'1rem',background:'#fff'}} />
-          <div style={{position:'absolute',top:'0.7rem',right:'0.7rem',background:'#fff',borderRadius:'0.7rem',padding:'0.3rem 0.7rem',fontWeight:700,fontSize:'0.95rem',color:'#7b2ff2',textAlign:'center'}}>3,333<br /><span style={{fontWeight:400,fontSize:'0.8rem',color:'#aaa'}}>UNIQUE ITEMS</span></div>
-          <div style={{position:'absolute',bottom:'0.7rem',left:'0.7rem',background:'#fff',borderRadius:'0.6rem',padding:'0.2rem 0.6rem',fontWeight:700,fontSize:'0.85rem',color:'#ff9900',textAlign:'center'}}>Base<br /><span style={{fontWeight:400,fontSize:'0.8rem',color:'#aaa'}}>NETWORK</span></div>
-        </div>
-        <div style={{fontSize:'1rem',fontWeight:400,lineHeight:1.6,color:'#222',margin:'1rem 0',textAlign:'center',maxWidth:'260px'}}>
-          Welcome to the <b style={{color:'#7b2ff2',fontWeight:700}}>NEXORA revolution</b>. We’re building a brand that blends pixel art, web3, and the magic of digital collectibles.<br /><br />
-          Each of the <b style={{color:'#222',fontWeight:700}}>3,333 NEXORAs</b> is algorithmically generated from over <span style={{color:'#7b2ff2',fontWeight:700,textDecoration:'underline'}}>100+ hand-drawn traits</span>. From wizards to pixel gems, no two are alike.<br /><br />
-          Living on the Base blockchain, your NEXORA is your membership card to an exclusive community of creators, collectors, and digital pioneers.
-        </div>
-        <div style={{display:'flex',alignItems:'center',gap:'0.5rem',marginTop:'0.7rem',justifyContent:'center'}}>
-          <img src="/images/nft_11.png" alt="NEXORA Avatar 1" style={{width:'28px',height:'28px',borderRadius:'50%',border:'2px solid #fff'}} />
-          <img src="/images/nft_16.png" alt="NEXORA Avatar 2" style={{width:'28px',height:'28px',borderRadius:'50%',border:'2px solid #fff'}} />
-          <img src="/images/nft_54.png" alt="NEXORA Avatar 3" style={{width:'28px',height:'28px',borderRadius:'50%',border:'2px solid #fff'}} />
-          <img src="/images/nft_3.png" alt="NEXORA Avatar 4" style={{width:'28px',height:'28px',borderRadius:'50%',border:'2px solid #fff'}} />
-          <img src="/images/nft_8.png" alt="NEXORA Avatar 5" style={{width:'28px',height:'28px',borderRadius:'50%',border:'2px solid #fff'}} />
-          <span style={{marginLeft:'0.5rem',fontWeight:700,fontSize:'0.9rem',color:'#222'}}>Join Us</span>
-        </div>
-      </section>
-      <section style={{ margin: '0 0.5rem 1rem 0.5rem' }}>
-        <GalleryCarousel />
-      </section>
-      <section style={{ margin: '0 0.5rem 1rem 0.5rem' }}>
-        <UtilitySection />
-      </section>
-      <section style={{ margin: '0 0.5rem 1rem 0.5rem' }}>
-        <StakingSection />
-      </section>
-      <section style={{ margin: '0 0.5rem 1rem 0.5rem' }}>
-        <RoadmapFlow />
-      </section>
-      <footer style={{ textAlign: 'center', margin: '1.5rem 0 1rem 0', fontSize: '0.95rem', color: '#333', boxSizing: 'border-box' }}>
-        <img src="/images/rumiilyan.jpeg" alt="Rumi Ilyan" style={{ width: '28px', height: '28px', borderRadius: '50%', objectFit: 'cover', display: 'block', margin: '0 auto 0.5rem auto' }} />
-        Website built by <a href="https://x.com/RamiIlyan" target="_blank" rel="noopener noreferrer" style={{ color: '#007aff', fontWeight: 700, textDecoration: 'none' }}>Rumi Ilyan</a>
-      </footer>
-      {/* Whitelist Modal */}
-      <div className={`nexora-modal-overlay${showModal ? ' nexora-modal-open' : ''}`} style={{pointerEvents: showModal ? 'auto' : 'none'}}>
-        <div className={`nexora-modal${showModal ? ' nexora-modal-in' : ''}`} style={{maxWidth: 400, width: '95vw'}}>
-          <button onClick={() => setShowModal(false)} style={{position:'absolute',top:8,right:8,background:'#fff',border:'none',borderRadius:16,fontSize:24,fontWeight:700,width:36,height:36,cursor:'pointer',boxShadow:'0 2px 8px #0002'}}>×</button>
-          <WhitelistForm />
-        </div>
-      </div>
-      <style jsx global>{`
-        .nexora-modal-overlay {
-          position: fixed;
-          top: 0; left: 0; width: 100vw; height: 100vh;
-          background: rgba(0,0,0,0.35);
-          z-index: 1000;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          opacity: 0;
-          transition: opacity 0.35s cubic-bezier(.4,0,.2,1);
-        }
-        .nexora-modal-open {
-          opacity: 1;
-          pointer-events: auto;
-        }
-        .nexora-modal {
-          position: relative;
-          z-index: 1001;
-          transform: scale(0.92) translateY(32px);
-          opacity: 0;
-          transition: transform 0.35s cubic-bezier(.4,0,.2,1), opacity 0.35s cubic-bezier(.4,0,.2,1);
-        }
-        .nexora-modal-in {
-          transform: scale(1) translateY(0);
-          opacity: 1;
-        }
-      `}</style>
-      </div>
-    </>
+      )}
+    </div>
   );
 }
+
+/* ===== STYLES ===== */
+
+const iconStyle = {
+  width: 44,
+  height: 44,
+  borderRadius: "0.7rem",
+  background: "#fff",
+};
+
+const titleStyle = {
+  fontWeight: 900,
+  fontSize: "2rem",
+  letterSpacing: "0.04em",
+};
+
+const descBox = {
+  margin: "0.7rem auto",
+  maxWidth: 340,
+  background: "#fff",
+  borderRadius: "0.7rem",
+  padding: "0.6rem 1rem",
+};
+
+const card = {
+  background: "#fff",
+  borderRadius: "1rem",
+  padding: "1rem",
+  margin: "0.5rem",
+  textAlign: "center",
+};
+
+const sectionTitle = {
+  textAlign: "center",
+  fontSize: "1.6rem",
+  fontWeight: 900,
+  margin: "1rem 0",
+};
+
+const primaryBtn = {
+  display: "block",
+  background: "#2ec4b6",
+  color: "#fff",
+  padding: "0.8rem",
+  borderRadius: "1rem",
+  textDecoration: "none",
+  fontWeight: 700,
+  marginBottom: "0.6rem",
+};
+
+const darkBtn = {
+  background: "#222",
+  color: "#fff",
+  padding: "0.8rem",
+  borderRadius: "1rem",
+  border: "none",
+  fontWeight: 700,
+  width: "100%",
+};
+
+const nftBox = {
+  marginTop: "1rem",
+  background: "#f8f8f6",
+  padding: "1rem",
+  borderRadius: "1rem",
+};
+
+const badge = {
+  marginTop: "0.5rem",
+  fontWeight: 700,
+  color: "#7b2ff2",
+};
+
+const textBlock = {
+  marginTop: "1rem",
+  lineHeight: 1.6,
+};
+
+const overlay = {
+  position: "fixed",
+  inset: 0,
+  background: "rgba(0,0,0,.4)",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+};
+
+const modal = {
+  background: "#fff",
+  padding: "1rem",
+  borderRadius: "1rem",
+  width: "90%",
+  maxWidth: 380,
+};
+
+const closeBtn = {
+  position: "absolute",
+  right: 10,
+  top: 10,
+  border: "none",
+  background: "#fff",
+  fontSize: 24,
+};
