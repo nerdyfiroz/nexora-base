@@ -25,6 +25,17 @@ export function useApproval(provider, address, nftContractAddress, stakingContra
       setError(new Error('Wallet not connected'));
       return;
     }
+    // Check if provider supports getSigner (wallet provider)
+    if (typeof provider.getSigner !== 'function') {
+      const msg = 'Connected provider does not support sending transactions. Please connect a wallet (MetaMask, WalletConnect, etc).';
+      setError(new Error(msg));
+      if (typeof window !== 'undefined' && window.toast) {
+        window.toast.error(msg);
+      } else {
+        alert(msg);
+      }
+      return;
+    }
     setLoading(true);
     setError(null);
     try {
