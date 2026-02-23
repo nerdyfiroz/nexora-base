@@ -89,21 +89,40 @@ function RoadmapFlow() {
   }, []);
 
   return (
-    <section>
-      {/* Your roadmap rendering logic goes here */}
-      <style jsx>{`
-        .roadmap-milestone-pin {
-          opacity: 0;
-          transform: translateY(40px) scale(1);
-          pointer-events: none;
-        }
-        .roadmap-milestone-pin.visible {
-          opacity: 1;
-          transform: translateY(0) scale(1);
-          pointer-events: auto;
-          transition: transform 0.7s cubic-bezier(.68,-0.55,.27,1.55), opacity 0.7s;
-        }
-      `}</style>
+    <section className="nexora-roadmap">
+      <h3>Project Roadmap</h3>
+      <ul className="nexora-roadmap-list">
+        {milestones.map((m, i) => (
+          <li
+            key={i}
+            className="nexora-roadmap-item"
+            ref={el => pinRefs.current[i] = el}
+            data-index={i}
+            style={{
+              boxShadow: visible[i] ? `0 2px 16px ${m.color}33` : undefined,
+              border: visible[i] ? `2px solid ${m.color}` : undefined,
+              background: visible[i] ? `linear-gradient(90deg, #fff 80%, ${m.color}11)` : undefined,
+              transition: 'all 0.5s cubic-bezier(.68,-0.55,.27,1.55)',
+              opacity: visible[i] ? 1 : 0.7,
+              transform: visible[i] ? 'translateY(0)' : 'translateY(40px)',
+            }}
+            onMouseEnter={() => setActive(i)}
+            onMouseLeave={() => setActive(null)}
+          >
+            <span
+              className="nexora-roadmap-dot"
+              style={{ background: m.color, fontSize: '1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', width: 36, height: 36 }}
+            >{m.icon}</span>
+            <div style={{ flex: 1 }}>
+              <div style={{ fontWeight: 800, fontSize: '1.18rem', marginBottom: 4, color: m.color }}>{m.title}</div>
+              <div style={{ fontSize: '1.05rem', color: '#23272f', marginBottom: 2 }}>{m.desc}</div>
+              {i === 0 && (
+                <span className="nexora-roadmap-date">20 Feb 2024</span>
+              )}
+            </div>
+          </li>
+        ))}
+      </ul>
     </section>
   );
 }
