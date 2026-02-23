@@ -20,80 +20,11 @@ export default function Home() {
   const [selected, setSelected] = useState([]);
 
   const handleSelect = tokenId => {
-    setSelected(selected.includes(tokenId)
-      ? selected.filter(id => id !== tokenId)
-      : [...selected, tokenId]);
-  };
+    import ResponsiveHome from "./ResponsiveHome";
+
+    export default function Home() {
+      return <ResponsiveHome />;
+    }
 
 
   const handleStake = async () => {
-    if (!selected.length) return;
-    try {
-      toast.loading('Staking...');
-      await stakeBatch(selected);
-      toast.success('Staked successfully!');
-      setSelected([]);
-    } catch (err) {
-      toast.error(err.message || 'Stake failed');
-    } finally {
-      toast.dismiss();
-    }
-  };
-
-  const handleUnstake = async tokenId => {
-    try {
-      toast.loading('Unstaking...');
-      await unstakeBatch([tokenId]);
-      toast.success('Unstaked successfully!');
-    } catch (err) {
-      toast.error(err.message || 'Unstake failed');
-    } finally {
-      toast.dismiss();
-    }
-  };
-
-  return (
-    <div style={{maxWidth:800,margin:'0 auto',padding:32}}>
-      <Toast />
-      <h1>NFT Staking dApp</h1>
-      <WalletConnect />
-      <hr />
-      <h2>Your NFTs</h2>
-      {nftsLoading ? <Skeleton count={4} /> : null}
-      {!approved && (
-        <button
-          disabled={approvalLoading}
-          onClick={async () => {
-            let loadingId;
-            try {
-              loadingId = toast.loading('Approving...');
-              await approve();
-              toast.dismiss(loadingId);
-              toast.success('Approved!');
-            } catch (err) {
-              if (loadingId) toast.dismiss(loadingId);
-              toast.error(err.message || 'Approval failed');
-            }
-          }}
-        >
-          Approve Staking
-        </button>
-      )}
-      <div style={{display:'flex',flexWrap:'wrap'}}>
-        {!nftsLoading && nfts.map(nft => (
-          <NFTCard key={nft.tokenId} tokenId={nft.tokenId} selected={selected.includes(nft.tokenId)} onSelect={handleSelect} />
-        ))}
-      </div>
-      <button disabled={!approved || !selected.length || stakingLoading} onClick={handleStake}>Stake Selected</button>
-      <hr />
-      <h2>Staked NFTs</h2>
-      {stakingLoading ? <Skeleton count={4} /> : null}
-      <div style={{display:'flex',flexWrap:'wrap'}}>
-        {!stakingLoading && stakedNFTs.map(nft => (
-          <StakedNFTCard key={nft.tokenId} provider={provider} stakingContractAddress={STAKING_CONTRACT} tokenId={nft.tokenId} onUnstake={handleUnstake} />
-        ))}
-      </div>
-    </div>
-  );
-}
-
