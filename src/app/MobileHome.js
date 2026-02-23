@@ -73,13 +73,13 @@ export default function MobileHome() {
       <section style={{ margin: '0 0.5rem 1rem 0.5rem', maxWidth: 480, width: '100%', marginLeft: 'auto', marginRight: 'auto' }}>
         <GalleryCarousel />
       </section>
-      <section style={{ margin: '0 0.5rem 1rem 0.5rem' }}>
+      <section style={{ margin: '0 0.5rem 1rem 0.5rem', maxWidth: 480, width: '100%', marginLeft: 'auto', marginRight: 'auto' }}>
         <UtilitySection />
       </section>
-      <section style={{ margin: '0 0.5rem 1rem 0.5rem' }}>
+      <section style={{ margin: '0 0.5rem 1rem 0.5rem', maxWidth: 480, width: '100%', marginLeft: 'auto', marginRight: 'auto' }}>
         <StakingSection />
       </section>
-      <section style={{ margin: '0 0.5rem 1rem 0.5rem' }}>
+      <section style={{ margin: '0 0.5rem 1rem 0.5rem', maxWidth: 480, width: '100%', marginLeft: 'auto', marginRight: 'auto' }}>
         <RoadmapFlow />
       </section>
       <footer style={{ textAlign: 'center', margin: '1.5rem 0 1rem 0', fontSize: '0.95rem', color: '#333', boxSizing: 'border-box', maxWidth: 480, marginLeft: 'auto', marginRight: 'auto' }}>
