@@ -136,13 +136,13 @@ export default function ResponsiveHome() {
         </div>
         <div className="nexora-feature-imgbox" style={{flex:'0 0 320px',background:'#f3e9f7',borderRadius:'1.2rem',padding:'1.2rem',boxShadow:'0 2px 16px #0001',display:'flex',flexDirection:'column',alignItems:'center',position:'relative'}}>
           <img src="/images/nft_102.png" alt="NEXORA NFT" loading="lazy" className="nexora-feature-img" style={{width:'220px',height:'220px',borderRadius:'1.2rem',marginBottom:'1.2rem',background:'#fff'}} />
-          <div className="nexora-feature-badge" style={{position:'absolute',top:'1.2rem',right:'1.2rem',background:'#fff',borderRadius:'1rem',padding:'0.5rem 1.2rem',boxShadow:'0 2px 8px #0001',fontWeight:700,fontSize:'1.3rem',color:'#7b2ff2',textAlign:'center'}}>3,333<br /><span style={{fontWeight:400,fontSize:'1rem',color:'#aaa'}}>UNIQUE ITEMS</span></div>
+          <div className="nexora-feature-badge" style={{position:'absolute',top:'1.2rem',right:'1.2rem',background:'#fff',borderRadius:'1rem',padding:'0.5rem 1.2rem',boxShadow:'0 2px 8px #0001',fontWeight:700,fontSize:'1.3rem',color:'#7b2ff2',textAlign:'center'}}>1,666<br /><span style={{fontWeight:400,fontSize:'1rem',color:'#aaa'}}>UNIQUE ITEMS</span></div>
           <div className="nexora-feature-network" style={{position:'absolute',bottom:'1.2rem',left:'1.2rem',background:'#fff',borderRadius:'0.8rem',padding:'0.4rem 1.1rem',boxShadow:'0 2px 8px #0001',fontWeight:700,fontSize:'1.1rem',color:'#ff9900',textAlign:'center'}}>Base<br /><span style={{fontWeight:400,fontSize:'0.95rem',color:'#aaa'}}>NETWORK</span></div>
         </div>
         <div className="nexora-feature-content" style={{flex:1,minWidth:'320px'}}>
           <div className="nexora-feature-desc" style={{fontSize:'1.25rem',fontWeight:400,lineHeight:1.6,color:'#222',marginBottom:'1.5rem'}}>
             Welcome to the <b style={{color:'#7b2ff2',fontWeight:700}}>NEXORA revolution</b>. We’re building a brand that blends pixel art, web3, and the magic of digital collectibles.<br /><br />
-            Each of the <b style={{color:'#222',fontWeight:700}}>3,333 NEXORAs</b> is algorithmically generated from over <a href="#" style={{color:'#7b2ff2',fontWeight:700,textDecoration:'underline'}}>100+ hand-drawn traits</a>. From wizards to pixel gems, no two are alike.<br /><br />
+            Each of the <b style={{color:'#222',fontWeight:700}}>1666 NEXORAs</b> is algorithmically generated from over <a href="#" style={{color:'#7b2ff2',fontWeight:700,textDecoration:'underline'}}>100+ hand-drawn traits</a>. From wizards to pixel gems, no two are alike.<br /><br />
             Living on the Base blockchain, your NEXORA is your membership card to an exclusive community of creators, collectors, and digital pioneers.
           </div>
           <div className="nexora-feature-avatars" style={{display:'flex',alignItems:'center',gap:'0.5rem',marginTop:'1.2rem'}}>
