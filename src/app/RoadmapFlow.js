@@ -97,17 +97,7 @@ function RoadmapFlow() {
   const mobileSvgWidth = 260;
   const mobileSvgHeight = 480;
   const sectionStyle = {
-    width: "100%",
-          {milestones.map((m, i) => {
-            const pin = pinPositions[i];
-            const px = pin.x * (svgW/svgWidth);
-            const py = pin.y * (svgH/svgHeight);
-            return (
-              <div
-                key={i}
-                ref={el => pinRefs.current[i] = el}
-                data-index={i}
-                className={`roadmap-milestone-pin${visible[i] ? ' visible' : ''}`}
+    width: "100%"
                 style={{
                   position: "absolute",
                   left: px - (isMobile ? 20 : 32),
