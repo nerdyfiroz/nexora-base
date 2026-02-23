@@ -27,7 +27,7 @@ export function getRandomReward() {
   return rewardProbabilities[rewardProbabilities.length - 1].label;
 }
 
-export default function SpinDemoBox() {
+export default function SpinDemoBox({ eligible, spinsLeft, onSpin }) {
   const [spinning, setSpinning] = useState(false);
   const [result, setResult] = useState(null);
   const [shuffleReward, setShuffleReward] = useState(null);
@@ -47,6 +47,7 @@ export default function SpinDemoBox() {
           setResult(finalReward);
           setShuffleReward(null);
           setSpinning(false);
+          if (onSpin) onSpin();
           // Store spin reward for admin distribution
           if (finalReward && rewardProbabilities.find(r => r.label === finalReward && r.weight > 0)) {
             // Replace with actual wallet address from user context
@@ -111,7 +112,7 @@ export default function SpinDemoBox() {
         {/* Central spin button */}
         <button
           onClick={handleSpin}
-          disabled={spinning}
+          disabled={!eligible || spinning || spinsLeft <= 0}
           style={{
             position:'absolute',
             left:`${center-50}px`,
@@ -119,24 +120,30 @@ export default function SpinDemoBox() {
             width:'100px',
             height:'100px',
             borderRadius:'50%',
-            background:'#7b2ff2',
+            background:(!eligible || spinsLeft <= 0)?'#ccc':'#7b2ff2',
             color:'#fff',
             fontWeight:700,
             fontSize:'1.3rem',
             border:'none',
             boxShadow:'0 2px 16px #7b2ff2',
-            cursor:spinning?'not-allowed':'pointer',
+            cursor:(!eligible || spinsLeft <= 0 || spinning)?'not-allowed':'pointer',
             opacity:spinning?0.6:1,
             zIndex:3,
             transition:'all 0.2s',
           }}>
-            Spin 🛞
+            {spinsLeft > 0 ? `Spin 🛞 (${spinsLeft})` : 'No Spins'}
         </button>
       </div>
       {spinning && shuffleReward && (
         <div style={{fontSize:'1.3rem',color:'#7b2ff2',fontWeight:700,marginTop:'1rem',transition:'all 0.2s'}}>
           {shuffleReward}
         </div>
+      )}
+      {!eligible && (
+        <div style={{fontSize:'1.1rem',color:'#bc13fe',fontWeight:600,marginTop:'1rem'}}>Stake at least 10 NFTs to unlock spins!</div>
+      )}
+      {eligible && spinsLeft === 0 && (
+        <div style={{fontSize:'1.1rem',color:'#38ef7d',fontWeight:600,marginTop:'1rem'}}>You have used all your spins.</div>
       )}
       {result && <div style={{fontSize:'1.3rem',color:'#38ef7d',fontWeight:700,marginTop:'1rem'}}>You won: {result}</div>}
     </div>

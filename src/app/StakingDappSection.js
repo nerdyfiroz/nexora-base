@@ -4,7 +4,7 @@ import { useWallet } from '../hooks/useWallet';
 import { useNFTs } from '../hooks/useNFTs';
 import { useApproval } from '../hooks/useApproval';
 import { useStaking } from '../hooks/useStaking';
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import Toast from '../components/Toast';
 import Skeleton from '../components/Skeleton';
 import toast from 'react-hot-toast';
@@ -20,6 +20,20 @@ export default function StakingDappSection() {
   const { approved, loading: approvalLoading, approve } = useApproval(provider, address, NFT_CONTRACT, STAKING_CONTRACT);
   const { stakedNFTs, loading: stakingLoading, stakeBatch, unstakeBatch } = useStaking(provider, address, STAKING_CONTRACT);
   const [selected, setSelected] = useState([]);
+
+
+
+  // Calculate spin count: 10=1, 20=2, 30=3, 40=4, 50+=5
+  const spinCount = useMemo(() => {
+    if (!stakedNFTs) return 0;
+    if (stakedNFTs.length < 10) return 0;
+    if (stakedNFTs.length >= 50) return 5;
+    return Math.floor(stakedNFTs.length / 10);
+  }, [stakedNFTs]);
+
+  // Show total holding and staked NFTs
+  const totalHolding = nfts ? nfts.length : 0;
+  const totalStaked = stakedNFTs ? stakedNFTs.length : 0;
 
   const handleSelect = tokenId => {
     setSelected(selected.includes(tokenId)
@@ -58,6 +72,10 @@ export default function StakingDappSection() {
       <Toast />
       <h2 style={{fontSize:'2rem',fontWeight:700,marginBottom:'1rem',color:'#7b2ff2'}}>NFT Staking</h2>
       <WalletConnect />
+      <div style={{display:'flex',gap:'2.5rem',alignItems:'center',marginBottom:'1.2rem'}}>
+        <div style={{fontWeight:700,fontSize:'1.1rem',color:'#7b2ff2'}}>Total NFTs in Wallet: <span style={{color:'#222'}}>{totalHolding}</span></div>
+        <div style={{fontWeight:700,fontSize:'1.1rem',color:'#38ef7d'}}>Total NFTs Staked: <span style={{color:'#222'}}>{totalStaked}</span></div>
+      </div>
       <h3>Your NFTs</h3>
       {nftsLoading ? <Skeleton count={4} /> : null}
       {!approved && (
@@ -86,6 +104,11 @@ export default function StakingDappSection() {
       </div>
       <button disabled={!approved || !selected.length || stakingLoading} onClick={handleStake}>Stake Selected</button>
       <h3 style={{marginTop:'2rem'}}>Staked NFTs</h3>
+      {spinCount > 0 && (
+        <div style={{margin:'1.5rem 0',padding:'1rem 1.5rem',background:'#18181c',border:'2px solid #38ef7d',borderRadius:'1rem',color:'#38ef7d',fontWeight:700,fontSize:'1.2rem',textAlign:'center'}}>
+          🎉 You are eligible for <span style={{color:'#bc13fe'}}>{spinCount} Spin{spinCount > 1 ? 's' : ''} to Win</span>! ({totalStaked} NFTs staked)
+        </div>
+      )}
       {stakingLoading ? <Skeleton count={4} /> : null}
       <div style={{display:'flex',flexWrap:'wrap'}}>
         {!stakingLoading && stakedNFTs.map(nft => (
