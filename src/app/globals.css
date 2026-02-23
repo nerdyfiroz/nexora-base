@@ -13,9 +13,16 @@ body {
 /* ================= GLOBAL SAFETY ================= */
 
 html, body {
-  width: 100%;
-  overflow-x: hidden;
+  width: 100vw;
+  max-width: 100vw;
+  overflow-x: hidden !important;
   background: var(--bg-main);
+}
+
+img, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 body {
@@ -90,8 +97,4 @@ body {
 .nexora-modal.nexora-modal-in {
   transform: translateY(0) scale(1);
   opacity: 1;
-}
-html, body {
-  overflow-x: hidden;
-  width: 100%;
 }
