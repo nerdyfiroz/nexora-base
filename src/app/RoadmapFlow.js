@@ -98,36 +98,6 @@ function RoadmapFlow() {
   const mobileSvgHeight = 480;
   const sectionStyle = {
     width: "100%",
-        </style>
-      </div>
-    </section>
-              points={pinPositions.map(p => `${p.x * (svgW/svgWidth)},${p.y * (svgH/svgHeight)}`).join(' ')}
-            />
-            <polyline
-              fill="none"
-              stroke="#fff"
-              strokeWidth={isMobile ? 4 : 6}
-              strokeDasharray={isMobile ? "10 10" : "18 18"}
-              strokeLinecap="round"
-              points={pinPositions.map(p => `${p.x * (svgW/svgWidth)},${p.y * (svgH/svgHeight)}`).join(' ')}
-            />
-            {/* Arrowhead at the end of the Z-line */}
-            {(() => {
-              const last = pinPositions[pinPositions.length - 1];
-              const prev = pinPositions[pinPositions.length - 2];
-              const angle = Math.atan2(last.y - prev.y, last.x - prev.x);
-              const size = isMobile ? 10 : 18;
-              const ax = last.x * (svgW/svgWidth);
-              const ay = last.y * (svgH/svgHeight);
-              const points = [
-                `${ax + size * Math.cos(angle - Math.PI / 6)},${ay + size * Math.sin(angle - Math.PI / 6)}`,
-                `${ax},${ay}`,
-                `${ax + size * Math.cos(angle + Math.PI / 6)},${ay + size * Math.sin(angle + Math.PI / 6)}`
-              ].join(' ');
-              return <polyline points={points} fill="#444" stroke="#444" strokeWidth={isMobile ? 1 : 2} />;
-            })()}
-          </svg>
-          {/* Milestone pins */}
           {milestones.map((m, i) => {
             const pin = pinPositions[i];
             const px = pin.x * (svgW/svgWidth);
