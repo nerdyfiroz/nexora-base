@@ -92,7 +92,7 @@ export default function GalleryCarousel() {
 const section = {
   width: "100%",
   padding: "2.5rem 1rem",
-  overflowX: "hidden",
+  overflowX: "hidden",   // ✅ only here
   textAlign: "center",
 };
 
