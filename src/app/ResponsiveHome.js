@@ -70,7 +70,7 @@ export default function ResponsiveHome() {
         {/* Buttons and Socials */}
         <div style={{display:'flex',flexDirection:'column',alignItems:'center',gap:'1.5rem',margin:'2.5rem 0 1.5rem 0'}}>
           <div style={{display:'flex',gap:'2.2rem',marginBottom:'0.7rem'}}>
-            <a href="https://opensea.io/" target="_blank" rel="noopener noreferrer" style={{
+            <a href="https://opensea.io/collection/nexora-base/overview" target="_blank" rel="noopener noreferrer" style={{
               display:'inline-block',
               padding:'0.9rem 2.2rem',
               borderRadius:'2.5rem',
