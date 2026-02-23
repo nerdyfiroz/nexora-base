@@ -5,14 +5,18 @@ export default function WalletConnect() {
   const { provider, address, network } = useWallet();
 
   const handleDisconnect = () => {
+    // Clear wallet state and reload cleanly
     if (window.ethereum && window.ethereum.isMetaMask) {
-      window.ethereum.request({ method: 'wallet_requestPermissions', params: [{ eth_accounts: {} }] })
-        .then(() => window.location.reload())
-        .catch(() => window.location.reload());
-    } else {
-      // fallback: just reload
-      window.location.reload();
+      // Remove all listeners and clear address
+      if (window.ethereum.removeAllListeners) {
+        window.ethereum.removeAllListeners('accountsChanged');
+        window.ethereum.removeAllListeners('chainChanged');
+      }
     }
+    localStorage.clear();
+    sessionStorage.clear();
+    window.walletAddress = undefined;
+    setTimeout(() => window.location.reload(), 100);
   };
 
   return (

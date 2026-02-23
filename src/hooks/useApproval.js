@@ -20,122 +20,39 @@ export function useApproval(provider, address, nftContractAddress, stakingContra
   }, [provider, address, nftContractAddress, stakingContractAddress]);
 
   const approve = async () => {
+    setError(null);
     if (!provider || !address) {
-      alert('Wallet not connected. Please connect your wallet.');
       setError(new Error('Wallet not connected'));
-      return;
-    }
-    // Check if provider supports getSigner (wallet provider)
-    if (typeof provider.getSigner !== 'function') {
-      const msg = 'Connected provider does not support sending transactions. Please connect a wallet (MetaMask, WalletConnect, etc).';
-      setError(new Error(msg));
-      if (typeof window !== 'undefined' && window.toast) {
-        window.toast.error(msg);
-      } else {
-        alert(msg);
-      }
+      alert('Wallet not connected. Please connect your wallet.');
       return;
     }
     setLoading(true);
-    setError(null);
     try {
-      // Debug: log network and contract addresses
-      let networkName = 'unknown';
-      try {
-        const network = await provider.getNetwork();
-        networkName = network.name || network.chainId;
-        if (typeof window !== 'undefined' && window.toast) {
-          window.toast(`Network: ${networkName}`);
+      // Check for MetaMask and correct network (Base chainId: 8453)
+      if (window.ethereum && window.ethereum.isMetaMask) {
+        const chainId = await provider.send('eth_chainId', []);
+        if (chainId !== '0x2105' && chainId !== '8453') { // 0x2105 = 8453
+          await window.ethereum.request({
+            method: 'wallet_switchEthereumChain',
+            params: [{ chainId: '0x2105' }],
+          });
         }
-        // eslint-disable-next-line no-console
-        console.log('Network:', networkName);
-      } catch (e) {
-        // eslint-disable-next-line no-console
-        console.log('Could not fetch network:', e);
       }
+      const signer = provider.getSigner();
+      const contract = new ethers.Contract(nftContractAddress, nftAbi, signer);
       if (typeof window !== 'undefined' && window.toast) {
-        window.toast(`NFT: ${nftContractAddress}\nStaking: ${stakingContractAddress}`);
+        window.toast('Please confirm the approval transaction in MetaMask...', { icon: '📝' });
       }
-      // eslint-disable-next-line no-console
-      console.log('NFT Contract:', nftContractAddress);
-      console.log('Staking Contract:', stakingContractAddress);
-
-      if (typeof window !== 'undefined' && window.toast) {
-        window.toast('Please confirm the approval transaction in your wallet...', { icon: '📝' });
-      } else if (typeof window !== 'undefined' && window.reactHotToast) {
-        window.reactHotToast('Please confirm the approval transaction in your wallet...', { icon: '📝' });
-      }
-      if (typeof window !== 'undefined' && window.toast === undefined && window.reactHotToast === undefined) {
-        alert('Please confirm the approval transaction in your wallet...');
-      }
-
-      let signer;
-      try {
-        signer = provider.getSigner();
-        // eslint-disable-next-line no-console
-        console.log('Signer:', signer);
-      } catch (signerErr) {
-        setError(signerErr);
-        if (typeof window !== 'undefined' && window.toast) {
-          window.toast.error('Could not get signer: ' + signerErr.message);
-        }
-        // eslint-disable-next-line no-console
-        console.error('Could not get signer:', signerErr);
-        setLoading(false);
-        return;
-      }
-      let contract;
-      try {
-        contract = new ethers.Contract(nftContractAddress, nftAbi, signer);
-      } catch (contractErr) {
-        setError(contractErr);
-        if (typeof window !== 'undefined' && window.toast) {
-          window.toast.error('Could not create contract: ' + contractErr.message);
-        }
-        // eslint-disable-next-line no-console
-        console.error('Could not create contract:', contractErr);
-        setLoading(false);
-        return;
-      }
-      let tx;
-      try {
-        tx = await contract.setApprovalForAll(stakingContractAddress, true);
-        // eslint-disable-next-line no-console
-        console.log('Approval tx sent:', tx);
-      } catch (txErr) {
-        setError(txErr);
-        if (typeof window !== 'undefined' && window.toast) {
-          window.toast.error('Approval transaction error: ' + txErr.message);
-        }
-        // eslint-disable-next-line no-console
-        console.error('Approval transaction error:', txErr);
-        setLoading(false);
-        return;
-      }
-      try {
-        await tx.wait();
-        setApproved(true);
-      } catch (waitErr) {
-        setError(waitErr);
-        if (typeof window !== 'undefined' && window.toast) {
-          window.toast.error('Approval tx wait error: ' + waitErr.message);
-        }
-        // eslint-disable-next-line no-console
-        console.error('Approval tx wait error:', waitErr);
-        setLoading(false);
-        return;
-      }
+      const tx = await contract.setApprovalForAll(stakingContractAddress, true);
+      await tx.wait();
+      setApproved(true);
     } catch (err) {
       setError(err);
       if (typeof window !== 'undefined' && window.toast) {
-        window.toast.error('Approval transaction failed or was rejected.');
-      } else if (typeof window !== 'undefined' && window.reactHotToast) {
-        window.reactHotToast.error('Approval transaction failed or was rejected.');
+        window.toast.error(err.message || 'Approval transaction failed or was rejected.');
       } else {
-        alert('Approval transaction failed or was rejected.');
+        alert(err.message || 'Approval transaction failed or was rejected.');
       }
-      // eslint-disable-next-line no-console
-      console.error('Approval transaction failed or was rejected:', err);
     } finally {
       setLoading(false);
     }
