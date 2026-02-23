@@ -12,15 +12,12 @@ export default function MobileHome() {
   const [showModal, setShowModal] = useState(false);
 
   return (
-    <div
-  style={{
-    background: "#f8f8f6",
-    minHeight: "100dvh",
-    width: "100%",
-    overflowX: "hidden",
-    position: "relative",
-  }}
->
+   <div style={{
+  width: "100%",
+  minHeight: "100dvh",
+  overflowX: "hidden",
+  position: "relative",
+}}>
       {/* HEADER */}
       <header style={wrap}>
         <div style={row}>
