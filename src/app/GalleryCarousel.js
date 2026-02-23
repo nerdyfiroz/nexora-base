@@ -1,7 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-// Removed virtualization for compatibility and navigation
+import React, { useState, useEffect, useRef } from "react";
 
 const nftImages = [
   "/images/nft_226.png",
@@ -20,131 +19,136 @@ const nftImages = [
   "/images/nft_98.png",
 ];
 
-
-function GalleryCarousel() {
+export default function GalleryCarousel() {
   const [index, setIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const startX = useRef(0);
+
   useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth <= 700);
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
+    const check = () => setIsMobile(window.innerWidth <= 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
   }, []);
 
-  const prev = () => setIndex((i) => (i - 1 + nftImages.length) % nftImages.length);
+  const prev = () =>
+    setIndex((i) => (i - 1 + nftImages.length) % nftImages.length);
   const next = () => setIndex((i) => (i + 1) % nftImages.length);
-  const getCard = (offset) => nftImages[(index + offset + nftImages.length) % nftImages.length];
+
+  const onTouchStart = (e) => (startX.current = e.touches[0].clientX);
+  const onTouchEnd = (e) => {
+    const diff = e.changedTouches[0].clientX - startX.current;
+    if (diff > 50) prev();
+    if (diff < -50) next();
+  };
 
   return (
-    <section style={{ ...sectionStyle, background: 'rgba(255,255,255,0.06)', zIndex: 1 }}>
-      <div style={containerStyle}>
-        <h2 style={titleStyle}>Gallery</h2>
-        <div style={carouselStyle}>
-          {(isMobile ? [0] : [-2, -1, 0, 1, 2]).map((offset, i) => {
-            const img = getCard(offset);
-            const center = offset === 0;
-            return (
-              <div
-                key={`${index}-${i}`}
-                style={{
-                  ...cardStyle,
-                  width: isMobile ? 220 : 260,
-                  height: isMobile ? 220 : 260,
-                  transform: !isMobile ? `scale(${center ? 1.08 : 0.9}) rotate(${offset * 5}deg)` : "none",
-                  opacity: isMobile ? 1 : center ? 1 : 0.35,
-                  filter: isMobile ? "none" : center ? "none" : "blur(1px)",
-                  zIndex: isMobile ? 1 : 10 - Math.abs(offset),
-                  border: center ? "5px solid #ff595e" : "none",
-                }}
-              >
-                <img src={img} alt="NFT" loading="lazy" style={{...imgStyle, maxWidth: '100%', maxHeight: '100%'}} />
-              </div>
-            );
-          })}
-        </div>
-        <div style={navStyle}>
-          <button onClick={prev} style={btnSecondary}>Prev</button>
-          <button onClick={next} style={btnPrimary}>Next</button>
-        </div>
+    <section style={section}>
+      <h2 style={title}>Gallery</h2>
+
+      <div
+        style={carousel}
+        onTouchStart={onTouchStart}
+        onTouchEnd={onTouchEnd}
+      >
+        {[-1, 0, 1].map((offset) => {
+          const img =
+            nftImages[(index + offset + nftImages.length) % nftImages.length];
+          const active = offset === 0;
+
+          return (
+            <div
+              key={offset}
+              style={{
+                ...card,
+                transform: active
+                  ? "scale(1)"
+                  : isMobile
+                  ? "scale(0.9)"
+                  : "scale(0.85)",
+                opacity: active ? 1 : 0.4,
+              }}
+            >
+              <img src={img} alt="NFT" style={imgStyle} />
+            </div>
+          );
+        })}
+      </div>
+
+      <div style={nav}>
+        <button onClick={prev} style={btnSecondary}>
+          Prev
+        </button>
+        <button onClick={next} style={btnPrimary}>
+          Next
+        </button>
       </div>
     </section>
   );
 }
 
-export default GalleryCarousel;
+/* ===== STYLES ===== */
 
-// ---------------- STYLES ----------------
-const sectionStyle = {
+const section = {
+  width: "100%",
+  padding: "2.5rem 1rem",
+  overflowX: "hidden",
+  textAlign: "center",
+};
+
+const title = {
+  fontSize: "2.2rem",
+  fontWeight: 800,
+  color: "#2ec4b6",
+  marginBottom: "2rem",
+};
+
+const carousel = {
   display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "3rem 1rem",
-    // overflowX removed to allow scrolling and background
-  };
+  justifyContent: "center",
+  alignItems: "center",
+  gap: "1rem",
+  overflow: "hidden",
+};
 
-  const containerStyle = {
-    background: "transparent",
-    border: "3px solid #2ec4b6",
-    borderRadius: "2.2rem",
-    padding: "2.5rem 1.5rem",
-    width: "100%",
-    maxWidth: 1200,
-    textAlign: "center",
-  };
+const card = {
+  width: "70vw",
+  maxWidth: 260,
+  aspectRatio: "1 / 1",
+  borderRadius: "2rem",
+  background: "#fff",
+  transition: "all 0.35s ease",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+};
 
-  const titleStyle = {
-    fontSize: "2.4rem",
-    color: "#2ec4b6",
-    marginBottom: "2rem",
-    fontWeight: 800,
-  };
+const imgStyle = {
+  width: "100%",
+  height: "100%",
+  objectFit: "cover",
+  borderRadius: "1.6rem",
+};
 
-  const carouselStyle = {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    gap: "1.5rem",
-    flexWrap: "nowrap",
-  };
+const nav = {
+  display: "flex",
+  justifyContent: "center",
+  gap: "1.5rem",
+  marginTop: "1.8rem",
+};
 
-  const cardStyle = {
-    width: "clamp(240px, 60vw, 560px)",
-    aspectRatio: "1 / 1",
-    borderRadius: "2rem",
-    background: "#fff",
-    overflow: "hidden",
-    transition: "all 0.35s ease",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  };
+const btnPrimary = {
+  padding: "0.7rem 2.2rem",
+  borderRadius: "2rem",
+  background: "#2ec4b6",
+  color: "#fff",
+  border: "none",
+  fontWeight: 700,
+};
 
-  const imgStyle = {
-    width: "100%",
-    height: "100%",
-    objectFit: "cover",
-  };
-
-  const navStyle = {
-    display: "flex",
-    justifyContent: "center",
-    gap: "1.8rem",
-    marginTop: "2rem",
-  };
-
-  const btnPrimary = {
-    padding: "0.8rem 2.3rem",
-    borderRadius: "2rem",
-    background: "#2ec4b6",
-    color: "#fff",
-    border: "none",
-    fontWeight: 700,
-    cursor: "pointer",
-  };
-
-  const btnSecondary = {
-    ...btnPrimary,
-    background: "#fff",
-    color: "#2ec4b6",
-    border: "2px solid #2ec4b6",
-  };
+const btnSecondary = {
+  ...btnPrimary,
+  background: "#fff",
+  color: "#2ec4b6",
+  border: "2px solid #2ec4b6",
+};
