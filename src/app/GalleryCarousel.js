@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const nftImages = [
   "/images/nft_226.png",
@@ -21,78 +21,49 @@ const nftImages = [
 
 export default function GalleryCarousel() {
   const [index, setIndex] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
-  const startX = useRef(0);
+  const trackRef = useRef(null);
+
+  const next = () => setIndex((i) => (i + 1) % nftImages.length);
+  const prev = () => setIndex((i) => (i - 1 + nftImages.length) % nftImages.length);
 
   useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth <= 768);
-    check();
-    window.addEventListener("resize", check);
-    return () => window.removeEventListener("resize", check);
-  }, []);
-
-  const prev = () =>
-    setIndex((i) => (i - 1 + nftImages.length) % nftImages.length);
-  const next = () => setIndex((i) => (i + 1) % nftImages.length);
-
-  const onTouchStart = (e) => (startX.current = e.touches[0].clientX);
-  const onTouchEnd = (e) => {
-    const diff = e.changedTouches[0].clientX - startX.current;
-    if (diff > 50) prev();
-    if (diff < -50) next();
-  };
+    if (!trackRef.current) return;
+    const card = trackRef.current.children[index];
+    card?.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+  }, [index]);
 
   return (
     <section style={section}>
       <h2 style={title}>Gallery</h2>
 
-      <div
-        style={carousel}
-        onTouchStart={onTouchStart}
-        onTouchEnd={onTouchEnd}
-      >
-        {[-1, 0, 1].map((offset) => {
-          const img =
-            nftImages[(index + offset + nftImages.length) % nftImages.length];
-          const active = offset === 0;
-
-          return (
-            <div
-              key={offset}
-              style={{
-                ...card,
-                transform: active
-                  ? "scale(1)"
-                  : isMobile
-                  ? "scale(0.9)"
-                  : "scale(0.85)",
-                opacity: active ? 1 : 0.4,
-              }}
-            >
-              <img src={img} alt="NFT" style={imgStyle} />
-            </div>
-          );
-        })}
+      <div ref={trackRef} style={track}>
+        {nftImages.map((img, i) => (
+          <div
+            key={i}
+            style={{
+              ...card,
+              transform: i === index ? "scale(1.05)" : "scale(0.9)",
+              opacity: i === index ? 1 : 0.6,
+            }}
+            onClick={() => setIndex(i)}
+          >
+            <img src={img} style={image} />
+          </div>
+        ))}
       </div>
 
       <div style={nav}>
-        <button onClick={prev} style={btnSecondary}>
-          Prev
-        </button>
-        <button onClick={next} style={btnPrimary}>
-          Next
-        </button>
+        <button onClick={prev} style={btnGhost}>Prev</button>
+        <button onClick={next} style={btnPrimary}>Next</button>
       </div>
     </section>
   );
 }
 
-/* ===== STYLES ===== */
+/* ===== styles ===== */
 
 const section = {
-  width: "100%",
-  padding: "2.5rem 1rem",
-  overflowX: "hidden",
+  padding: "2.5rem 0",
   textAlign: "center",
 };
 
@@ -100,53 +71,53 @@ const title = {
   fontSize: "2.2rem",
   fontWeight: 800,
   color: "#2ec4b6",
-  marginBottom: "2rem",
+  marginBottom: "1.8rem",
 };
 
-const carousel = {
+const track = {
   display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
   gap: "1rem",
-  overflow: "hidden",
+  overflowX: "auto",
+  scrollSnapType: "x mandatory",
+  padding: "0 1rem",
+  WebkitOverflowScrolling: "touch",
 };
 
 const card = {
-  width: "70vw",
-  maxWidth: 260,
-  aspectRatio: "1 / 1",
-  borderRadius: "2rem",
+  minWidth: "75vw",
+  maxWidth: "75vw",
+  scrollSnapAlign: "center",
+  borderRadius: "1.6rem",
   background: "#fff",
-  transition: "all 0.35s ease",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
+  overflow: "hidden",
+  transition: "all .35s ease",
+  flexShrink: 0,
 };
 
-const imgStyle = {
+const image = {
   width: "100%",
   height: "100%",
   objectFit: "cover",
-  borderRadius: "1.6rem",
 };
 
 const nav = {
   display: "flex",
   justifyContent: "center",
   gap: "1.5rem",
-  marginTop: "1.8rem",
+  marginTop: "1.5rem",
 };
 
 const btnPrimary = {
-  padding: "0.7rem 2.2rem",
+  padding: ".8rem 2.2rem",
   borderRadius: "2rem",
   background: "#2ec4b6",
   color: "#fff",
   border: "none",
   fontWeight: 700,
+  cursor: "pointer",
 };
 
-const btnSecondary = {
+const btnGhost = {
   ...btnPrimary,
   background: "#fff",
   color: "#2ec4b6",
