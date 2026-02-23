@@ -98,43 +98,9 @@ function RoadmapFlow() {
   const mobileSvgHeight = 480;
   const sectionStyle = {
     width: "100%",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    background: "#f7f7f7",
-    padding: isMobile ? "1.2rem 0" : "3rem 0"
-  };
-  const containerStyle = {
-    background: "#fff",
-    borderRadius: "2.5rem",
-    boxShadow: "0 8px 32px #0002",
-    padding: isMobile ? "1.2rem 0.5rem 1rem 0.5rem" : "2.5rem 2rem 2rem 2rem",
-    maxWidth: isMobile ? mobileSvgWidth : svgWidth,
-    width: "100%",
-    position: "relative"
-  };
-  const titleStyle = {
-    textAlign: "center",
-    fontSize: isMobile ? "1.5rem" : "2.6rem",
-    fontWeight: 900,
-    marginBottom: isMobile ? "1.2rem" : "2.5rem",
-    color: "#222",
-    letterSpacing: "0.04em"
-  };
-  const svgW = isMobile ? mobileSvgWidth : svgWidth;
-  const svgH = isMobile ? mobileSvgHeight : svgHeight;
-  return (
-    <section style={sectionStyle}>
-      <div style={containerStyle}>
-        <h2 style={titleStyle}>Roadmap</h2>
-        <div style={{ position: "relative", width: svgW, height: svgH, margin: "0 auto" }}>
-          {/* Z-line path */}
-          <svg width={svgW} height={svgH} style={{ position: "absolute", left: 0, top: 0, zIndex: 1 }}>
-            <polyline
-              fill="none"
-              stroke="#444"
-              strokeWidth={isMobile ? 10 : 18}
-              strokeLinecap="round"
+        </style>
+      </div>
+    </section>
               points={pinPositions.map(p => `${p.x * (svgW/svgWidth)},${p.y * (svgH/svgHeight)}`).join(' ')}
             />
             <polyline
