@@ -91,3 +91,7 @@ body {
   transform: translateY(0) scale(1);
   opacity: 1;
 }
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
