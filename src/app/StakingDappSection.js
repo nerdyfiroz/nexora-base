@@ -8,11 +8,13 @@ import { useState } from 'react';
 import Toast from '../components/Toast';
 import Skeleton from '../components/Skeleton';
 import toast from 'react-hot-toast';
+import NFTCard from '../components/NFTCard';
+import StakedNFTCard from '../components/StakedNFTCard';
 
 const NFT_CONTRACT = '0x91afB23F7e3567Baac193e342be9668eA7FeaF9E';
 const STAKING_CONTRACT = '0xA903FfB91dF343B6E6A92A39D10A287584AF01B0';
 
-export default function Home() {
+export default function StakingDappSection() {
   const { provider, address } = useWallet();
   const { nfts, loading: nftsLoading } = useNFTs(provider, address, NFT_CONTRACT);
   const { approved, loading: approvalLoading, approve } = useApproval(provider, address, NFT_CONTRACT, STAKING_CONTRACT);
@@ -24,7 +26,6 @@ export default function Home() {
       ? selected.filter(id => id !== tokenId)
       : [...selected, tokenId]);
   };
-
 
   const handleStake = async () => {
     if (!selected.length) return;
@@ -53,12 +54,11 @@ export default function Home() {
   };
 
   return (
-    <div style={{maxWidth:800,margin:'0 auto',padding:32}}>
+    <div style={{width:'100%',maxWidth:900,margin:'2rem auto',padding:32,background:'#fff',borderRadius:'1.2rem',boxShadow:'0 2px 16px #0001'}}>
       <Toast />
-      <h1>NFT Staking dApp</h1>
+      <h2 style={{fontSize:'2rem',fontWeight:700,marginBottom:'1rem',color:'#7b2ff2'}}>NFT Staking</h2>
       <WalletConnect />
-      <hr />
-      <h2>Your NFTs</h2>
+      <h3>Your NFTs</h3>
       {nftsLoading ? <Skeleton count={4} /> : null}
       {!approved && (
         <button
@@ -85,8 +85,7 @@ export default function Home() {
         ))}
       </div>
       <button disabled={!approved || !selected.length || stakingLoading} onClick={handleStake}>Stake Selected</button>
-      <hr />
-      <h2>Staked NFTs</h2>
+      <h3 style={{marginTop:'2rem'}}>Staked NFTs</h3>
       {stakingLoading ? <Skeleton count={4} /> : null}
       <div style={{display:'flex',flexWrap:'wrap'}}>
         {!stakingLoading && stakedNFTs.map(nft => (
@@ -96,4 +95,3 @@ export default function Home() {
     </div>
   );
 }
-
