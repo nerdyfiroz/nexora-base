@@ -8,30 +8,35 @@
 body {
   background: #f8f8f6;
   color: #171717;
+  font-family: "Space Grotesk", Arial, Helvetica, sans-serif;
+  min-height: 100vh;
 }
 
-/* ================= GLOBAL SAFETY ================= */
+/* ================= GLOBAL OVERFLOW FIX ================= */
+
+/* NEVER use 100vw on mobile */
 
 html, body {
-  width: 100vw;
-  max-width: 100vw;
-  overflow-x: hidden !important;
-  background: var(--bg-main);
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
-img, video {
+/* Safety clamp for all elements */
+* {
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+/* Media elements safe */
+img, video, canvas {
+  display: block;
   max-width: 100%;
   height: auto;
-  display: block;
 }
 
-body {
-  min-height: 100vh;
-  font-family: "Space Grotesk", Arial, Helvetica, sans-serif;
-  color: var(--fg-main);
-}
+/* ================= TRANSPARENT SECTIONS ================= */
 
-/* Remove z-index from overlays and main containers so animated background is always visible */
 .content-overlay,
 .nexora-main,
 .nexora-gallery-section,
@@ -39,27 +44,25 @@ body {
 .nexora-footer {
   position: relative;
   background: transparent;
-  /* z-index removed to allow animated background to show through */
 }
 
-/* ================= MOBILE FIX ================= */
+/* ================= MOBILE TUNING ================= */
 
 @media (max-width: 700px) {
+  section {
+    max-width: 100%;
+    overflow-x: clip; /* better than hidden on Android */
+  }
 
   .animated-bg-canvas {
     opacity: 1;
     filter: blur(0.8px);
   }
-
-  section {
-    max-width: 100%;
-    overflow: visible;
-  }
 }
 
 /* ================= SOCIAL ICON FIX ================= */
 
-@media (max-width:700px) {
+@media (max-width: 700px) {
   .nexora-icon-discord {
     display: none !important;
   }
@@ -68,11 +71,14 @@ body {
     display: inline-flex !important;
   }
 }
-/* ===== Nexora Modal System ===== */
+
+/* ================= MODAL SYSTEM ================= */
 
 .nexora-modal-overlay {
   position: fixed;
   inset: 0;
+  width: 100%;
+  height: 100%;
   background: rgba(255,255,255,0.65);
   backdrop-filter: blur(8px);
   display: flex;
