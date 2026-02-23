@@ -63,11 +63,11 @@ export default function SpinDemoBox({ eligible, spinsLeft, onSpin }) {
     }, 80);
   };
 
-  // Circular layout variables
-  const wheelSize = 340;
+  // Circular layout variables (larger wheel, smaller boxes, rotated)
+  const wheelSize = 420;
   const center = wheelSize / 2;
   const itemCount = rewards.length;
-  const radius = wheelSize / 2 - 50;
+  const radius = wheelSize / 2 - 70;
   const angleStep = (2 * Math.PI) / itemCount;
 
   return (
@@ -77,8 +77,8 @@ export default function SpinDemoBox({ eligible, spinsLeft, onSpin }) {
         {/* Wheel rewards */}
         {rewards.map((reward, idx) => {
           const angle = idx * angleStep - Math.PI/2;
-          const x = center + radius * Math.cos(angle) - 60;
-          const y = center + radius * Math.sin(angle) - 24;
+          const x = center + radius * Math.cos(angle) - 45;
+          const y = center + radius * Math.sin(angle) - 18;
           const highlight = shuffleReward === reward;
           return (
             <div
@@ -87,8 +87,8 @@ export default function SpinDemoBox({ eligible, spinsLeft, onSpin }) {
                 position:'absolute',
                 left:`${x}px`,
                 top:`${y}px`,
-                width:'120px',
-                height:'48px',
+                width:'90px',
+                height:'36px',
                 display:'flex',
                 alignItems:'center',
                 justifyContent:'center',
@@ -97,15 +97,16 @@ export default function SpinDemoBox({ eligible, spinsLeft, onSpin }) {
                 boxShadow:'0 2px 8px #0001',
                 fontWeight:600,
                 color: highlight ? '#fff' : '#222',
-                fontSize:'1.05rem',
+                fontSize:'0.95rem',
                 border: highlight ? '2px solid #7b2ff2' : '2px solid #e0e7ef',
                 zIndex: highlight ? 2 : 1,
                 transition:'all 0.2s',
                 textAlign:'center',
-                padding:'0 0.5rem',
-                pointerEvents:'none'
+                padding:'0 0.3rem',
+                pointerEvents:'none',
+                transform: `rotate(${(angle + Math.PI/2) * 180/Math.PI}deg)`
               }}>
-                {reward}
+                <span style={{transform: `rotate(-${(angle + Math.PI/2) * 180/Math.PI}deg)`, display:'block', width:'100%'}}>{reward}</span>
             </div>
           );
         })}
