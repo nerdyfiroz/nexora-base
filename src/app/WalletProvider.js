@@ -5,10 +5,10 @@ import { metaMask, walletConnect } from "@wagmi/connectors";
 const config = createConfig({
   autoConnect: true,
   connectors: [
-    metaMask({ chains: [base, mainnet] }),
+    metaMask({ options: { chains: [base, mainnet] } }),
     walletConnect({
-      chains: [base, mainnet],
       options: {
+        chains: [base, mainnet],
         projectId: "demo", // Replace with your WalletConnect projectId
         showQrModal: true,
       },
