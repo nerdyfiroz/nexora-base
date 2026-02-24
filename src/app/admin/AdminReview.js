@@ -45,7 +45,7 @@ export default function AdminReview() {
   };
 
   const deleteApp = async (id) => {
-    if (typeof window !== 'undefined' && !window.confirm('Delete this application?')) return;
+    if (typeof window === 'undefined' || !window.confirm('Delete this application?')) return;
     await fetch(`/api/admin`, {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },

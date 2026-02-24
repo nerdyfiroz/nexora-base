@@ -5,6 +5,7 @@ import "./marquee.css";
 export default function NexoraMarquee() {
   const [speed, setSpeed] = useState(1);
   useEffect(() => {
+    if (typeof window === 'undefined') return;
     let lastScroll = window.scrollY;
     let ticking = false;
     const onScroll = () => {

@@ -51,7 +51,7 @@ export default function SpinDemoBox({ eligible, spinsLeft, onSpin }) {
           // Store spin reward for admin distribution
           if (finalReward && rewardProbabilities.find(r => r.label === finalReward && r.weight > 0)) {
             // Replace with actual wallet address from user context
-            const wallet_address = window.walletAddress || "demo_wallet";
+            const wallet_address = typeof window !== 'undefined' && window.walletAddress ? window.walletAddress : "demo_wallet";
             await fetch("/api/spin", {
               method: "POST",
               headers: { "Content-Type": "application/json" },

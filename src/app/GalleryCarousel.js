@@ -25,6 +25,7 @@ export default function GalleryCarousel() {
   const startX = useRef(0);
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
     const check = () => setIsMobile(window.innerWidth <= 768);
     check();
     window.addEventListener("resize", check);

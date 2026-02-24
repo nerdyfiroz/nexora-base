@@ -5,6 +5,7 @@ export default function AnimatedBackground() {
   const canvasRef = useRef(null);
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
     let width = window.innerWidth;
