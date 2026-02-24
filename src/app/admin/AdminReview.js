@@ -1,5 +1,6 @@
+
 "use client";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 // Spin rewards admin view
 // ...existing code...
