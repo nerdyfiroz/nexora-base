@@ -1,13 +1,12 @@
 import { createConfig, WagmiProvider, useAccount, useConnect } from "wagmi";
 import { mainnet, base } from "wagmi/chains";
-import { MetaMaskConnector } from "wagmi/connectors/metaMask";
-import { WalletConnectConnector } from "wagmi/connectors/walletConnect";
+import { metaMask, walletConnect } from "@wagmi/connectors";
 
 const config = createConfig({
   autoConnect: true,
   connectors: [
-    new MetaMaskConnector({ chains: [base, mainnet] }),
-    new WalletConnectConnector({
+    metaMask({ chains: [base, mainnet] }),
+    walletConnect({
       chains: [base, mainnet],
       options: {
         projectId: "demo", // Replace with your WalletConnect projectId
