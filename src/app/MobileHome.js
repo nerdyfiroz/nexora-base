@@ -1,3 +1,4 @@
+import { WalletConnectUI } from "./WalletProvider";
 "use client";
 
 import AnimatedDescription from "./AnimatedDescription";
@@ -12,12 +13,15 @@ export default function MobileHome() {
   const [showModal, setShowModal] = useState(false);
 
   return (
-   <div style={{
-  width: "100%",
-  minHeight: "100dvh",
-  overflowX: "hidden",
-  position: "relative",
-}}>
+    <div style={{
+      width: "100%",
+      minHeight: "100dvh",
+      overflowX: "hidden",
+      position: "relative",
+    }}>
+      <div style={{ display: 'flex', justifyContent: 'center', margin: '1.2rem 0' }}>
+        <WalletConnectUI />
+      </div>
       {/* HEADER */}
       <header style={wrap}>
         <div style={row}>

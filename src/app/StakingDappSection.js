@@ -1,5 +1,5 @@
 "use client";
-import WalletConnect from '../components/WalletConnect';
+import { WalletConnectUI } from './WalletProvider';
 import { useWallet } from '../hooks/useWallet';
 import { useNFTs } from '../hooks/useNFTs';
 import { useApproval } from '../hooks/useApproval';
@@ -71,7 +71,7 @@ export default function StakingDappSection() {
     <div style={{width:'100%',maxWidth:900,margin:'2rem auto',padding:32,background:'#fff',borderRadius:'1.2rem',boxShadow:'0 2px 16px #0001'}}>
       <Toast />
       <h2 style={{fontSize:'2rem',fontWeight:700,marginBottom:'1rem',color:'#7b2ff2'}}>NFT Staking</h2>
-      <WalletConnect />
+      <WalletConnectUI />
       <div style={{display:'flex',gap:'2.5rem',alignItems:'center',marginBottom:'1.2rem'}}>
         <div style={{fontWeight:700,fontSize:'1.1rem',color:'#7b2ff2'}}>Total NFTs in Wallet: <span style={{color:'#222'}}>{totalHolding}</span></div>
         <div style={{fontWeight:700,fontSize:'1.1rem',color:'#38ef7d'}}>Total NFTs Staked: <span style={{color:'#222'}}>{totalStaked}</span></div>

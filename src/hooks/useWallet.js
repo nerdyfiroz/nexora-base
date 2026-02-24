@@ -7,16 +7,37 @@ export function useWallet() {
   const [address, setAddress] = useState(null);
   const [network, setNetwork] = useState(null);
 
-  useEffect(() => {
+  // Only connect when user requests
+  const connect = async () => {
     if (window.ethereum) {
       const ethProvider = new ethers.BrowserProvider(window.ethereum);
       setProvider(ethProvider);
-      ethProvider.getNetwork().then(setNetwork);
-      ethProvider.getSigner().then(signer => setAddress(signer.address));
+      const net = await ethProvider.getNetwork();
+      setNetwork(net);
+      const signer = await ethProvider.getSigner();
+      setAddress(signer.address);
       window.ethereum.on('accountsChanged', accounts => setAddress(accounts[0]));
-      window.ethereum.on('chainChanged', () => window.location.reload());
+      window.ethereum.on('chainChanged', () => {
+        setProvider(null);
+        setAddress(null);
+        setNetwork(null);
+      });
     }
-  }, []);
+  };
 
-  return { provider, address, network };
+  // Disconnect wallet (clear state, no reload)
+  const disconnect = () => {
+    setProvider(null);
+    setAddress(null);
+    setNetwork(null);
+    if (window.ethereum && window.ethereum.removeAllListeners) {
+      window.ethereum.removeAllListeners('accountsChanged');
+      window.ethereum.removeAllListeners('chainChanged');
+    }
+    localStorage.clear();
+    sessionStorage.clear();
+    window.walletAddress = undefined;
+  };
+
+  return { provider, address, network, connect, disconnect };
 }

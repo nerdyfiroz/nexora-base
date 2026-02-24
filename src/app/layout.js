@@ -8,14 +8,17 @@ import "./nexora.css";
 // AnimatedBackground is now imported as a client component
 
 
+import { WalletProvider } from "./WalletProvider";
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="offwhite-bg fullpage-layout">
-
-        <main className="content-overlay">
-          {children}
-        </main>
+        <WalletProvider>
+          <main className="content-overlay">
+            {children}
+          </main>
+        </WalletProvider>
       </body>
     </html>
   );

@@ -31,7 +31,7 @@ export function useApproval(provider, address, nftContractAddress, stakingContra
       // Check for MetaMask and correct network (Base chainId: 8453)
       if (window.ethereum && window.ethereum.isMetaMask) {
         const chainId = await provider.send('eth_chainId', []);
-        if (chainId !== '0x2105' && chainId !== '8453') { // 0x2105 = 8453
+        if (chainId !== '0x2105' && chainId !== '8453') {
           await window.ethereum.request({
             method: 'wallet_switchEthereumChain',
             params: [{ chainId: '0x2105' }],
@@ -40,6 +40,14 @@ export function useApproval(provider, address, nftContractAddress, stakingContra
       }
       const signer = provider.getSigner();
       const contract = new ethers.Contract(nftContractAddress, nftAbi, signer);
+      // Check if already approved
+      const alreadyApproved = await contract.isApprovedForAll(address, stakingContractAddress);
+      if (alreadyApproved) {
+        setApproved(true);
+        setLoading(false);
+        return;
+      }
+      // Prompt user for approval
       if (typeof window !== 'undefined' && window.toast) {
         window.toast('Please confirm the approval transaction in MetaMask...', { icon: '📝' });
       }
