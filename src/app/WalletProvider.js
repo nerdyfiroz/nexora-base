@@ -1,22 +1,33 @@
-import { createConfig, WagmiProvider, useAccount, useConnect } from "wagmi";
+"use client";
+import { WagmiProvider, useAccount, useConnect } from "wagmi";
 import { mainnet, base } from "wagmi/chains";
 import { metaMask, walletConnect } from "@wagmi/connectors";
+import { createConfig } from "wagmi";
 
-const config = createConfig({
-  autoConnect: true,
-  connectors: [
-    metaMask({ options: { chains: [base, mainnet] } }),
-    walletConnect({
-      options: {
-        chains: [base, mainnet],
-        projectId: "demo", // Replace with your WalletConnect projectId
-        showQrModal: true,
-      },
-    }),
-  ],
-});
+// Only create config on client
+function getClientConfig() {
+  return createConfig({
+    autoConnect: true,
+    connectors: [
+      metaMask({ options: { chains: [base, mainnet] } }),
+      walletConnect({
+        options: {
+          chains: [base, mainnet],
+          projectId: "demo", // Replace with your WalletConnect projectId
+          showQrModal: true,
+        },
+      }),
+    ],
+  });
+}
 
 export function WalletProvider({ children }) {
+  // Only run config on client
+  const [config, setConfig] = React.useState(null);
+  React.useEffect(() => {
+    setConfig(getClientConfig());
+  }, []);
+  if (!config) return null;
   return <WagmiProvider config={config}>{children}</WagmiProvider>;
 }
 
