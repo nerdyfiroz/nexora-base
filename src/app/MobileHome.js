@@ -4,7 +4,7 @@ import { WalletConnectUI } from "./WalletProvider";
 import AnimatedDescription from "./AnimatedDescription";
 import GalleryCarousel from "./GalleryCarousel";
 import UtilitySection from "./UtilitySection";
-import StakingSection from "./StakingSection";
+import NFTStaking from "./NFTStaking";
 import RoadmapFlow from "./RoadmapFlow";
 import WhitelistForm from "./WhitelistForm";
 import { useState } from "react";
@@ -83,7 +83,7 @@ export default function MobileHome() {
 
       <GalleryCarousel />
       <UtilitySection />
-      <StakingSection />
+      <NFTStaking />
       <RoadmapFlow />
 
       {/* Footer / Builder Credit */}

@@ -6,7 +6,7 @@ import AnimatedDescription from "./AnimatedDescription";
 import GalleryCarousel from "./GalleryCarousel";
 import RoadmapFlow from "./RoadmapFlow";
 import UtilitySection from "./UtilitySection";
-import StakingSection from "./StakingSection";
+import NFTStaking from "./NFTStaking";
 import { useState } from "react";
 import WhitelistForm from "./WhitelistForm";
 const MobileHome = dynamic(() => import("./MobileHome"), { ssr: false });
@@ -162,9 +162,8 @@ export default function ResponsiveHome() {
       {/* Utility Section */}
       <UtilitySection />
 
-      {/* Staking Section */}
-      {/** Inserted before Roadmap section as requested **/}
-      <StakingSection />
+      {/* Staking Section (v2) */}
+      <NFTStaking />
 
       {/* Roadmap Section */}
       <RoadmapFlow />
