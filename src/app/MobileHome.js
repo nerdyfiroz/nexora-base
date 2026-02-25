@@ -1,5 +1,6 @@
-import { WalletConnectUI } from "./WalletProvider";
+
 "use client";
+import { WalletConnectUI } from "./WalletProvider";
 
 import AnimatedDescription from "./AnimatedDescription";
 import GalleryCarousel from "./GalleryCarousel";
